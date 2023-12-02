@@ -105,7 +105,7 @@ str(x)
 
 mouse.genes =
   read.delim(
-    file = "data/talk04/mouse_genes_biomart_sep2018.txt",
+    file = "../../R-for-Data-Science/data/talk04/mouse_genes_biomart_sep2018.txt",
     sep = "\t",
     header = T,
     stringsAsFactors = T
