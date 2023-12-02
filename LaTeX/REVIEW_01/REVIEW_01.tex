@@ -7,6 +7,9 @@
 \usepackage{geometry}
 \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
 \usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\let\oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{\begin{center}\oldincludegraphics[#1]{#2}\end{center}}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
