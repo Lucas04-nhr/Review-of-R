@@ -1,9 +1,5 @@
 # Review of the course “R for Data Science” Part 01(Talk 01~ 04)
 
-**<font size = 5>Click [here](./index.html) to return to the homepage.</font>**
-
----
-
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
@@ -16,9 +12,9 @@
 
 > Talk 01
 >
-> View the original slide through [this link](../talk01.pdf).
+> View the original slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk01.pdf).
 >
-> View the original R markdown file of the slide through [this link](../talk01.Rmd).
+> View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk01.Rmd).
 
 This section has nothing to explain :)
 
@@ -28,9 +24,9 @@ This section has nothing to explain :)
 
 > Talk 02
 >
-> View the original slide through [this link](../talk02.pdf).
+> View the original slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk02.pdf).
 >
-> View the original R markdown file of the slide through [this link](../talk02.Rmd).
+> View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk02.Rmd).
 
 ##  Fundamental Data Type
 
@@ -196,9 +192,9 @@ is.vector();
 
 > Talk 03
 >
-> View the original slide through [this link](../talk03.pdf).
+> View the original slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk03.pdf).
 >
-> View the original R markdown file of the slide through [this link](../talk03.Rmd).
+> View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk03.Rmd).
 
 ## `data.frame`
 
@@ -720,9 +716,9 @@ Use the following functions to write object(s) to external files:
 
 > Talk 04
 >
-> View the original slide through [this link](../talk04.pdf).
+> View the original slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk04.pdf).
 >
-> View the original R markdown file of the slide through [this link](../talk04.Rmd).
+> View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk04.Rmd).
 
 ## IO and working enviroment management
 
@@ -1142,8 +1138,3 @@ mouse_gene_plot03 =
 	  median 
 	)
 	```
-
-
----
-
-**<font size = 5>Click [here](./REVIEW_02.html) to go to the next page.</font>**
