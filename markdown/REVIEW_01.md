@@ -1,5 +1,9 @@
 # Review of the course “R for Data Science” Part 01(Talk 01~ 04)
 
+**<font size = 5>Click [here](./index.html) to return to the homepage.</font>**
+
+---
+
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
@@ -1139,4 +1143,7 @@ mouse_gene_plot03 =
 	)
 	```
 
-	
+
+---
+
+**<font size = 5>Click [here](./REVIEW02.html) to go to the next page.</font>**
