@@ -14,24 +14,24 @@ To reduce the size of each document, I've split the entire review into three doc
 
 This page has direct link to the web version and source markdown files. However, I also create PDF files using *Typora* and $\LaTeX$ (compiling by $\mathrm{Lua}\LaTeX$  in $\mathrm{TinyTeX}$), you can find it in these folders:
 
-- [PDF files created by *Typora*](https://github.com/Lucas04-nhr/R-for-Data-Science/tree/main/Review/PDF)
-- [PDF files created by $\LaTeX$](https://github.com/Lucas04-nhr/R-for-Data-Science/tree/main/Review/LaTeX)
+- [PDF files created by *Typora*](https://github.com/Lucas04-nhr/Review-of-R/tree/main/PDF)
+- [PDF files created by $\LaTeX$ and the TeX source code](https://github.com/Lucas04-nhr/Review-of-R/tree/main/LaTeX)
 
 # Part 01 (Talk 01 ~ 04)
 
-- [Direct web link](./Review/web/REVIEW_01.html)
-- [Source Markdown document](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/Review/REVIEW_01.md)
+- [Direct web link](./REVIEW_01.html)
+- [Source Markdown document](https://github.com/Lucas04-nhr/Review-of-R/blob/main/markdown/REVIEW_01.md)
 
 # Part 02 (Talk 05 ~ 08)
 
-- [Direct web link](./Review/REVIEW_02.html)
-- [Source Markdown document](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/Review/REVIEW_02.md)
+- [Direct web link](./REVIEW_02.html)
+- [Source Markdown document](https://github.com/Lucas04-nhr/Review-of-R/blob/main/markdown/REVIEW_02.md)
 
 # Part 03 (Talk 09 ~ 12)
 
-- [Direct web link](./Review/REVIEW_03.html)
+- [Direct web link](./REVIEW_03.html)
 
-- [Source Markdown document](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/Review/REVIEW_03.md)
+- [Source Markdown document](https://github.com/Lucas04-nhr/Review-of-R/blob/main/markdown/REVIEW_03.md)
 
 	 
 
