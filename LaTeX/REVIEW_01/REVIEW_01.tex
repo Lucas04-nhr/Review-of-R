@@ -4,6 +4,8 @@
 %
 \documentclass[
 ]{article}
+\usepackage{geometry}
+\geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
@@ -113,13 +115,6 @@
 
 \textbf{By Haoran Nie @ HUST Life ST}
 
-\begin{quote}
-Reference: \href{https://r4ds.had.co.nz}{R for Data Science}
-
-The book updated to 2\textsuperscript{nd} ed. on July,2023, here' s a
-\href{https://r4ds.hadley.nz}{link} to the official website.
-\end{quote}
-
 This work is licensed under CC BY-NC-SA 4.0
 
 \hypertarget{multi-omics-data-analysis-and-visualisation-1}{%
@@ -128,11 +123,6 @@ This work is licensed under CC BY-NC-SA 4.0
 
 \begin{quote}
 Talk 01
-
-View the original slide through \href{../talk01.pdf}{this link}.
-
-View the original R markdown file of the slide through
-\href{../talk01.Rmd}{this link}.
 \end{quote}
 
 This section has nothing to explain :)
@@ -142,11 +132,6 @@ This section has nothing to explain :)
 
 \begin{quote}
 Talk 02
-
-View the original slide through \href{../talk02.pdf}{this link}.
-
-View the original R markdown file of the slide through
-\href{../talk02.Rmd}{this link}.
 \end{quote}
 
 \hypertarget{fundamental-data-type}{%
@@ -369,7 +354,7 @@ Extra:
 \subsection{The hierarchy of R's vector
 types}\label{the-hierarchy-of-rs-vector-types}}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/data-structures-overview.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png}
 
 You can use function \texttt{typeof()} to know the type of a vector.
 
@@ -393,11 +378,6 @@ Here are some examples of other \texttt{is.xxx()} function:
 
 \begin{quote}
 Talk 03
-
-View the original slide through \href{../talk03.pdf}{this link}.
-
-View the original R markdown file of the slide through
-\href{../talk03.Rmd}{this link}.
 \end{quote}
 
 \hypertarget{dataframe}{%
@@ -418,7 +398,7 @@ View the original R markdown file of the slide through
 
 Here's the result:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/Introduction of df.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Introduction of df.png}
 
 \hypertarget{usage-of-head-and-tail}{%
 \subsubsection{\texorpdfstring{\textbf{Usage of \texttt{head()} and
@@ -469,7 +449,7 @@ functions}{Components of data.frame and common functions}}\label{components-of-d
 
 This command shows the structure of the tibble \texttt{mpg}:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/Structure of mpg.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png}
 
 \hypertarget{make-a-new-dataframe}{%
 \subsubsection{\texorpdfstring{Make a new
@@ -979,8 +959,8 @@ Some available functions:
 \end{itemize}
 
 \begin{quote}
-Full documentation of the package is available through this
-\href{https://www.rdocumentation.org/packages/readr/versions/1.3.1}{link}.
+Full documentation of the package is available through 
+https://www.rdocumentation.org/packages/readr/versions/1.3.1.
 \end{quote}
 
 \hypertarget{usage}{%
@@ -1039,8 +1019,7 @@ Use the following functions to write object(s) to external files:
 \begin{quote}
 Default parameters are listed.
 
-More related documents can be found in this
-\href{https://r4ds.had.co.nz/data-import.html?q=file\#writing-to-a-file}{link}.
+More related documents can be found in https://r4ds.had.co.nz/data-import.html?q=file\#writing-to-a-file.
 \end{quote}
 
 \begin{itemize}
@@ -1153,11 +1132,6 @@ factor}\label{r-language-basics-part-3-factor}}
 
 \begin{quote}
 Talk 04
-
-View the original slide through \href{../talk04.pdf}{this link}.
-
-View the original R markdown file of the slide through
-\href{../talk04.Rmd}{this link}.
 \end{quote}
 
 \hypertarget{io-and-working-enviroment-management}{%
@@ -1167,50 +1141,17 @@ management}\label{io-and-working-enviroment-management}}
 Each R session is a separate \textbf{work space} containing its own
 data, variables, and operation history.
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/r_sessions.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png}
 
 Each RStudio session is automatically associated with a R session
 
-\begin{quote}
-Not only RStudio, PyCharm or VSCode also support R session.
-
-However, I'm keen on coding with PyCharm but not RStudio, for its
-wonderful Plug-in Environment, which can let me use plug-ins such as
-Code GeeX by Zhipu AI (a company founded by some student in KEG team
-inTsinghua University) or GitHub Copilot by GitHub to let the coding
-process more quickly, for the instruction from GPTs.
-\end{quote}
-
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/r_session_in_rstudio.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png}
 
 If you want to coding with R using PyCharm or other JetBrains IDE (i.e.
 IntelliJ, CLion, etc.), remember to install the \emph{R Language
-Plug-in}
+Plug-in}.
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202111619635.png}
-
-For instruction how to get FREE Student Lisence of GitHub Pro, GitHub
-Copilot and JetBrains Products and their benefits, see their official
-website:
-
-\begin{itemize}
-\item
-  \href{https://campus.github.com}{GitHub Global Campus}
-
-  Make sure you don't use VPNs and use your phone to log in and apply
-  (HUST Campus Network is recommended), give ``Precise Location''
-  permission to your browser. You may use your ``{[}Student
-  Number{]}@hust.edu.cn'' mail to verify your identity as a student
-  studying in HUST.
-\item
-  \href{https://www.jetbrains.com/lp/leaflets-gdc/students/}{JetBrains
-  Products}
-
-  Because our email addresses ending with ``@hust.edu.cn'' are banned
-  due to misuse, you should apply for an online verification report on
-  \href{chsi.com.cn}{CHSI} (press the link to visit the website),
-  instructions \href{https://www.chsi.com.cn/xlcx/rhsq.jsp}{here}.
-\end{itemize}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png}
 
 \hypertarget{start-a-new-rstudio-session-by-creating-a-new-project}{%
 \subsubsection{Start a new RStudio session by creating a new
@@ -1226,15 +1167,15 @@ select a new session.
   Click the Project button in the upper right corner and select New
   Project in the pop-up menu \ldots{}
 
-  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_create_new_project.png}
+  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png}
 \item
   Select: New directory -\textgreater{} New Project in the popup window
 
-  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_create_project_2.png}
+  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png}
 \item
   Enter a new directory name, choose its mother directory ...
 
-  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_create_new_project_3.png}
+  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png}
 \end{itemize}
 
 \hypertarget{working-space}{%
@@ -1260,7 +1201,7 @@ RStudio}\label{variables-in-working-space-in-rstudio}}
 The "Environment" window in the upper right corner of RStudio shows all
 the variables of the current workspace.
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_enviroment_window.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png}
 
 \hypertarget{save-and-restore-work-space}{%
 \subsubsection{Save and restore work
@@ -1314,18 +1255,18 @@ project}\label{close-and-reopen-a-project}}
 \item
   To close a project
 
-  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/Rstudio_close_a_project.png}
+  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png}
 \item
   In RStudio and similar IDEs, there are some preferences to choose
 
-  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_project_options.png}
+  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png}
 \end{itemize}
 
 \begin{quote}
 The UI in PyCharm
 \end{quote}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/pycharm_project_options.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png}
 
 \textbf{Notes:}
 
@@ -1341,7 +1282,7 @@ The UI in PyCharm
 \hypertarget{open-a-project}{%
 \subsubsection{Open a project}\label{open-a-project}}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/rstudio_open_a_project.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png}
 
 \begin{quote}
 When in PyCharm, simply drag the working directory to its main window,
@@ -1431,7 +1372,7 @@ way:
 
 The output looks like this:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202114121080.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png}
 
 Now I request to replace with Female, Male.
 
@@ -1448,7 +1389,7 @@ Now I request to replace with Female, Male.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202114937281.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png}
 
 You can also use \texttt{fct\_relabel()} to do the same thing
 
@@ -1488,7 +1429,7 @@ plots}\label{usage-of-factors-in-drawing-plots}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/response_barplot.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png}
 
 By default, \texttt{factor} is sorted alphabetically.
 
@@ -1517,7 +1458,7 @@ adjust the \texttt{factor} to adjust the drawing order.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/response_barplot2.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png}
 
 You can also use the parameter \texttt{ordered} to let others know that
 your \texttt{factor} is ordered properly.
@@ -1532,7 +1473,7 @@ your \texttt{factor} is ordered properly.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202134409231.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png}
 
 \hypertarget{using-factor-to-vhange-values}{%
 \subsubsection{\texorpdfstring{Using \texttt{factor} to vhange
@@ -1590,7 +1531,7 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202135555790.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png}
 
 \hypertarget{delete-useless-levels}{%
 \subsubsection{\texorpdfstring{Delete useless
@@ -1608,12 +1549,12 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202135803901.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png}
 
 If you draw a plot without deleting the useless \texttt{levels}, you
 will get this result:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/mouse_gene_plot01.png}
+\includegraphics[width=0.8\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png}
 
 But when you delete the useless \texttt{level} using these commands:
 
@@ -1626,11 +1567,11 @@ But when you delete the useless \texttt{level} using these commands:
 
 You will see that:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/image-20231202141212937.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png}
 
 Then, you'll get the plot like this:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/mouse_gene_plot02.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png}
 
 \emph{Source code:}
 
@@ -1688,7 +1629,7 @@ You can also use \texttt{tibble} to solve these problems:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/R-for-Data-Science/Review/image/mouse_gene_plot03.png}
+\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png}
 
 \hypertarget{advance-usage}{%
 \subsubsection{Advance usage}\label{advance-usage}}
