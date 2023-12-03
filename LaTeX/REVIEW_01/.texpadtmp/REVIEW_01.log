@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.11.6)  2 DEC 2023 21:25
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.11.6)  3 DEC 2023 10:05
  restricted system commands enabled.
  file:line:error style messages enabled.
 **REVIEW_01.tex
@@ -664,7 +664,7 @@ Package hyperref Info: Link coloring OFF on input line 112.
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png  used on input line 360.
-(luatex.def)             Requested size: 219.086pt x 185.26843pt.
+(luatex.def)             Requested size: 219.08614pt x 185.26843pt.
  [3</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png>]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 387.
@@ -674,13 +674,13 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Introduction of df.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Introduction of df.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Introduction of df.png  used on input line 404.
-(luatex.def)             Requested size: 438.1702pt x 108.62714pt.
+(luatex.def)             Requested size: 350.53915pt x 86.9017pt.
  [4</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Introduction of df.png>]
 </Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png, id=252, 1217.54875pt x 388.45125pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png  used on input line 455.
-(luatex.def)             Requested size: 438.1686pt x 139.79492pt.
+(luatex.def)             Requested size: 350.53915pt x 111.83594pt.
  [5</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Structure of mpg.png>] [6
 Missing character: There is no ℹ (U+2139) in font [lmmono10-italic]:!
 ] [7] [8
@@ -700,124 +700,123 @@ Overfull \hbox (36.6377pt too wide) in paragraph at lines 1025--1026
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png  used on input line 1147.
-(luatex.def)             Requested size: 219.08511pt x 76.48909pt.
+(luatex.def)             Requested size: 219.08614pt x 76.48909pt.
 </Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png, id=311, 1091.07625pt x 555.07375pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png  used on input line 1151.
-(luatex.def)             Requested size: 219.0771pt x 111.4532pt.
- [13</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png, id=319, 1686.3pt x 1053.9375pt>
+(luatex.def)             Requested size: 219.08614pt x 111.4532pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png, id=312, 1686.3pt x 1053.9375pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png  used on input line 1157.
-(luatex.def)             Requested size: 219.07231pt x 136.9202pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png, id=320, 431.211pt x 142.131pt>
+(luatex.def)             Requested size: 219.08614pt x 136.9202pt.
+ [13</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png, id=322, 431.211pt x 142.131pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png  used on input line 1173.
-(luatex.def)             Requested size: 219.08565pt x 72.21257pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png, id=321, 256.7994pt x 182.6022pt>
+(luatex.def)             Requested size: 219.08614pt x 72.21257pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png, id=323, 256.7994pt x 182.6022pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png  used on input line 1177.
-(luatex.def)             Requested size: 219.0877pt x 155.78656pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png, id=322, 552.0625pt x 204.765pt>
+(luatex.def)             Requested size: 219.08614pt x 155.78656pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png, id=324, 552.0625pt x 204.765pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png  used on input line 1181.
-(luatex.def)             Requested size: 219.08578pt x 81.2609pt.
- [14</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png, id=333, 687.56876pt x 394.47375pt>
+(luatex.def)             Requested size: 219.08614pt x 81.2609pt.
+ [14</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png, id=335, 687.56876pt x 394.47375pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png  used on input line 1207.
-(luatex.def)             Requested size: 219.08226pt x 125.69244pt.
- [15</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png, id=344, 1168.365pt x 179.67125pt>
+(luatex.def)             Requested size: 219.08614pt x 125.69244pt.
+ [15</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png, id=345, 1168.365pt x 179.67125pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png  used on input line 1261.
-(luatex.def)             Requested size: 219.08572pt x 33.69101pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png, id=345, 548.0475pt x 265.99374pt>
+(luatex.def)             Requested size: 219.08614pt x 33.69101pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png, id=346, 548.0475pt x 265.99374pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png  used on input line 1265.
-(luatex.def)             Requested size: 219.08968pt x 106.33472pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png, id=346, 1000.73875pt x 718.685pt>
+(luatex.def)             Requested size: 219.08614pt x 106.33472pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png, id=347, 1000.73875pt x 718.685pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png  used on input line 1272.
-(luatex.def)             Requested size: 219.07904pt x 157.33258pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png, id=347, 508.90125pt x 269.005pt>
+(luatex.def)             Requested size: 219.08614pt x 157.33258pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png, id=348, 508.90125pt x 269.005pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png  used on input line 1288.
-(luatex.def)             Requested size: 219.08728pt x 115.80945pt.
- [16</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png>] [17</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png, id=361, 262.9825pt x 327.2225pt>
+(luatex.def)             Requested size: 219.08614pt x 115.80945pt.
+ [16</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png>] [17
+Missing character: There is no ℹ (U+2139) in font [lmmono10-italic]:!
+]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png, id=362, 262.9825pt x 327.2225pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png  used on input line 1378.
-(luatex.def)             Requested size: 131.45882pt x 163.57089pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png, id=362, 269.005pt x 199.74625pt>
+(luatex.def)             Requested size: 87.6331pt x 109.03728pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png, id=363, 269.005pt x 199.74625pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png  used on input line 1395.
-(luatex.def)             Requested size: 131.45238pt x 97.60829pt.
- [18
-Missing character: There is no ℹ (U+2139) in font [lmmono10-italic]:!
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png, id=369, 289.08pt x 289.08pt>
+(luatex.def)             Requested size: 87.6331pt x 65.06915pt.
+ [18</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png, id=371, 289.08pt x 289.08pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png  used on input line 1435.
-(luatex.def)             Requested size: 131.4522pt x 131.4522pt.
- [19</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png, id=376, 289.08pt x 289.08pt>
+(luatex.def)             Requested size: 131.45302pt x 131.4522pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png, id=372, 289.08pt x 289.08pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png  used on input line 1464.
-(luatex.def)             Requested size: 131.4522pt x 131.4522pt.
+(luatex.def)             Requested size: 131.45302pt x 131.4522pt.
+ [19</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png>]
 </Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png, id=377, 245.91875pt x 54.2025pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png  used on input line 1479.
-(luatex.def)             Requested size: 131.45828pt x 28.97447pt.
- [20</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot2.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png, id=385, 508.90125pt x 188.705pt>
+(luatex.def)             Requested size: 131.45302pt x 28.97447pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png, id=379, 508.90125pt x 188.705pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png  used on input line 1537.
-(luatex.def)             Requested size: 131.44926pt x 48.74252pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png, id=386, 1474.50874pt x 251.94125pt>
+(luatex.def)             Requested size: 197.17618pt x 73.11378pt.
+ [20</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202134409231.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png, id=389, 1474.50874pt x 251.94125pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png  used on input line 1555.
-(luatex.def)             Requested size: 438.17119pt x 74.8679pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png, id=387, 2077.7625pt x 1126.2075pt>
+(luatex.def)             Requested size: 350.53915pt x 59.89432pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png, id=390, 2077.7625pt x 1126.2075pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png  used on input line 1560.
-(luatex.def)             Requested size: 350.52011pt x 189.99205pt.
- [21</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png, id=397, 558.085pt x 111.41624pt>
+(luatex.def)             Requested size: 350.53915pt x 189.99205pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png, id=391, 558.085pt x 111.41624pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png  used on input line 1573.
-(luatex.def)             Requested size: 219.08292pt x 43.73776pt.
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png, id=398, 770.88pt x 216.81pt>
+(luatex.def)             Requested size: 219.08614pt x 43.73776pt.
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png, id=392, 770.88pt x 216.81pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png  used on input line 1577.
-(luatex.def)             Requested size: 438.1711pt x 123.23561pt.
- [22</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png>]
-</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png, id=405, 404.712pt x 252.945pt>
+(luatex.def)             Requested size: 350.53915pt x 98.58914pt.
+ [21</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202141212937.png></Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png>]
+</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png, id=401, 404.712pt x 252.945pt>
 File: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png Graphic file (type png)
 <use /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png>
 Package luatex.def Info: /Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png  used on input line 1635.
-(luatex.def)             Requested size: 219.08466pt x 136.9279pt.
- [23</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png>] [24]
+(luatex.def)             Requested size: 219.08614pt x 136.9279pt.
+ [22] [23</Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png>]
 ("/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/LaTeX/REVIEW_01/.texpadtmp/REVIEW_01.aux")
  ***********
 LaTeX2e <2023-11-01>
@@ -828,19 +827,19 @@ Package rerunfilecheck Info: File `REVIEW_01.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 18414 strings out of 476603
+ 18413 strings out of 476603
  125027,1977958 words of node,token memory allocated
  512 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 56 glue_spec, 7 attribute_list, 1 write, 1 user_defined nodes
-   avail lists: 1:1,2:877,3:324,4:288,5:564,6:66,7:5879,9:357,10:5,11:392
+   avail lists: 1:1,2:914,3:324,4:288,5:564,6:66,7:5879,9:357,10:5,11:392
  39867 multiletter control sequences out of 65536+600000
- 47 fonts using 11937727 bytes
- 90i,6n,120p,453b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 47 fonts using 11937767 bytes
+ 90i,6n,120p,453b,545s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/lucas/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on REVIEW_01.pdf (24 pages, 4700361 bytes).
+Output written on REVIEW_01.pdf (23 pages, 4699087 bytes).
 
-PDF statistics: 469 PDF objects out of 1000 (max. 8388607)
- 376 compressed objects within 4 object streams
- 131 named destinations out of 1000 (max. 131072)
+PDF statistics: 465 PDF objects out of 1000 (max. 8388607)
+ 373 compressed objects within 4 object streams
+ 130 named destinations out of 1000 (max. 131072)
  409 words of extra memory for PDF output out of 10000 (max. 100000000)
 
