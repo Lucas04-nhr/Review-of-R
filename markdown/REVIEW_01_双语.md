@@ -2,6 +2,8 @@
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
+<font size = 1>**双语版**</font>
+
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
 >
 > The book updated to 2^nd^ ed. on July,2023, here’ s a [link](https://r4ds.hadley.nz) to the official website.
@@ -16,9 +18,21 @@
 >
 > View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk01.Rmd).
 
-This section has nothing to explain :)
+This section has ~~nothing~~ something to explain :)
 
+## Install R
 
+Go go <https://mirrors.tuna.tsinghua.edu.cn/CRAN/>
+(清华镜像)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
+
+新版本的Mac OS
+X还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装。
+
+目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍嫌复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R forLinux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
+
+## R studio
+
+RStudio可以从 https://posit.co/downloads/ 下载，支持等主流的操作系统。
 
 # R language basics, part 1
 
@@ -28,13 +42,46 @@ This section has nothing to explain :)
 >
 > View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk02.Rmd).
 
-##  Fundamental Data Type
+##  基础数据类型
 
-The most basic data types include **numbers**, **logical symbols** and **strings** and are the basic building blocks of the other data types.
+最基本的数据类型包括**数字**、**逻辑符号**和**字符串**，是其他数据类型的基本构建块。
 
-##  Simple Data Types
+### 数字 
+```{r}
+## 整数
+287
 
-This includes vectors and matrices, both of which can contain multiple values of a certain basic data type, such as a **matrix** consisting of multiple numbers, a **vector** consisting of multiple strings, and so on. However, **they can only contain a single data type.**
+## 小数
+99.99
+
+## 科学计数法
+1e-3
+1e2
+```
+### 逻辑符号
+```{r eval=FALSE}
+TRUE
+T
+
+FALSE
+F
+
+##其本质是数字
+1 + TRUE
+2 * FALSE
+```
+### 字符串
+```{r eval=FALSE}
+'a sentence' ## 单括号
+"一个字符串" ## 双括号
+'1.123'      ## 像是数字的字符串
+'*%%*()!@##&@(9'  ## 乱码
+```
+
+
+##  简单数据类型
+
+这包括向量和矩阵，它们都可以包含某种基本数据类型的多个值，如**矩阵(matrix)**由多个数字组成，**vector**由多个字符串组成，等等。但是，**它们只能包含一种数据类型。**
 
 ```R
 c(100, 20, 30) ## Interger vector 
@@ -42,27 +89,69 @@ c("String", "Array", "It's me".) ## String vector
 c(TRUE, FALSE, TRUE, T, F) ## A logic vector
 ```
 
-As shown above, arrays are usually defined with the function `c()`. In addition, a `vector` containing consecutive integers can be defined using the `:` operator.
+如上所示，数组通常用函数``c（）``（又叫做 **concatenation function**）来定义。此外，包含连续整数**向量**可以使用``：``运算符来定义。
+```{r}
+2:8
+```
+##  数据类型之间的转换
 
-##  Conversion between data types
+1. 自动转换
 
-1. Automatic Conversion
+  一个``vector``只能包含一种基本数据类型。因此，在定义数组时，如果输入值是混合的，某些基本数据类型会自动转换为其他类型，以确保数字类型的一致性；这在英语中被称为**coerce**，具有强制转换的含义。此转换的优先级为：
 
-	A `vector` can contain only one basic data type. Therefore, when defining arrays, if the input values are mixed, certain basic data types are automatically converted to other types to ensure consistency of the numeric types; this is called `coerce` in English, and has the meaning of forced conversion. The priority of this conversion is:
+  * Logical types -> numeric types
 
-	* Logical types -> numeric types
-	* Logical Type -> String 
-	* numeric type -> string
+  * Logical Type -> String 
 
-1. Manual switchover
+  * numeric type -> string
 
-	In addition to the automatic conversion, you can manually convert the types of the elements in a vector:
+  * 逻辑类型 -> 数字类型
 
+   * 逻辑类型 -> 字符串
+
+   * 数字类型 -> 字符串
+
+     
+
+  vector 的数据类型转换规则
+
+  ```{r}
+  class( c(45, TRUE, 20, FALSE, -100) ); ## 逻辑和数字类型
+  str( c("string a", FALSE, "string b", TRUE) ); ## 逻辑和字符
+  str( c("a string", 1.2, "another string", 1e-3) ); ## 数字和字符
+  ```
+
+1. 手动切换
+
+	除了自动转换之外，还可以手动转换向量中元素的类型:
+
+	我们可以用 `class()`或`str() ` 函数来判断 vector包含的数据类型
+	
+	```{r}
+	class(matrix( c(20, 30.1, 2, 45.8, 23, 14), 
+	              nrow = 2, byrow = T ));
+	```
+	
+	```
+	[1] "matrix" "array" 
+	```
+	
+	```{r}
+	str(matrix( c(20, 30.1, 2, 45.8, 23, 14), 
+	            nrow = 2, byrow = T ));
+	```
+	
+	```
+	 num [1:2, 1:3] 20 45.8 30.1 23 2 14
+	```
+	
+	
+	
 	+ Checking the type of a variable `class()`
 	+ Checking of classes `is.type()`
 	+ Conversion of classes `as.type()`
 
-## Some special values in matrices
+## 一些特殊值
 
 + `NA` (Not Available) missing values
 
@@ -80,17 +169,107 @@ Some functions to determine these special values:
 + `is.finite()`
 + `is.infinite()`
 
-## Vectors and Arrays
+## Vectors and Matrix
 
-Both are arrays. A `vector` is a one-dimensional array and a matrix is a two-dimensional array.
+都是数组。 A `vector` is a one-dimensional array and a matrix is a two-dimensional array.
 
 This means.
 
 - There can be more dimensional arrays
-- High-dimensional arrays, like `vector` and matrices, can contain only one basic data type.
+
+- 高维数组， like `vector` and matrices, **只能包含一种基本数据类型。**
+
 - Higher dimensional arrays can be defined by the `array()` function.
 
-### Vector maniulation
+  
+
+### 矩阵由函数 `matrix()` 定义，比如：
+
+```{r}
+matrix( c(20, 30.1, 2, 45.8, 23, 14), nrow = 2, byrow = T );
+```
+
+矩阵的指定长度，即 nrow  ×  ncol，可以不同于输入数据的长度。矩阵长度较小时，输入数据会被截短；而矩阵长度较大时，输入数据则会被重复使用。
+
+```{r}
+## 生成一个2x5长度为10的矩阵，但输入数据的长度为20
+matrix( 1:20, nrow = 2, ncol = 5, byrow = T); 
+
+## 生成一个2x3长度为6的矩阵，但输入数据长度只有3
+matrix( 1:3, nrow = 2, ncol = 3, byrow = T ); 
+```
+
+下面两种情况，系统会报警告信息。
+第一种情况，矩阵长度大于输入数据长度，且前者不是后者的整数倍。
+
+```{r}
+matrix( 1:3, nrow = 2, ncol = 4, byrow = T );
+```
+
+第二种情况，矩阵长度小于输入数据的长度，且后者不是前者的整数倍。
+
+```{r}
+matrix( letters[1:20], nrow = 3, ncol = 5, byrow = T );
+```
+
+## **加减乘除逻辑运算**老一套
+
+```{r eval=FALSE}
+1 + 2 - 3 * 4 / 5; ## 加减乘除
+1 + (2 - 3) * 4 / 5;  ##  改变优先级
+2 ^ 6; ## 阶乘
+5 %% 2; ## 取余
+T | F; ## or 
+T & F; ## and
+5 | 0; ## == 0 FALSE， ！= 0 TRUE，任何非零值视为逻辑真
+```
+
+## 通过 Console window 管理变量
+
+```{r}
+ls();  ## 显示当前环境下所有变量
+rm( x ); ## 删除一个变量
+ls(); 
+
+##rm(list=ls()); ## 删除当前环境下所有变量！！！ 
+```
+
+## vector 算术 **vectorisation**：R最重要的一个概念
+
+```{r}
+x <- c(10,100,1000, 10000);
+( y <- sqrt( x  ) * 4 + 10  ); ## 赋值的之后打印变量内容 
+```
+
+核心在于数据**自动循环使用**
+
+```{r}
+x / c(10,100);
+[1]   1   1 100 100
+x / c(10,100,1000); ## 会报错但仍会循环计算
+Warning: 长的对象长度不是短的对象长度的整倍数[1]    1    1    1 1000
+```
+
+## matrix 算术
+
+```{r}
+m <- matrix( c(20, 30.1, 2, 45.8, 23, 14), nrow = 2, 
+       dimnames = list( c("row_A", "row_B"), c("A", "B", "C") ) );
+A	B	C
+row_A	20.0	2.0	23
+row_B	30.1	45.8	14
+
+m / 10;
+ A    B   C
+row_A 2.00 0.20 2.3
+row_B 3.01 4.58 1.4
+
+m /  c(1,10,100);
+A     B    C
+row_A 20.00  0.02 2.30
+row_B  3.01 45.80 0.14
+```
+### 更多  matrix 相关函数
 
 ```R
 dim(m);
@@ -102,7 +281,15 @@ summary(m); ## Can also be used in vector
 
 Extra:
 
-- Incorporation `ab = c(a, b)`
+- Incorporation 
+
+- ```{r}
+  a <- 1:3;
+  b <- LETTERS[1:3];
+  
+  ( ab <- c(a,b) );
+  mode( ab ); ## 一个新的函数~ ... 
+  ```
 
 - Take part `ab[1]`
 
@@ -121,7 +308,7 @@ Extra:
 	sort(lts)
 	```
 
-- Fetch one line or multiple lines
+- 提取一行或多行
 
 	```R
 	# (There's already some data in workspace)
@@ -142,9 +329,9 @@ Extra:
 	> m[c("row_B", "row_A")]
 	> ```
 	>
-	> The console will output the contents of matrix "m" in the order of "row_B" and then "row_A".
+	> 控制台将以“row_B”和“row_A”的顺序输出矩阵“m”的内容。
 
-- Fetch one column or multiple columns
+- 获取一列或多列
 
 	> As can be seen from the same principle, I only list codes here
 
@@ -165,7 +352,7 @@ Extra:
 	m[1, c("C", "B")] = matrix(110:111, nrow = 1)
 	```
 
-- Transparent `t(m)`
+- 转置 `t(m)`
 
 ## The hierarchy of R’s vector types
 
@@ -179,13 +366,13 @@ Here are some examples of other `is.xxx()` function:
 is.null( NULL )
 is.numeric( NA )
 is.numeric( Inf );
-is.list(); # This is a function which can take the place of "typeof()"
-is.logical()
-is.character()
+## 用于替代 typeof 的函数
+is.list();
+is.logical();
+is.character();
 is.vector();
 # more ...
 ```
-
 
 
 # R language basics, part 2
@@ -200,6 +387,10 @@ is.vector();
 
 ### **What is a `data.frame`?**
 
+-   二维表格
+-   由不同列组成；每列是一个**vector**，不同列的数据类型可以不同，但一列只包括一种数据类型（int, num, chr ...）
+-   各列的长度相同
+
 ```R
 library(tidyverse);
 library(kableExtra)
@@ -213,24 +404,14 @@ Here’s the result:
 
 ### **Usage of `head()` and `tail()`**
 
+```{r}
+nrow(mpg); ## total number of rows 
+kbl( head(mpg,  n=3), booktabs = T); ## 显示前几行数据
+kbl( tail(mpg,  n=3), booktabs = T); ## 显示最后3行数据
+```
+
 - `head()` is a function to display the first rows of some data (vectors etc.)
 - `tail()` is a function to display the last rows of some data (vectors etc.)
-
-### Components of `data.frame` and common functions
-
-**Components:**
-
-- Two-dimensional table
-- consists of different columns; each column is a vector, different columns can have different data types, but a column contains only one data type (`int`, `num`, `chr` ...)
-- Each column has the same length
-
-**Common functions:**
-
-```R
-nrow() # Show the number of rows
-ncol() # Show the number of columns
-dim()  # Show the dimension
-```
 
 ### Structure of `data.frame` & `tibble`
 
