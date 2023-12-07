@@ -22,8 +22,7 @@ This section has ~~nothing~~ something to explain :)
 
 ## Install R
 
-Go go <https://mirrors.tuna.tsinghua.edu.cn/CRAN/>
-(清华镜像)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
+Go go ~~<https://mirrors.tuna.tsinghua.edu.cn/CRAN/>~~~~(清华镜像)~~[华科镜像](https://mirrors.hust.edu.cn/CRAN)(https://mirrors.hust.edu.cn/CRAN)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
 
 新版本的Mac OS还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装或者使用`xcode --select install`命令从控制台安装“XCode命令行工具”（体积更小更实用）。
 
