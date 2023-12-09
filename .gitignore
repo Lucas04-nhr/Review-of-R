@@ -3,18 +3,36 @@
 /scripts/.idea
 
 # GitHub Page Dependencies 
-markdown/Part 03(Talk 09~ 12).md
-markdown/Part 02(Talk 05~ 08).md
-markdown/Part 01(Talk 01~ 04).md
+# English Version
+markdown/Review of the course “R for Data Science”.md
+markdown/EN/Part 03(Talk 09~ 12).md
+markdown/EN/Part 02(Talk 05~ 08).md
+markdown/EN/Part 01(Talk 01~ 04).md
+# Chinese Version
+markdown/ Review of the course “R for Data Science”_CN.md
+markdown/CN/Part 03(Talk 09~ 12).md
+markdown/CN/Part 02(Talk 05~ 08).md
+markdown/CN/Part 01(Talk 01~ 04).md
 
 # LaTeX Dependencies
-LaTeX/REVIEW_01/expl3.tex
-LaTeX/REVIEW_01/ltluatex.tex
-LaTeX/REVIEW_01/.texpadtmp
+# English Version
+LaTeX/EN/REVIEW_01/expl3.tex
+LaTeX/EN/REVIEW_01/ltluatex.tex
+LaTeX/EN/REVIEW_01/.texpadtmp
+LaTeX/EN/REVIEW_01/texput.log
+# Chinese Version
+LaTeX/CN/REVIEW_01/expl3.tex
+LaTeX/CN/REVIEW_01/ltluatex.tex
+LaTeX/CN/REVIEW_01/.texpadtmp
+LaTeX/CN/REVIEW_01/texput.log
 
 # PDF Files with Full Permission 
-PDF/REVIEW_01_ignored.pdf
-LaTeX/REVIEW_01/REVIEW_01_ignored.pdf
+# English Version
+PDF/EN/REVIEW_01/REVIEW_01_ignored.pdf
+LaTeX/EN/REVIEW_01/REVIEW_01_ignored.pdf
+# Chinese Version
+PDF/CN/REVIEW_01/REVIEW_01_ignored.pdf
+LaTeX/CN/REVIEW_01/REVIEW_01_ignored.pdf
 
 # macOS System Files
 .DS_Store
