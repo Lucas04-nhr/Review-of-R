@@ -4,9 +4,9 @@ markdown/Part 02(Talk 05~ 08).md
 markdown/Part 01(Talk 01~ 04).md
 
 # LaTeX Dependencies
-LaTeX/*/expl3.tex
-LaTeX/*/ltluatex.tex
-LaTeX/*/l.texpadtmp
+LaTeX/REVIEW_01/expl3.tex
+LaTeX/REVIEW_01/ltluatex.tex
+LaTeX/REVIEW_01/l.texpadtmp
 
 # PDF Files with Full Permission 
 PDF/REVIEW_01_ignored.pdf
