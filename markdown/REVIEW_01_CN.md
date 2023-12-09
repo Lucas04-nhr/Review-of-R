@@ -2,6 +2,8 @@
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
+<font size = 1>**Partically translated by [Rui Zhu @ HUST Life ST](https://github.com/1508324011)**</font>
+
 <font size = 1>**双语版**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
