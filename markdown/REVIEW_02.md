@@ -141,10 +141,14 @@ chr.stats =
 
 ## TOC
 
-### tidyr
+### `tidyr`
 
 -   `pivot_longer()`  to take the place of `gather`
 -   `pivot_wider()`  to take the place of `spread`
+
+## Data Wrangler - `tidyr`
+
+
 
 ---
 
