@@ -33,6 +33,10 @@
 -   Packages in the `tidyverse` load `%\>%` for you automatically, so you don't usually load `magrittr` explicitly.
 -   The essence is the passing of intermediate values.
 
+**Example**
+
+
+
 ---
 
 **<font size = 5>Click [here](./REVIEW_03.html) to go to part 03.</font>**
