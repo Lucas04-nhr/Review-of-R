@@ -2,8 +2,6 @@
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
-<font size = 1>**Partically translated by [Rui Zhu @ HUST Life ST](https://github.com/1508324011)**</font>
-
 <font size = 1>**双语版**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
@@ -24,11 +22,13 @@ This section has ~~nothing~~ something to explain :)
 
 ## Install R
 
-Go go ~~<https://mirrors.tuna.tsinghua.edu.cn/CRAN/>~~~~(清华镜像)~~[华科镜像](https://mirrors.hust.edu.cn/CRAN)(https://mirrors.hust.edu.cn/CRAN)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
+Go go <https://mirrors.tuna.tsinghua.edu.cn/CRAN/>
+(清华镜像)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
 
-新版本的Mac OS还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装或者使用`xcode --select install`命令从控制台安装“XCode命令行工具”（体积更小更实用）。
+新版本的Mac OS
+X还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装。
 
-目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍显复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R for Linux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
+目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍嫌复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R forLinux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
 
 ## R studio
 
@@ -438,6 +438,8 @@ data2 =
 
 Create the "table header" first, then populate the `data.frame`
 
+先创建"表头"，再填充
+
 ```R
 df2 =
 	data.frame( 
@@ -466,6 +468,22 @@ df2 =
       z = 4.4 
     ) 
   )
+
+df2
+  x y   z
+1 a 1 2.2
+2 b 2 4.4
+
+m <- cbind(1, 1:7) ; ## 产生两列数据 7行数据 .. 
+( m <- cbind(m, 8:14) ); ## 增加一列 也有7行数据 ... 
+     [,1] [,2] [,3]
+[1,]    1    1    8
+[2,]    1    2    9
+[3,]    1    3   10
+[4,]    1    4   11
+[5,]    1    5   12
+[6,]    1    6   13
+[7,]    1    7   14
 ```
 
 **ATTENTION**
@@ -480,9 +498,11 @@ You can also use these functions to bind several data.frames.
 
 `tibble` is kind of similar to `data.frame`.
 
+**注**：Tibble class 是 data.frame 的升级版本；
+
 ### Make new `tibble`
 
-`tibble` related functionality is provided by the `tibble` or `tidiverse` packages.
+`tibble`相关功能由`tibble`或`tidiverse`包提供
 
 Almost all of the functions that you’ll use in this book produce tibbles, as tibbles are one of the unifying features of the tidyverse. Most other R packages use regular data frames, so you might want to coerce a data frame to a tibble. You can do that with `as_tibble()`:
 
@@ -500,7 +520,13 @@ as_tibble(iris)
 #> # ℹ 144 more rows
 ```
 
-Another way to create a tibble is with `tribble()`, short for **tr**ansposed tibble. `tribble()` is customised for data entry in code: column headings are defined by formulas (i.e. they start with `~`), and entries are separated by commas. This makes it possible to lay out small amounts of data in easy to read form.
+Another way to create a tibble is with `tribble()`, short for **tr**ansposed tibble. `tribble()` is customised for data entry in code: 列标题由公式定义（即以“~”开头），条目由逗号分隔。这使得以易于阅读的形式布置少量数据成为可能。
+
+也可以用 tibble 函数创建
+
+-   注意每列的数据类型
+-   长度不足时，比如**data2**列，会循环使用
+-   `sample()`函数的用法
 
 ```R
 tribble(
@@ -514,10 +540,80 @@ tribble(
 #>   <chr> <dbl> <dbl>
 #> 1 a         2   3.6
 #> 2 b         1   8.5
+
+## 用 tibble 函数创建，用法和 data.frame() 相似
+dat <- 
+  tibble( data = sample( 1:100, 10 ), 
+        group = sample( LETTERS[1:3], 10, replace = TRUE), 
+        data2 = 0.1 )
+# A tibble: 10 × 3
+    data group data2
+   <int> <chr> <dbl>
+ 1    86 A       0.1
+ 2    41 B       0.1
+ 3    72 B       0.1
+ 4    68 C       0.1
+ 5    10 A       0.1
+ 6    99 B       0.1
+ 7    66 B       0.1
+ 8    33 B       0.1
+ 9    81 A       0.1
+10    42 C       0.1
 ```
 
 - `add_row()`
 - `add_column()`
+
+```{r}
+## 新tibble, with defined columns ... 创建表头 
+tb <- tibble( x = character(), y = integer(), z = double() );
+dim(tb);
+
+## 增加行 ... 
+tb <- add_row( tb, x = "a", y = 2, z = 3.6  );
+tb <- add_row( tb, x = "b", y = 1, z = 8.5  );
+
+## 显示 
+tb;
+
+## 生成一个 tibble 
+df <- tibble(x = 1:3, y = 3:1);
+
+# 在第二行之前插入
+df <- add_row(df, x = 4, y = 0, .before = 2);
+
+## 插入多行 
+df <- add_row(df, x = 4:5, y = 0:-1);
+
+## 插入另一个tibble （与另一个tibble合并） 
+df2 <- tibble( x = as.double(200:202), y = as.double(1000:1002) );
+df3 <- add_row( df, df2 ); ## 可以运行 ... 
+
+tb3 <- tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+);
+
+tb3 <- add_column( tb3, a = 98 ); ## recycle ... 
+tb3 <- add_column( tb3, b = LETTERS[1:2], c = c("CHEN", "WANG") ); 
+```
+
+### tibble元素替换
+
+```{r eval=FALSE}
+## 取得行
+tb3[c(1,2), ];
+
+## 取得列，按顺序取列
+tb3[, c("z", "y")];
+
+## 替换列 
+tb3[["z"]] <- c(4.6, 5.5);
+
+## 替换行 
+tb3[ 1, ] <- tibble( x = "d", y = 20, z = 46, a = 10, b = "C", c = "LILI" );
+```
 
 ### Manipulate the tibble
 
@@ -537,7 +633,7 @@ as.data.frame(head(as_tibble(iris)))
 
 ## Differences between tibble and data.frame
 
-### Tibble evaluates columns sequentially
+### Tibble 按顺序计算列
 
 ```R
 rm(x,y) # Delete possible x, y
@@ -546,6 +642,8 @@ data.frame(x = 1:5, y = x ˆ 2); # But data.frame doesn't work.
 ```
 
 ### `data.frame` causes trouble when fetching `subset` operations
+
+取子集成vector
 
 ```R
 df1 =
@@ -562,21 +660,25 @@ class(df1[, 1]) # The result is a vector ...
 ## Tibble doesn't.
 df2 =
 	tibble(x = 1:3, y = 3:1)
-class(df2[, 1]) ## Tibble forever
+class(df2[, 1]) ## 永远都是 tibble 
 
 #> [1] "tbl_df" "tbl" "data.frame"
 ```
 
 ###  `tibble` allows controlled data type conversion
 
-> There’s no proper example here.
->
-> :_(
+```{r}
+class(df2[[1]]); ## 取一列，转换为 vector 
+class(df2$x); ## 用 [[]] 或 $ 都可以哦
+
+[1] "numeric"
+[1] "numeric"
+```
 
 ### Recycling
 
 ```R
-data.frame(a = 1:6, b = LETTERS[1:2]) # data.frame CAN!!!
+data.frame(a = 1:6, b = LETTERS[1:2]); ##  data.frame 可以！！！
 ```
 
 **OUTPUT**
@@ -592,7 +694,7 @@ data.frame(a = 1:6, b = LETTERS[1:2]) # data.frame CAN!!!
 ```
 
 ```R
-tibble(a = 1:6, b = LETTERS[1:2]); ## But tibble CAN'T!!!
+tibble(a = 1:6, b = LETTERS[1:2]); ## 但 tibble 不行！！！
 ```
 
 **OUTPUT**
@@ -606,7 +708,7 @@ tibble(a = 1:6, b = LETTERS[1:2]); ## But tibble CAN'T!!!
 
 <font color = red><font size = 5>**ATTENTION!**</font></font>
 
-<font color = red>**The recycling of `tibble` is limited to lengths of 1 or equal; `data.frame` is just divisible.**</font>
+`tibble`的 recycling 仅限于长度为1或等长；而 `data.frame` 则为整除即可。
 
 ### `data.frame` will do partial matching, while `tibble` will <font color = red><font size = 5>**NEVER**</font></font> do it.
 
@@ -621,8 +723,8 @@ df2$a; # Produce a warning and return NULL
 **OUTPUT**
 
 ```shell
-# Warning: Unknown or uninitialised column: `a`. 
-# NULL
+#[1] 1
+#Warning: Unknown or uninitialised column: `a`. NULL
 ```
 
 ## Advanced tips for using `data.frame` and `tibble`
@@ -634,11 +736,11 @@ df2$a; # Produce a warning and return NULL
 
 > Following is the introduction (Produced by ChatGPT)
 
-These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredibly useful when working with data frames or tibbles in R, aiding in smoother workflows and code readability. Here's a breakdown of their functionality:
+这些函数——``attach（）``、``detach（）``、``with（）``和``within（）``——在处理R中的数据帧或tibble时非常有用，有助于更流畅的工作流和代码可读性。下面是它们的功能分解：
 
 ### `attach()` and `detach()`
 
-- **Purpose**: These functions allow you to temporarily attach a data frame to the search path, making its columns directly accessible by their names.
+- **Purpose**: 这些函数允许您将data.frame临时附加到搜索路径上，使其列可以通过名称直接访问。
 - **Usage**:
   - `attach(df)` attaches the specified data frame `df`.
   - `detach(df)` detaches the specified data frame `df`.
@@ -654,12 +756,13 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
   
   detach(mtcars) # Detaching mtcars
   ```
-- **Note**: While convenient, using `attach()` can sometimes lead to confusion or unintended consequences, such as masking variables in your environment. It's often recommended to avoid using `attach()` due to potential side effects.
+- **Note**: 虽然使用``attach（）``很方便，但有时会导致混乱或意外的后果，例如屏蔽环境中的变量。由于潜在的副作用，通常建议避免使用``attach（）``。
 
 ### `with()`
 
-- **Purpose**: `with()` allows you to execute expressions in an environment where the data frame's columns can be referenced without using `$`.
+- **Purpose**: `with()` 允许您在不使用`$`的情况下引用数据框架的列的环境中执行表达式。
 - **Usage**:
+  
   - `with(data, expr)` evaluates `expr` in the context of the specified data frame `data`.
 - **Example**:
   ```R
@@ -670,12 +773,13 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
     summary(cyl)
     })
   ```
-- **Advantage**: It helps avoid repetitive use of the data frame name while working with its columns.
+- **Advantage**:它有助于避免在处理其列时重复使用数据框架名称。
 
 ### `within()`
 
-- **Purpose**: Similar to `with()`, `within()` allows modification of a data frame by evaluating expressions within it.
+- **Purpose**: Similar to `with()`, `within()` allows modification of a data frame by计算其中的表达式。
 - **Usage**:
+  
   - `within(data, expr)` modifies `data` according to `expr` and returns the modified data frame.
 - **Example**:
   ```R
@@ -687,7 +791,7 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
     })
   head(modified_mtcars) # Checking the modified data frame
   ```
-- **Advantage**: `within()` is useful when you want to create or modify columns within the data frame without having to repeatedly refer to the data frame name.
+- **Advantage**: `within()` 非常有用，当你想创建或修改数据框架内的列时不必重复引用数据框架名称。
 
 Remember, while these functions can streamline your code, it's crucial to use them judiciously to avoid unexpected behavior or cluttering your global environment.
 
