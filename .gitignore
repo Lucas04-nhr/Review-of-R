@@ -1,9 +1,8 @@
 # JetBrains IDE Dependencies
 .idea
-/scripts/.idea
 
 # Script Files
-/scripts/*.R
+/scripts/*
 
 # GitHub Page Dependencies 
 # English Version
