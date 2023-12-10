@@ -910,7 +910,7 @@ Use the following functions to write object(s) to external files:
 >
 > More related documents can be found in this [link](https://r4ds.had.co.nz/data-import.html?q=file#writing-to-a-file).
 
-- Comma delimited file: 
+- Comma delimited file: 逗号分隔文件
 
 	```R
 	write_csv(
@@ -922,7 +922,7 @@ Use the following functions to write object(s) to external files:
 	) 
 	```
 
-- File with arbitrary delimiter: 
+- File with arbitrary delimiter: 带有任意分隔符的文件
 
 	```R
 	write_delim(
@@ -1016,6 +1016,8 @@ Each RStudio session is automatically associated with a R session
 > Not only RStudio, PyCharm or VSCode also support R session.
 >
 > However, I’m keen on coding with PyCharm but not RStudio, for its wonderful Plug-in Environment, which can let me use plug-ins such as Code GeeX by Zhipu AI (a company founded by some student in KEG team inTsinghua University) or GitHub Copilot by GitHub to let the coding process more quickly, for the instruction from GPTs.
+>
+> tips: Rstudio最新版也支持  Github Copliot, 可以在 options 内设置
 
 <img src="./image/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
 
@@ -1051,14 +1053,16 @@ For instruction how to get FREE Student Lisence of GitHub Pro, GitHub Copilot an
 
 ### Working Space
 
-Current workspace, including all loaded data, packets and homebrew functions.
+当前工作空间，包括所有已装入的数据、包和自制函数
 
-Variables can be managed with the following code:
+可通过以下代码管理变量
 
 ```R
-ls() # Show all the variables in current workspace/session
-rm(x) # Remove a variable
-rm(list = ls()) # Remove ALL variables in current workspace/session
+ls();  ## 显示当前环境下所有变量
+rm( x ); ## 删除一个变量
+ls(); 
+
+##rm(list=ls()); ## 删除当前环境下所有变量！！！ 
 ```
 
 ### Variables in working space in RStudio
@@ -1128,17 +1132,100 @@ load("1.RData")
 
 ## Factors
 
-Factor is a data structure used for fields that takes only predefined, finite number of values (categorical data).
+Factor是一种用于字段的数据结构，它只接受预定义的、有限数量的值（分类数据）。它将限制输入数据的选取。
 
-It will limit the selection of input data.
+```{r}
+## create factor from scratch ... 
+x <- factor( c( "single", "married", "married", "single" ) );
+
+## create factor as it is ... 
+x <- c("single", "married", "married", "single");
+x <- as.factor(x);
+
+## please note the change in the displayed values ... 
+str(x);
+#Factor w/ 2 levels "married","single": 2 1 1 2
+
+#限制输入数据的选择范围
+x[ length(x) + 1 ] <- "widowed";
+#Warning: 因子层次有错，产生了NA
+```
 
 ### Play around with `levels()`
+
+```{r}
+##利用levels解决
+levels(x) <- c(levels(x), "widowed");
+x[ length(x) + 1 ] <- "widowed";
+str(x);
+
+## other ways of assigning factors ... 
+y <-  as.factor( c( "single", "married", "married", "single" ) );
+levels( y );
+levels(y) <- c("single", "married", "widowed");
+str(y);
+## 这个代码现在就没有问题了
+y[ length(y) + 1 ] <- "widowed";
+```
+
+**注意** 用 `as.factor` 创建 factor 时，得到的 levels 按字母表排列；
+
+但是，用 `levels( y )` 方式指定 levels 时，则按照指定的顺序；
+
+#### `levels`的顺序决定了排序的顺序
+
+```{r}
+##
+y <-  as.factor( c( "single", "married", "married", "single" ) );
+levels(y);
+sort(y);
+#[1] "married" "single" 
+#[1] married married single  single Levels: married single
+
+## 
+y2 <- y;
+levels(y2) <- c("single", "married", "widowed");
+sort(y2);
+#[1] single  single  married married Levels: single married widowed
+```
+
+sort data in a meaningful way ... 
+
+```{r}
+## Month
+x1 <- c("Dec", "Apr", "Jan", "Mar");
+sort(x1);
+
+month_levels <- c(
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+)
+
+y1 <- factor(x1, levels = month_levels)
+sort(y1);
+#[1] "Apr" "Dec" "Jan" "Mar"
+#[1] Jan Mar Apr Dec
+#12 Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct ... Dec
+
+## Sometimes you’d prefer that the order of the levels match the order of the first appearance in the data.
+f1 <- factor(x1, levels = unique(x1));
+f1;
+#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar
+
+library(forcats); ## just to make sure the codes will run smoothly ... 
+## you can also use fct_inorder in the forcats package ...
+f2 <- x1 %>% factor() %>% fct_inorder()
+f2
+#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar
+```
 
 Here are instructions of modifying factor levels
 
 > Based on the textbook
 
-The levels are terse and inconsistent. Let’s tweak them to be longer and use a parallel construction. Like most rename and recoding functions in the tidyverse, the new values go on the left and the old values go on the right:
+The levels 既简洁又不一致。让我们调整使之更长，并使用一个平行的结构。Like most rename and recoding functions in the tidyverse,新的值在左边，旧的值在右边：
+
+``fct_recode``Change factor levels by hand
 
 ```R
 load(gss_cat)
@@ -1168,7 +1255,7 @@ count(partyid)
 #> # ℹ 4 more rows
 ```
 
-Use this technique with care: if you group together categories that are truly different you will end up with misleading results.
+使用这种技术时要小心：如果你把完全不同的类别组合在一起，你最终会得到误导性的结果。
 
 The order of the `levels` determines the sorting order.
 
@@ -1179,8 +1266,8 @@ The order of the `levels` determines the sorting order.
 Suppose I have a set of gender data that is written in a very irregular way:
 
 ```R
-gender =
-	c("f", "m ", "male ","male", "female", "FEMALE", "Male", "f", "m")
+## 假设我有一组性别数据，其写法非常不规整；
+gender <- c("f", "m ", "male ","male", "female", "FEMALE", "Male", "f", "m");
 
 gender_fct =
   as.factor(gender)
@@ -1195,6 +1282,7 @@ The output looks like this:
 Now I request to replace with Female, Male.
 
 ```R
+## 要求：都改为 Female, Male
 gender_fct =
   fct_collapse(
     gender,
@@ -1221,9 +1309,10 @@ fct_relabel(
 )
 ```
 
-### Usage of factors in drawing plots
+### factor 在做图中的应用（**真正精髓**）
 
 ```R
+## 一项 mock 调查结果数据
 library(ggplot2)
 
 responses =
@@ -1241,7 +1330,7 @@ response_barplot =
 
 <img src="./image/response_barplot.png" alt="response_barplot" style="zoom:24%;" />
 
-By default, `factor` is sorted alphabetically.
+默认情况下， factor 按字母表排序： Agree -> Disagree -> Strong Agree 。ggplot2 也会按factor的排序作图
 
  `ggplot2` also plots `factor` in that order, so you can adjust the `factor` to adjust the drawing order.
 
@@ -1253,7 +1342,8 @@ res$res =
   factor(
     res$res,
     levels =
-       c("Strongly Agree", "Agree", "Disagree")
+       c("Strongly Agree", "Agree", "Disagree"),
+    ordered = T
   )
 
 response_barplot2 =
@@ -1262,7 +1352,7 @@ response_barplot2 =
     aes(x = res)
   ) +
   geom_bar() +
-  xlab("Response")
+  xlab("Response")+ ylab("Count")
 ```
 
 <img src="./image/response_barplot2.png" alt="response_barplot2" style="zoom:24%;" />
@@ -1275,6 +1365,7 @@ responses =
     c("Agree", "Agree", "Strongly Agree", "Disagree", "Disagree", "Agree"),
     ordered = TRUE
   )
+is.ordered( responses )
 ```
 
 <img src="./image/image-20231202134409231.png" alt="image-20231202134409231" style="zoom:50%;" />
@@ -1283,7 +1374,7 @@ responses =
 
 You can use `recode()` in `dplyr` package to change `value`
 
-`dplyr` is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+`dplyr` 是一种数据操作的语法，提供了一组一致的动词 that help you solve the most common data manipulation challenges:
 
 + `mutate()` adds new variables that are functions of existing variables
 + `select()` picks variables based on their names.
@@ -1296,6 +1387,8 @@ These all combine naturally with `group_by()` which allows you to perform any op
 > Based on the introduction on the [official website](https://dplyr.tidyverse.org) of `dplyr`.
 
 Here’s an example:
+
+使用 ```dplyr``` 包的 ```recode()```函数改变 value 
 
 ```R
 x =
@@ -1333,11 +1426,22 @@ If you draw a plot without deleting the useless `levels`, you will get this resu
 
 <img src="./image/mouse_gene_plot01.png" alt="mouse_gene_plot01.png" style="zoom:50%;" />
 
+```subset()``` 无法去除不用的 factors ... 
+
+```{r fig.width=10, fig.height=4}
+mouse.chr_10_12 <- subset( mouse.genes,  Chromosome.scaffold.name %in% c( "10", "11", "12" ) );
+## plot length distribution --
+
+boxplot( Transcript.length..including.UTRs.and.CDS. ~ Chromosome.scaffold.name, 
+         data = mouse.chr_10_12, las = 2 );
+```
+
 But when you delete the useless `level` using these commands:
 
 ```R
 mouse.chr_10_12$Chromosome.scaffold.name =
   droplevels(mouse.chr_10_12$Chromosome.scaffold.name)
+levels( mouse.chr_10_12$Chromosome.scaffold.name )
 ```
 
 You will see that:
@@ -1366,7 +1470,7 @@ mouse_gene_plot02 =
   )
 ```
 
-You can also use `tibble` to solve these problems:
+You can also use `tibble` to solve these problems:完全不用担心 factor 的问题 ... 
 
 ```R
 mouse.tibble =
@@ -1406,13 +1510,17 @@ mouse_gene_plot03 =
 
 - Use `reorder()` function to reorder the level.
 
-	```R
-	x = reorder( 
-	  `Chromosome/scaffold name`,
-	  `Transcript length (including UTRs and CDS)`,
-	  median
-	)
-	```
+- `reorder()` 函数在 R 语言中通常用于改变因子（factor）水平的顺序。这对于数据可视化非常有用，特别是当你使用 ggplot2 包绘图时。在 ggplot2 中，`reorder()` 可以帮助你重新安排条形图、箱形图等的顺序。
+
+  函数的基本用法是 `reorder(x, ...)`，其中 `x` 是你想要重新排序的因子，而 `...` 是额外的参数和方法，用于确定新的排序。最常见的用法是根据另一个变量的某种统计度量（如平均值、中位数等）来排序。
+
+  ```R
+  x = reorder( 
+    `Chromosome/scaffold name`,
+    `Transcript length (including UTRs and CDS)`,
+    median
+  )
+  ```
 
 - Use `forcats::fct_reorder()` to reorder factors
 
@@ -1423,3 +1531,41 @@ mouse_gene_plot03 =
 	  median 
 	)
 	```
+
+# 一些勘误
+
+## vector 和 factor 有什么区别？
+
+1. **向量 (Vector)**：
+   - **概念**：向量是 R 中最基本的数据类型之一，用于存储相同类型的数据元素（如数值、字符或逻辑值）的序列。
+   - **类型**：向量可以是数值型（numeric），字符型（character），逻辑型（logical）等。
+   - **用途**：向量用于存储和操作数据集中的实际值。例如，一个存储温度读数或城市名称的序列。
+1. **因子 (Factor)**：
+   - **概念**：因子是用于表示分类数据的数据类型。它类似于枚举类型，用于表示有限的、通常是预定义的值集合。
+   - **水平**：因子的值被称为水平（levels），这些水平代表了分类变量的可能值。
+   - **用途**：因子主要用于统计建模和图形表示中，用于处理分类数据。例如，在绘制条形图时，条形的类别就是由因子类型的变量确定的。
+
+区别：
+
+- **数据类型**：向量直接存储值，而因子存储的是分类水平。
+- **用途**：向量用于表示一系列的值，而因子用于表示分类或分组。
+- **统计分析**：在进行统计分析时，因子用于指定数据的分类属性。例如，在回归分析中，因子可以用于指定自变量的分类。
+
+## data.frame 与 tibble 的区别
+
+1. **data.frame**：
+   - **历史**：`data.frame` 是 R 语言中最传统的数据集结构，自 R 诞生之初就存在。
+   - **特性**：它是一个表格型数据结构，每列可以包含不同类型的数据（数值型、字符型等），但每列数据类型必须一致。
+   - **行为**：在某些操作中，`data.frame` 可能会自动将字符串转换为因子（这取决于 `stringsAsFactors` 的默认设置）。
+   - **使用**：`data.frame` 在所有标准的 R 函数和包中广泛支持。
+1. **tibble**：
+   - **历史**：`tibble` 是相对较新的数据集结构，由 `tidyverse` 生态系统引入，旨在解决 `data.frame` 的一些局限性。
+   - **特性**：`tibble` 保持了 `data.frame` 的所有基本特性，但添加了一些用户友好的改进，如更好的默认打印方法（显示更多信息，但更易于阅读）。
+   - **行为**：`tibble` 不会自动将字符串转换为因子，保留了数据的原始类型。
+   - **兼容性**：虽然 `tibble` 设计用于 `tidyverse` 生态系统，但它也兼容大多数接受 `data.frame` 的 R 函数。
+
+关键区别：
+
+- **因子转换**：`tibble` 默认不会将字符串自动转换为因子，而 `data.frame` 可能会这样做。
+- **打印和查看数据**：`tibble` 提供了更友好的数据打印和查看方式，更适合于大型数据集。
+- **设计理念**：`tibble` 是为了更好地适应现代数据分析需求而设计的，尤其是在 `tidyverse` 生态系统中。
