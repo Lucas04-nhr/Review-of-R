@@ -1,6 +1,8 @@
 # JetBrains IDE Dependencies
 .idea
-/scripts/.idea
+
+# Script Files
+/scripts/*
 
 # Script Files
 /scripts/*.R
