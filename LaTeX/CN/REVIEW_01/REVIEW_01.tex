@@ -4,12 +4,18 @@
 %
 \documentclass[
 ]{article}
+\usepackage{ctex}
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
 \usepackage{geometry}
 \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \let\oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[2][]{\begin{center}\oldincludegraphics[#1]{#2}\end{center}}
+\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -87,11 +93,17 @@
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=0.8\textwidth,keepaspectratio}
+\setkeys{Gin}{width=0.5\textwidth,keepaspectratio}
 % Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -118,6 +130,11 @@
 
 \textbf{By Haoran Nie @ HUST Life ST}
 
+\textbf{Partically translated by
+\href{https://github.com/1508324011}{Rui Zhu @ HUST Life ST}}
+
+\textbf{双语版}
+
 This work is licensed under CC BY-NC-SA 4.0
 
 \hypertarget{multi-omics-data-analysis-and-visualisation-1}{%
@@ -128,7 +145,26 @@ This work is licensed under CC BY-NC-SA 4.0
 Talk 01
 \end{quote}
 
-This section has nothing to explain :)
+This section has \st{nothing} something to explain :)
+
+\hypertarget{install-r}{%
+\subsection{Install R}\label{install-r}}
+
+Go go
+{华科镜像}(\url{https://mirrors.hust.edu.cn/CRAN})，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
+
+新版本的Mac
+OS还需要安装XQuartz(\url{http://xquartz.macosforge.org/landing/})。某些还需要用到Xcode，可以从AppStore免费安装或者使用\texttt{xcode\ -\/-select\ install}命令从控制台安装``XCode命令行工具''（体积更小更实用）。
+
+目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍嫌复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download
+R
+forLinux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
+
+\hypertarget{r-studio}{%
+\subsection{Rstudio}\label{r-studio}}
+
+RStudio可以从 \url{https://posit.co/downloads/}
+下载，支持等主流的操作系统。
 
 \hypertarget{r-language-basics-part-1}{%
 \section{R language basics, part 1}\label{r-language-basics-part-1}}
@@ -137,21 +173,61 @@ This section has nothing to explain :)
 Talk 02
 \end{quote}
 
-\hypertarget{fundamental-data-type}{%
-\subsection{Fundamental Data Type}\label{fundamental-data-type}}
+\hypertarget{ux57faux7840ux6570ux636eux7c7bux578b}{%
+\subsection{基础数据类型}\label{ux57faux7840ux6570ux636eux7c7bux578b}}
 
-The most basic data types include \textbf{numbers}, \textbf{logical
-symbols} and \textbf{strings} and are the basic building blocks of the
-other data types.
+最基本的数据类型包括\textbf{数字}、\textbf{逻辑符号}和\textbf{字符串}，是其他数据类型的基本构建块。
 
-\hypertarget{simple-data-types}{%
-\subsection{Simple Data Types}\label{simple-data-types}}
+\hypertarget{ux6570ux5b57}{%
+\subsubsection{\texorpdfstring{数字 }{数字 }}\label{ux6570ux5b57}}
 
-This includes vectors and matrices, both of which can contain multiple
-values of a certain basic data type, such as a \textbf{matrix}
-consisting of multiple numbers, a \textbf{vector} consisting of multiple
-strings, and so on. However, \textbf{they can only contain a single data
-type.}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 整数}
+\DecValTok{287}
+
+\DocumentationTok{\#\# 小数}
+\FloatTok{99.99}
+
+\DocumentationTok{\#\# 科学计数法}
+\FloatTok{1e{-}3}
+\FloatTok{1e2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux903bux8f91ux7b26ux53f7}{%
+\subsubsection{逻辑符号}\label{ux903bux8f91ux7b26ux53f7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE}
+\NormalTok{T}
+
+\ConstantTok{FALSE}
+\NormalTok{F}
+
+\DocumentationTok{\#\#其本质是数字}
+\DecValTok{1} \SpecialCharTok{+} \ConstantTok{TRUE}
+\DecValTok{2} \SpecialCharTok{*} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5b57ux7b26ux4e32}{%
+\subsubsection{字符串}\label{ux5b57ux7b26ux4e32}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{\textquotesingle{}a sentence\textquotesingle{}} \DocumentationTok{\#\# 单括号}
+\StringTok{"一个字符串"} \DocumentationTok{\#\# 双括号}
+\StringTok{\textquotesingle{}1.123\textquotesingle{}}      \DocumentationTok{\#\# 像是数字的字符串}
+\StringTok{\textquotesingle{}*\%\%*()!@\#\#\&@(9\textquotesingle{}}  \DocumentationTok{\#\# 乱码}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7b80ux5355ux6570ux636eux7c7bux578b}{%
+\subsection{简单数据类型}\label{ux7b80ux5355ux6570ux636eux7c7bux578b}}
+
+这包括向量和矩阵，它们都可以包含某种基本数据类型的多个值，如\textbf{矩阵(matrix)}由多个数字组成，\textbf{vector}由多个字符串组成，等等。但是，\textbf{它们只能包含一种数据类型。}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -161,39 +237,86 @@ type.}
 \end{Highlighting}
 \end{Shaded}
 
-As shown above, arrays are usually defined with the function
-\texttt{c()}. In addition, a \texttt{vector} containing consecutive
-integers can be defined using the \texttt{:} operator.
+如上所示，数组通常用函数\texttt{c（）}（又叫做 \textbf{concatenation
+function}）来定义。此外，包含连续整数\textbf{向量}可以使用\texttt{：}运算符来定义。
 
-\hypertarget{conversion-between-data-types}{%
-\subsection{Conversion between data
-types}\label{conversion-between-data-types}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{:}\DecValTok{8}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6570ux636eux7c7bux578bux4e4bux95f4ux7684ux8f6cux6362}{%
+\subsection{数据类型之间的转换}\label{ux6570ux636eux7c7bux578bux4e4bux95f4ux7684ux8f6cux6362}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Automatic Conversion
+  自动转换
+\end{enumerate}
 
-  A \texttt{vector} can contain only one basic data type. Therefore,
-  when defining arrays, if the input values are mixed, certain basic
-  data types are automatically converted to other types to ensure
-  consistency of the numeric types; this is called \texttt{coerce} in
-  English, and has the meaning of forced conversion. The priority of
-  this conversion is:
+一个\texttt{vector}只能包含一种基本数据类型。因此，在定义数组时，如果输入值是混合的，某些基本数据类型会自动转换为其他类型，以确保数字类型的一致性；这在英语中被称为\textbf{coerce}，具有强制转换的含义。此转换的优先级为：
 
-  \begin{itemize}
-  \item
-    Logical types -\textgreater{} numeric types
-  \item
-    Logical Type -\textgreater{} String
-  \item
-    numeric type -\textgreater{} string
-  \end{itemize}
+\begin{itemize}
 \item
-  Manual switchover
+  Logical types -\textgreater{} numeric types
+\item
+  Logical Type -\textgreater{} String
+\item
+  numeric type -\textgreater{} string
+\item
+  逻辑类型 -\textgreater{} 数字类型
+\item
+  逻辑类型 -\textgreater{} 字符串
+\item
+  数字类型 -\textgreater{} 字符串
+\end{itemize}
 
-  In addition to the automatic conversion, you can manually convert the
-  types of the elements in a vector:
+vector 的数据类型转换规则
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{100}\NormalTok{) ); }\DocumentationTok{\#\# 逻辑和数字类型}
+\FunctionTok{str}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\StringTok{"string a"}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\StringTok{"string b"}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{) ); }\DocumentationTok{\#\# 逻辑和字符}
+\FunctionTok{str}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\StringTok{"a string"}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\StringTok{"another string"}\NormalTok{, }\FloatTok{1e{-}3}\NormalTok{) ); }\DocumentationTok{\#\# 数字和字符}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  手动切换
+
+  除了自动转换之外，还可以手动转换向量中元素的类型:
+
+  我们可以用 \texttt{class()}或\texttt{str()} 函数来判断
+  vector包含的数据类型
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(}\FunctionTok{matrix}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\FloatTok{30.1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{45.8}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{14}\NormalTok{), }
+              \AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T ));}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[1] "matrix" "array" }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(}\FunctionTok{matrix}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\FloatTok{30.1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{45.8}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{14}\NormalTok{), }
+            \AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T ));}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ num [1:2, 1:3] 20 45.8 30.1 23 2 14}
+\end{Highlighting}
+\end{Shaded}
 
   \begin{itemize}
   \item
@@ -205,9 +328,8 @@ types}\label{conversion-between-data-types}}
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{some-special-values-in-matrices}{%
-\subsection{Some special values in
-matrices}\label{some-special-values-in-matrices}}
+\hypertarget{ux4e00ux4e9bux7279ux6b8aux503c}{%
+\subsection{一些特殊值}\label{ux4e00ux4e9bux7279ux6b8aux503c}}
 
 \begin{itemize}
 \item
@@ -233,11 +355,11 @@ Some functions to determine these special values:
   \texttt{is.infinite()}
 \end{itemize}
 
-\hypertarget{vectors-and-arrays}{%
-\subsection{Vectors and Arrays}\label{vectors-and-arrays}}
+\hypertarget{vectors-and-matrix}{%
+\subsection{Vectors and Matrix}\label{vectors-and-matrix}}
 
-Both are arrays. A \texttt{vector} is a one-dimensional array and a
-matrix is a two-dimensional array.
+都是数组。 A \texttt{vector} is a one-dimensional array and a matrix is
+a two-dimensional array.
 
 This means.
 
@@ -245,15 +367,130 @@ This means.
 \item
   There can be more dimensional arrays
 \item
-  High-dimensional arrays, like \texttt{vector} and matrices, can
-  contain only one basic data type.
+  高维数组， like \texttt{vector} and matrices,
+  \textbf{只能包含一种基本数据类型。}
 \item
   Higher dimensional arrays can be defined by the \texttt{array()}
   function.
 \end{itemize}
 
-\hypertarget{vector-maniulation}{%
-\subsubsection{Vector maniulation}\label{vector-maniulation}}
+\hypertarget{ux77e9ux9635ux7531ux51fdux6570-matrix-ux5b9aux4e49ux6bd4ux5982}{%
+\subsubsection{\texorpdfstring{矩阵由函数 \texttt{matrix()}
+定义，比如：}{矩阵由函数 matrix() 定义，比如：}}\label{ux77e9ux9635ux7531ux51fdux6570-matrix-ux5b9aux4e49ux6bd4ux5982}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\FloatTok{30.1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{45.8}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T );}
+\end{Highlighting}
+\end{Shaded}
+
+矩阵的指定长度，即 nrow ×
+ncol，可以不同于输入数据的长度。矩阵长度较小时，输入数据会被截短；而矩阵长度较大时，输入数据则会被重复使用。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 生成一个2x5长度为10的矩阵，但输入数据的长度为20}
+\FunctionTok{matrix}\NormalTok{( }\DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{5}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T); }
+
+\DocumentationTok{\#\# 生成一个2x3长度为6的矩阵，但输入数据长度只有3}
+\FunctionTok{matrix}\NormalTok{( }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T ); }
+\end{Highlighting}
+\end{Shaded}
+
+下面两种情况，系统会报警告信息。\\
+第一种情况，矩阵长度大于输入数据长度，且前者不是后者的整数倍。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{( }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T );}
+\end{Highlighting}
+\end{Shaded}
+
+第二种情况，矩阵长度小于输入数据的长度，且后者不是前者的整数倍。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{( letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{], }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{5}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T );}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux52a0ux51cfux4e58ux9664ux903bux8f91ux8fd0ux7b97ux8001ux4e00ux5957}{%
+\subsection{\texorpdfstring{\textbf{加减乘除逻辑运算}老一套}{加减乘除逻辑运算老一套}}\label{ux52a0ux51cfux4e58ux9664ux903bux8f91ux8fd0ux7b97ux8001ux4e00ux5957}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{{-}} \DecValTok{3} \SpecialCharTok{*} \DecValTok{4} \SpecialCharTok{/} \DecValTok{5}\NormalTok{; }\DocumentationTok{\#\# 加减乘除}
+\DecValTok{1} \SpecialCharTok{+}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{{-}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{*} \DecValTok{4} \SpecialCharTok{/} \DecValTok{5}\NormalTok{;  }\DocumentationTok{\#\#  改变优先级}
+\DecValTok{2} \SpecialCharTok{\^{}} \DecValTok{6}\NormalTok{; }\DocumentationTok{\#\# 阶乘}
+\DecValTok{5} \SpecialCharTok{\%\%} \DecValTok{2}\NormalTok{; }\DocumentationTok{\#\# 取余}
+\NormalTok{T }\SpecialCharTok{|}\NormalTok{ F; }\DocumentationTok{\#\# or }
+\NormalTok{T }\SpecialCharTok{\&}\NormalTok{ F; }\DocumentationTok{\#\# and}
+\DecValTok{5} \SpecialCharTok{|} \DecValTok{0}\NormalTok{; }\DocumentationTok{\#\# == 0 FALSE， ！= 0 TRUE，任何非零值视为逻辑真}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux901aux8fc7-console-window-ux7ba1ux7406ux53d8ux91cf}{%
+\subsection{通过 Console window
+管理变量}\label{ux901aux8fc7-console-window-ux7ba1ux7406ux53d8ux91cf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{();  }\DocumentationTok{\#\# 显示当前环境下所有变量}
+\FunctionTok{rm}\NormalTok{( x ); }\DocumentationTok{\#\# 删除一个变量}
+\FunctionTok{ls}\NormalTok{(); }
+
+\DocumentationTok{\#\#rm(list=ls()); \#\# 删除当前环境下所有变量！！！ }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vector-ux7b97ux672f-vectorisationrux6700ux91cdux8981ux7684ux4e00ux4e2aux6982ux5ff5}{%
+\subsection{\texorpdfstring{vector 算术
+\textbf{vectorisation}：R最重要的一个概念}{vector 算术 vectorisation：R最重要的一个概念}}\label{vector-ux7b97ux672f-vectorisationrux6700ux91cdux8981ux7684ux4e00ux4e2aux6982ux5ff5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{);}
+\NormalTok{( y }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{( x  ) }\SpecialCharTok{*} \DecValTok{4} \SpecialCharTok{+} \DecValTok{10}\NormalTok{  ); }\DocumentationTok{\#\# 赋值的之后打印变量内容 }
+\end{Highlighting}
+\end{Shaded}
+
+核心在于数据\textbf{自动循环使用}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{/} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{);}
+\NormalTok{[}\DecValTok{1}\NormalTok{]   }\DecValTok{1}   \DecValTok{1} \DecValTok{100} \DecValTok{100}
+\NormalTok{x }\SpecialCharTok{/} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{1000}\NormalTok{); }\DocumentationTok{\#\# 会报错但仍会循环计算}
+\NormalTok{Warning}\SpecialCharTok{:}\NormalTok{ 长的对象长度不是短的对象长度的整倍数[}\DecValTok{1}\NormalTok{]    }\DecValTok{1}    \DecValTok{1}    \DecValTok{1} \DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrix-ux7b97ux672f}{%
+\subsection{matrix 算术}\label{matrix-ux7b97ux672f}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\FloatTok{30.1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{45.8}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }
+       \AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{( }\FunctionTok{c}\NormalTok{(}\StringTok{"row\_A"}\NormalTok{, }\StringTok{"row\_B"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{) ) );}
+\NormalTok{A	B	C}
+\NormalTok{row\_A	}\FloatTok{20.0}	\FloatTok{2.0}	\DecValTok{23}
+\NormalTok{row\_B	}\FloatTok{30.1}	\FloatTok{45.8}	\DecValTok{14}
+
+\NormalTok{m }\SpecialCharTok{/} \DecValTok{10}\NormalTok{;}
+\NormalTok{ A    B   C}
+\NormalTok{row\_A }\FloatTok{2.00} \FloatTok{0.20} \FloatTok{2.3}
+\NormalTok{row\_B }\FloatTok{3.01} \FloatTok{4.58} \FloatTok{1.4}
+
+\NormalTok{m }\SpecialCharTok{/}  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{);}
+\NormalTok{A     B    C}
+\NormalTok{row\_A }\FloatTok{20.00}  \FloatTok{0.02} \FloatTok{2.30}
+\NormalTok{row\_B  }\FloatTok{3.01} \FloatTok{45.80} \FloatTok{0.14}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux66f4ux591a--matrix-ux76f8ux5173ux51fdux6570}{%
+\subsubsection{更多 matrix
+相关函数}\label{ux66f4ux591a--matrix-ux76f8ux5173ux51fdux6570}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -269,7 +506,17 @@ Extra:
 
 \begin{itemize}
 \item
-  Incorporation \texttt{ab\ =\ c(a,\ b)}
+  Incorporation
+\item
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{;}
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{];}
+
+\NormalTok{( ab }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(a,b) );}
+\FunctionTok{mode}\NormalTok{( ab ); }\DocumentationTok{\#\# 一个新的函数\textasciitilde{} ... }
+\end{Highlighting}
+\end{Shaded}
 \item
   Take part \texttt{ab{[}1{]}}
 \item
@@ -292,19 +539,19 @@ Extra:
 \end{Highlighting}
 \end{Shaded}
 \item
-  Fetch one line or multiple lines
+  提取一行或多行
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# (There\textquotesingle{}s already some data in workspace)}
 
-\SpecialCharTok{$}\NormalTok{ m}
+\SpecialCharTok{$$}\NormalTok{ m}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the content of matrix }\StringTok{"m"}\NormalTok{)}
 
-\SpecialCharTok{$}\NormalTok{ m[}\DecValTok{1}\NormalTok{, ]}
+\SpecialCharTok{$$}\NormalTok{ m[}\DecValTok{1}\NormalTok{, ]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the first row of matrix }\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)}
 
-\SpecialCharTok{$}\NormalTok{ m[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ]}
+\SpecialCharTok{$$}\NormalTok{ m[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the first two rows of matrix }\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -319,11 +566,10 @@ Extra:
 \end{Highlighting}
 \end{Shaded}
 
-  The console will output the contents of matrix "m" in the order of
-  "row\_B" and then "row\_A".
+  控制台将以``row\_B''和``row\_A''的顺序输出矩阵``m''的内容。
   \end{quote}
 \item
-  Fetch one column or multiple columns
+  获取一列或多列
 
   \begin{quote}
   As can be seen from the same principle, I only list codes here
@@ -350,14 +596,14 @@ Extra:
 \end{Highlighting}
 \end{Shaded}
 \item
-  Transparent \texttt{t(m)}
+  转置 \texttt{t(m)}
 \end{itemize}
 
 \hypertarget{the-hierarchy-of-rs-vector-types}{%
 \subsection{The hierarchy of R's vector
 types}\label{the-hierarchy-of-rs-vector-types}}
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/data-structures-overview.png}
 
 You can use function \texttt{typeof()} to know the type of a vector.
 
@@ -368,9 +614,10 @@ Here are some examples of other \texttt{is.xxx()} function:
 \FunctionTok{is.null}\NormalTok{( }\ConstantTok{NULL}\NormalTok{ )}
 \FunctionTok{is.numeric}\NormalTok{( }\ConstantTok{NA}\NormalTok{ )}
 \FunctionTok{is.numeric}\NormalTok{( }\ConstantTok{Inf}\NormalTok{ );}
-\FunctionTok{is.list}\NormalTok{(); }\CommentTok{\# This is a function which can take the place of "typeof()"}
-\FunctionTok{is.logical}\NormalTok{()}
-\FunctionTok{is.character}\NormalTok{()}
+\DocumentationTok{\#\# 用于替代 typeof 的函数}
+\FunctionTok{is.list}\NormalTok{();}
+\FunctionTok{is.logical}\NormalTok{();}
+\FunctionTok{is.character}\NormalTok{();}
 \FunctionTok{is.vector}\NormalTok{();}
 \CommentTok{\# more ...}
 \end{Highlighting}
@@ -390,6 +637,16 @@ Talk 03
 \subsubsection{\texorpdfstring{\textbf{What is a
 \texttt{data.frame}?}}{What is a data.frame?}}\label{what-is-a-dataframe}}
 
+\begin{itemize}
+\item
+  二维表格
+\item
+  由不同列组成；每列是一个\textbf{vector}，不同列的数据类型可以不同，但一列只包括一种数据类型（int,
+  num, chr ...）
+\item
+  各列的长度相同
+\end{itemize}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse);}
@@ -407,6 +664,14 @@ Here's the result:
 \subsubsection{\texorpdfstring{\textbf{Usage of \texttt{head()} and
 \texttt{tail()}}}{Usage of head() and tail()}}\label{usage-of-head-and-tail}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(mpg); }\DocumentationTok{\#\# total number of rows }
+\FunctionTok{kbl}\NormalTok{( }\FunctionTok{head}\NormalTok{(mpg,  }\AttributeTok{n=}\DecValTok{3}\NormalTok{), }\AttributeTok{booktabs =}\NormalTok{ T); }\DocumentationTok{\#\# 显示前几行数据}
+\FunctionTok{kbl}\NormalTok{( }\FunctionTok{tail}\NormalTok{(mpg,  }\AttributeTok{n=}\DecValTok{3}\NormalTok{), }\AttributeTok{booktabs =}\NormalTok{ T); }\DocumentationTok{\#\# 显示最后3行数据}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{itemize}
 \item
   \texttt{head()} is a function to display the first rows of some data
@@ -415,34 +680,6 @@ Here's the result:
   \texttt{tail()} is a function to display the last rows of some data
   (vectors etc.)
 \end{itemize}
-
-\hypertarget{components-of-dataframe-and-common-functions}{%
-\subsubsection{\texorpdfstring{Components of \texttt{data.frame} and
-common
-functions}{Components of data.frame and common functions}}\label{components-of-dataframe-and-common-functions}}
-
-\textbf{Components:}
-
-\begin{itemize}
-\item
-  Two-dimensional table
-\item
-  consists of different columns; each column is a vector, different
-  columns can have different data types, but a column contains only one
-  data type (\texttt{int}, \texttt{num}, \texttt{chr} ...)
-\item
-  Each column has the same length
-\end{itemize}
-
-\textbf{Common functions:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{nrow}\NormalTok{() }\CommentTok{\# Show the number of rows}
-\FunctionTok{ncol}\NormalTok{() }\CommentTok{\# Show the number of columns}
-\FunctionTok{dim}\NormalTok{()  }\CommentTok{\# Show the dimension}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{structure-of-dataframe--tibble}{%
 \subsubsection{\texorpdfstring{Structure of \texttt{data.frame} \&
@@ -478,6 +715,8 @@ data.frame}\label{how-to-add-rowscols-to-an-existing-dataframe}}
 
 Create the "table header" first, then populate the \texttt{data.frame}
 
+先创建"表头"，再填充
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df2 }\OtherTok{=}
@@ -507,9 +746,26 @@ Create the "table header" first, then populate the \texttt{data.frame}
       \AttributeTok{z =} \FloatTok{4.4} 
 \NormalTok{    ) }
 \NormalTok{  )}
+
+\NormalTok{df2}
+\NormalTok{  x y   z}
+\DecValTok{1}\NormalTok{ a }\DecValTok{1} \FloatTok{2.2}
+\DecValTok{2}\NormalTok{ b }\DecValTok{2} \FloatTok{4.4}
+
+\NormalTok{m }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{) ; }\DocumentationTok{\#\# 产生两列数据 7行数据 .. }
+\NormalTok{( m }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(m, }\DecValTok{8}\SpecialCharTok{:}\DecValTok{14}\NormalTok{) ); }\DocumentationTok{\#\# 增加一列 也有7行数据 ... }
+\NormalTok{     [,}\DecValTok{1}\NormalTok{] [,}\DecValTok{2}\NormalTok{] [,}\DecValTok{3}\NormalTok{]}
+\NormalTok{[}\DecValTok{1}\NormalTok{,]    }\DecValTok{1}    \DecValTok{1}    \DecValTok{8}
+\NormalTok{[}\DecValTok{2}\NormalTok{,]    }\DecValTok{1}    \DecValTok{2}    \DecValTok{9}
+\NormalTok{[}\DecValTok{3}\NormalTok{,]    }\DecValTok{1}    \DecValTok{3}   \DecValTok{10}
+\NormalTok{[}\DecValTok{4}\NormalTok{,]    }\DecValTok{1}    \DecValTok{4}   \DecValTok{11}
+\NormalTok{[}\DecValTok{5}\NormalTok{,]    }\DecValTok{1}    \DecValTok{5}   \DecValTok{12}
+\NormalTok{[}\DecValTok{6}\NormalTok{,]    }\DecValTok{1}    \DecValTok{6}   \DecValTok{13}
+\NormalTok{[}\DecValTok{7}\NormalTok{,]    }\DecValTok{1}    \DecValTok{7}   \DecValTok{14}
 \end{Highlighting}
 \end{Shaded}
 
+\newpage
 \textbf{ATTENTION}
 
 \begin{itemize}
@@ -528,12 +784,13 @@ You can also use these functions to bind several data.frames.
 
 \texttt{tibble} is kind of similar to \texttt{data.frame}.
 
+\textbf{注}：Tibble class 是 data.frame 的升级版本；
+
 \hypertarget{make-new-tibble}{%
 \subsubsection{\texorpdfstring{Make new
 \texttt{tibble}}{Make new tibble}}\label{make-new-tibble}}
 
-\texttt{tibble} related functionality is provided by the \texttt{tibble}
-or \texttt{tidiverse} packages.
+\texttt{tibble}相关功能由\texttt{tibble}或\texttt{tidiverse}包提供
 
 Almost all of the functions that you'll use in this book produce
 tibbles, as tibbles are one of the unifying features of the tidyverse.
@@ -559,10 +816,19 @@ coerce a data frame to a tibble. You can do that with
 
 Another way to create a tibble is with \texttt{tribble()}, short for
 \textbf{tr}ansposed tibble. \texttt{tribble()} is customised for data
-entry in code: column headings are defined by formulas (i.e. they start
-with \texttt{\textasciitilde{}}), and entries are separated by commas.
-This makes it possible to lay out small amounts of data in easy to read
-form.
+entry in code:
+列标题由公式定义（即以``\textasciitilde''开头），条目由逗号分隔。这使得以易于阅读的形式布置少量数据成为可能。
+
+也可以用 tibble 函数创建
+
+\begin{itemize}
+\item
+  注意每列的数据类型
+\item
+  长度不足时，比如\textbf{data2}列，会循环使用
+\item
+  \texttt{sample()}函数的用法
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -577,6 +843,25 @@ form.
 \CommentTok{\#\textgreater{}   \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
 \CommentTok{\#\textgreater{} 1 a         2   3.6}
 \CommentTok{\#\textgreater{} 2 b         1   8.5}
+
+\DocumentationTok{\#\# 用 tibble 函数创建，用法和 data.frame() 相似}
+\NormalTok{dat }\OtherTok{\textless{}{-}} 
+  \FunctionTok{tibble}\NormalTok{( }\AttributeTok{data =} \FunctionTok{sample}\NormalTok{( }\DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{, }\DecValTok{10}\NormalTok{ ), }
+        \AttributeTok{group =} \FunctionTok{sample}\NormalTok{( LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{], }\DecValTok{10}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{), }
+        \AttributeTok{data2 =} \FloatTok{0.1}\NormalTok{ )}
+\CommentTok{\# A tibble: 10 × 3}
+\NormalTok{    data group data2}
+   \SpecialCharTok{\textless{}}\NormalTok{int}\SpecialCharTok{\textgreater{}} \ErrorTok{\textless{}}\NormalTok{chr}\SpecialCharTok{\textgreater{}} \ErrorTok{\textless{}}\NormalTok{dbl}\SpecialCharTok{\textgreater{}}
+ \DecValTok{1}    \DecValTok{86}\NormalTok{ A       }\FloatTok{0.1}
+ \DecValTok{2}    \DecValTok{41}\NormalTok{ B       }\FloatTok{0.1}
+ \DecValTok{3}    \DecValTok{72}\NormalTok{ B       }\FloatTok{0.1}
+ \DecValTok{4}    \DecValTok{68}\NormalTok{ C       }\FloatTok{0.1}
+ \DecValTok{5}    \DecValTok{10}\NormalTok{ A       }\FloatTok{0.1}
+ \DecValTok{6}    \DecValTok{99}\NormalTok{ B       }\FloatTok{0.1}
+ \DecValTok{7}    \DecValTok{66}\NormalTok{ B       }\FloatTok{0.1}
+ \DecValTok{8}    \DecValTok{33}\NormalTok{ B       }\FloatTok{0.1}
+ \DecValTok{9}    \DecValTok{81}\NormalTok{ A       }\FloatTok{0.1}
+\DecValTok{10}    \DecValTok{42}\NormalTok{ C       }\FloatTok{0.1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -586,6 +871,62 @@ form.
 \item
   \texttt{add\_column()}
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 新tibble, with defined columns ... 创建表头 }
+\NormalTok{tb }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{( }\AttributeTok{x =} \FunctionTok{character}\NormalTok{(), }\AttributeTok{y =} \FunctionTok{integer}\NormalTok{(), }\AttributeTok{z =} \FunctionTok{double}\NormalTok{() );}
+\FunctionTok{dim}\NormalTok{(tb);}
+
+\DocumentationTok{\#\# 增加行 ... }
+\NormalTok{tb }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{( tb, }\AttributeTok{x =} \StringTok{"a"}\NormalTok{, }\AttributeTok{y =} \DecValTok{2}\NormalTok{, }\AttributeTok{z =} \FloatTok{3.6}\NormalTok{  );}
+\NormalTok{tb }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{( tb, }\AttributeTok{x =} \StringTok{"b"}\NormalTok{, }\AttributeTok{y =} \DecValTok{1}\NormalTok{, }\AttributeTok{z =} \FloatTok{8.5}\NormalTok{  );}
+
+\DocumentationTok{\#\# 显示 }
+\NormalTok{tb;}
+
+\DocumentationTok{\#\# 生成一个 tibble }
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{y =} \DecValTok{3}\SpecialCharTok{:}\DecValTok{1}\NormalTok{);}
+
+\CommentTok{\# 在第二行之前插入}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{(df, }\AttributeTok{x =} \DecValTok{4}\NormalTok{, }\AttributeTok{y =} \DecValTok{0}\NormalTok{, }\AttributeTok{.before =} \DecValTok{2}\NormalTok{);}
+
+\DocumentationTok{\#\# 插入多行 }
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{(df, }\AttributeTok{x =} \DecValTok{4}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\AttributeTok{y =} \DecValTok{0}\SpecialCharTok{:{-}}\DecValTok{1}\NormalTok{);}
+
+\DocumentationTok{\#\# 插入另一个tibble （与另一个tibble合并） }
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{( }\AttributeTok{x =} \FunctionTok{as.double}\NormalTok{(}\DecValTok{200}\SpecialCharTok{:}\DecValTok{202}\NormalTok{), }\AttributeTok{y =} \FunctionTok{as.double}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{:}\DecValTok{1002}\NormalTok{) );}
+\NormalTok{df3 }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{( df, df2 ); }\DocumentationTok{\#\# 可以运行 ... }
+
+\NormalTok{tb3 }\OtherTok{\textless{}{-}} \FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\SpecialCharTok{\textasciitilde{}}\NormalTok{y,  }\SpecialCharTok{\textasciitilde{}}\NormalTok{z,}
+  \StringTok{"a"}\NormalTok{, }\DecValTok{2}\NormalTok{,  }\FloatTok{3.6}\NormalTok{,}
+  \StringTok{"b"}\NormalTok{, }\DecValTok{1}\NormalTok{,  }\FloatTok{8.5}
+\NormalTok{);}
+
+\NormalTok{tb3 }\OtherTok{\textless{}{-}} \FunctionTok{add\_column}\NormalTok{( tb3, }\AttributeTok{a =} \DecValTok{98}\NormalTok{ ); }\DocumentationTok{\#\# recycle ... }
+\NormalTok{tb3 }\OtherTok{\textless{}{-}} \FunctionTok{add\_column}\NormalTok{( tb3, }\AttributeTok{b =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{], }\AttributeTok{c =} \FunctionTok{c}\NormalTok{(}\StringTok{"CHEN"}\NormalTok{, }\StringTok{"WANG"}\NormalTok{) ); }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tibbleux5143ux7d20ux66ffux6362}{%
+\subsubsection{tibble元素替换}\label{tibbleux5143ux7d20ux66ffux6362}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 取得行}
+\NormalTok{tb3[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), ];}
+
+\DocumentationTok{\#\# 取得列，按顺序取列}
+\NormalTok{tb3[, }\FunctionTok{c}\NormalTok{(}\StringTok{"z"}\NormalTok{, }\StringTok{"y"}\NormalTok{)];}
+
+\DocumentationTok{\#\# 替换列 }
+\NormalTok{tb3[[}\StringTok{"z"}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{4.6}\NormalTok{, }\FloatTok{5.5}\NormalTok{);}
+
+\DocumentationTok{\#\# 替换行 }
+\NormalTok{tb3[ }\DecValTok{1}\NormalTok{, ] }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{( }\AttributeTok{x =} \StringTok{"d"}\NormalTok{, }\AttributeTok{y =} \DecValTok{20}\NormalTok{, }\AttributeTok{z =} \DecValTok{46}\NormalTok{, }\AttributeTok{a =} \DecValTok{10}\NormalTok{, }\AttributeTok{b =} \StringTok{"C"}\NormalTok{, }\AttributeTok{c =} \StringTok{"LILI"}\NormalTok{ );}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{manipulate-the-tibble}{%
 \subsubsection{Manipulate the tibble}\label{manipulate-the-tibble}}
@@ -618,9 +959,9 @@ See ``Manipulate the \texttt{data.frame}''
 \subsection{Differences between tibble and
 data.frame}\label{differences-between-tibble-and-dataframe}}
 
-\hypertarget{tibble-evaluates-columns-sequentially}{%
-\subsubsection{Tibble evaluates columns
-sequentially}\label{tibble-evaluates-columns-sequentially}}
+\hypertarget{tibble-ux6309ux987aux5e8fux8ba1ux7b97ux5217}{%
+\subsubsection{Tibble
+按顺序计算列}\label{tibble-ux6309ux987aux5e8fux8ba1ux7b97ux5217}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -634,6 +975,8 @@ sequentially}\label{tibble-evaluates-columns-sequentially}}
 \subsubsection{\texorpdfstring{\texttt{data.frame} causes trouble when
 fetching \texttt{subset}
 operations}{data.frame causes trouble when fetching subset operations}}\label{dataframe-causes-trouble-when-fetching-subset-operations}}
+
+取子集成vector
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -651,7 +994,7 @@ operations}{data.frame causes trouble when fetching subset operations}}\label{da
 \DocumentationTok{\#\# Tibble doesn\textquotesingle{}t.}
 \NormalTok{df2 }\OtherTok{=}
 	\FunctionTok{tibble}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{y =} \DecValTok{3}\SpecialCharTok{:}\DecValTok{1}\NormalTok{)}
-\FunctionTok{class}\NormalTok{(df2[, }\DecValTok{1}\NormalTok{]) }\DocumentationTok{\#\# Tibble forever}
+\FunctionTok{class}\NormalTok{(df2[, }\DecValTok{1}\NormalTok{]) }\DocumentationTok{\#\# 永远都是 tibble }
 
 \CommentTok{\#\textgreater{} [1] "tbl\_df" "tbl" "data.frame"}
 \end{Highlighting}
@@ -662,18 +1005,22 @@ operations}{data.frame causes trouble when fetching subset operations}}\label{da
 type
 conversion}{tibble allows controlled data type conversion}}\label{tibble-allows-controlled-data-type-conversion}}
 
-\begin{quote}
-There's no proper example here.
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(df2[[}\DecValTok{1}\NormalTok{]]); }\DocumentationTok{\#\# 取一列，转换为 vector }
+\FunctionTok{class}\NormalTok{(df2}\SpecialCharTok{$}\NormalTok{x); }\DocumentationTok{\#\# 用 [[]] 或 $ 都可以哦}
 
-:\_(
-\end{quote}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"numeric"}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"numeric"}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{recycling}{%
 \subsubsection{Recycling}\label{recycling}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{b =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]) }\CommentTok{\# data.frame CAN!!!}
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{b =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]); }\DocumentationTok{\#\#  data.frame 可以！！！}
 \end{Highlighting}
 \end{Shaded}
 
@@ -693,7 +1040,7 @@ There's no proper example here.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tibble}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{b =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]); }\DocumentationTok{\#\# But tibble CAN\textquotesingle{}T!!!}
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{b =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]); }\DocumentationTok{\#\# 但 tibble 不行！！！}
 \end{Highlighting}
 \end{Shaded}
 
@@ -710,8 +1057,8 @@ There's no proper example here.
 
 \textbf{ATTENTION!}
 
-\textbf{The recycling of \texttt{tibble} is limited to lengths of 1 or
-equal; \texttt{data.frame} is just divisible.}
+\texttt{tibble}的 recycling 仅限于长度为1或等长；而 \texttt{data.frame}
+则为整除即可。
 
 \hypertarget{dataframe-will-do-partial-matching-while-tibble-will-never-do-it}{%
 \subsubsection{\texorpdfstring{\texttt{data.frame} will do partial
@@ -732,8 +1079,8 @@ it.}{data.frame will do partial matching, while tibble will NEVER do it.}}\label
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Warning: Unknown or uninitialised column: \textasciigrave{}a\textasciigrave{}. }
-\CommentTok{\# NULL}
+\CommentTok{\#[1] 1}
+\CommentTok{\#Warning: Unknown or uninitialised column: \textasciigrave{}a\textasciigrave{}. NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -757,10 +1104,7 @@ and
 Following is the introduction (Produced by ChatGPT)
 \end{quote}
 
-These functions---\texttt{attach()}, \texttt{detach()}, \texttt{with()},
-and \texttt{within()}---are incredibly useful when working with data
-frames or tibbles in R, aiding in smoother workflows and code
-readability. Here\textquotesingle s a breakdown of their functionality:
+这些函数------\texttt{attach（）}、\texttt{detach（）}、\texttt{with（）}和\texttt{within（）}------在处理R中的数据帧或tibble时非常有用，有助于更流畅的工作流和代码可读性。下面是它们的功能分解：
 
 \hypertarget{attach-and-detach}{%
 \subsubsection{\texorpdfstring{\texttt{attach()} and
@@ -768,9 +1112,8 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 
 \begin{itemize}
 \item
-  \textbf{Purpose}: These functions allow you to temporarily attach a
-  data frame to the search path, making its columns directly accessible
-  by their names.
+  \textbf{Purpose}:
+  这些函数允许您将data.frame临时附加到搜索路径上，使其列可以通过名称直接访问。
 \item
   \textbf{Usage}:
 
@@ -796,10 +1139,8 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 \end{Highlighting}
 \end{Shaded}
 \item
-  \textbf{Note}: While convenient, using \texttt{attach()} can sometimes
-  lead to confusion or unintended consequences, such as masking
-  variables in your environment. It\textquotesingle s often recommended
-  to avoid using \texttt{attach()} due to potential side effects.
+  \textbf{Note}:
+  虽然使用\texttt{attach（）}很方便，但有时会导致混乱或意外的后果，例如屏蔽环境中的变量。由于潜在的副作用，通常建议避免使用\texttt{attach（）}。
 \end{itemize}
 
 \hypertarget{with}{%
@@ -807,9 +1148,8 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 
 \begin{itemize}
 \item
-  \textbf{Purpose}: \texttt{with()} allows you to execute expressions in
-  an environment where the data frame\textquotesingle s columns can be
-  referenced without using \texttt{\$}.
+  \textbf{Purpose}: \texttt{with()}
+  允许您在不使用\texttt{\$}的情况下引用数据框架的列的环境中执行表达式。
 \item
   \textbf{Usage}:
 
@@ -832,8 +1172,7 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 \end{Highlighting}
 \end{Shaded}
 \item
-  \textbf{Advantage}: It helps avoid repetitive use of the data frame
-  name while working with its columns.
+  \textbf{Advantage}:它有助于避免在处理其列时重复使用数据框架名称。
 \end{itemize}
 
 \hypertarget{within}{%
@@ -842,7 +1181,7 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 \begin{itemize}
 \item
   \textbf{Purpose}: Similar to \texttt{with()}, \texttt{within()} allows
-  modification of a data frame by evaluating expressions within it.
+  modification of a data frame by计算其中的表达式。
 \item
   \textbf{Usage}:
 
@@ -866,9 +1205,8 @@ readability. Here\textquotesingle s a breakdown of their functionality:
 \end{Highlighting}
 \end{Shaded}
 \item
-  \textbf{Advantage}: \texttt{within()} is useful when you want to
-  create or modify columns within the data frame without having to
-  repeatedly refer to the data frame name.
+  \textbf{Advantage}: \texttt{within()}
+  非常有用，当你想创建或修改数据框架内的列时不必重复引用数据框架名称。
 \end{itemize}
 
 Remember, while these functions can streamline your code,
@@ -962,8 +1300,8 @@ Some available functions:
 \end{itemize}
 
 \begin{quote}
-Full documentation of the package is available through 
-https://www.rdocumentation.org/packages/readr/versions/1.3.1.
+Full documentation of the package is available through this
+\href{https://www.rdocumentation.org/packages/readr/versions/1.3.1}{link}.
 \end{quote}
 
 \hypertarget{usage}{%
@@ -1022,12 +1360,13 @@ Use the following functions to write object(s) to external files:
 \begin{quote}
 Default parameters are listed.
 
-More related documents can be found in https://r4ds.had.co.nz/data-import.html?q=file\#writing-to-a-file.
+More related documents can be found in this
+\href{https://r4ds.had.co.nz/data-import.html?q=file\#writing-to-a-file}{link}.
 \end{quote}
 
 \begin{itemize}
 \item
-  Comma delimited file:
+  Comma delimited file: 逗号分隔文件
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1041,7 +1380,7 @@ More related documents can be found in https://r4ds.had.co.nz/data-import.html?q
 \end{Highlighting}
 \end{Shaded}
 \item
-  File with arbitrary delimiter:
+  File with arbitrary delimiter: 带有任意分隔符的文件
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1144,17 +1483,52 @@ management}\label{io-and-working-enviroment-management}}
 Each R session is a separate \textbf{work space} containing its own
 data, variables, and operation history.
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_sessions.png}
 
 Each RStudio session is automatically associated with a R session
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png}
+\begin{quote}
+Not only RStudio, PyCharm or VSCode also support R session.
+
+However, I'm keen on coding with PyCharm but not RStudio, for its
+wonderful Plug-in Environment, which can let me use plug-ins such as
+Code GeeX by Zhipu AI (a company founded by some student in KEG team
+inTsinghua University) or GitHub Copilot by GitHub to let the coding
+process more quickly, for the instruction from GPTs.
+
+tips: Rstudio最新版也支持 Github Copliot, 可以在 options 内设置
+\end{quote}
+
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/r_session_in_rstudio.png}
 
 If you want to coding with R using PyCharm or other JetBrains IDE (i.e.
 IntelliJ, CLion, etc.), remember to install the \emph{R Language
-Plug-in}.
+Plug-in}
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202111619635.png}
+
+For instruction how to get FREE Student Lisence of GitHub Pro, GitHub
+Copilot and JetBrains Products and their benefits, see their official
+website:
+
+\begin{itemize}
+\item
+  \href{https://campus.github.com}{GitHub Global Campus}
+
+  Make sure you don't use VPNs and use your phone to log in and apply
+  (HUST Campus Network is recommended), give ``Precise Location''
+  permission to your browser. You may use your ``{[}Student
+  Number{]}@hust.edu.cn'' mail to verify your identity as a student
+  studying in HUST.
+\item
+  \href{https://www.jetbrains.com/lp/leaflets-gdc/students/}{JetBrains
+  Products}
+
+  Because our email addresses ending with ``@hust.edu.cn'' are banned
+  due to misuse, you should apply for an online verification report on
+  \href{chsi.com.cn}{CHSI} (press the link to visit the website),
+  instructions \href{https://www.chsi.com.cn/xlcx/rhsq.jsp}{here}.
+\end{itemize}
 
 \hypertarget{start-a-new-rstudio-session-by-creating-a-new-project}{%
 \subsubsection{Start a new RStudio session by creating a new
@@ -1170,30 +1544,31 @@ select a new session.
   Click the Project button in the upper right corner and select New
   Project in the pop-up menu \ldots{}
 
-  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png}
+  \includegraphics[width=0.4\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project.png}
 \item
   Select: New directory -\textgreater{} New Project in the popup window
 
-  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png}
+  \includegraphics[width=0.4\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_project_2.png}
 \item
   Enter a new directory name, choose its mother directory ...
 
-  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png}
+  \includegraphics[width=0.4\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_create_new_project_3.png}
 \end{itemize}
 
 \hypertarget{working-space}{%
 \subsubsection{Working Space}\label{working-space}}
 
-Current workspace, including all loaded data, packets and homebrew
-functions.
+当前工作空间，包括所有已装入的数据、包和自制函数
 
-Variables can be managed with the following code:
+可通过以下代码管理变量
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ls}\NormalTok{() }\CommentTok{\# Show all the variables in current workspace/session}
-\FunctionTok{rm}\NormalTok{(x) }\CommentTok{\# Remove a variable}
-\FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{()) }\CommentTok{\# Remove ALL variables in current workspace/session}
+\FunctionTok{ls}\NormalTok{();  }\DocumentationTok{\#\# 显示当前环境下所有变量}
+\FunctionTok{rm}\NormalTok{( x ); }\DocumentationTok{\#\# 删除一个变量}
+\FunctionTok{ls}\NormalTok{(); }
+
+\DocumentationTok{\#\#rm(list=ls()); \#\# 删除当前环境下所有变量！！！ }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1204,7 +1579,7 @@ RStudio}\label{variables-in-working-space-in-rstudio}}
 The "Environment" window in the upper right corner of RStudio shows all
 the variables of the current workspace.
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_enviroment_window.png}
 
 \hypertarget{save-and-restore-work-space}{%
 \subsubsection{Save and restore work
@@ -1258,18 +1633,18 @@ project}\label{close-and-reopen-a-project}}
 \item
   To close a project
 
-  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png}
+  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/Rstudio_close_a_project.png}
 \item
   In RStudio and similar IDEs, there are some preferences to choose
 
-  \includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png}
+  \includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_project_options.png}
 \end{itemize}
 
 \begin{quote}
 The UI in PyCharm
 \end{quote}
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/pycharm_project_options.png}
 
 \textbf{Notes:}
 
@@ -1285,7 +1660,7 @@ The UI in PyCharm
 \hypertarget{open-a-project}{%
 \subsubsection{Open a project}\label{open-a-project}}
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/rstudio_open_a_project.png}
 
 \begin{quote}
 When in PyCharm, simply drag the working directory to its main window,
@@ -1295,14 +1670,104 @@ remember to trust the project.
 \hypertarget{factors}{%
 \subsection{Factors}\label{factors}}
 
-Factor is a data structure used for fields that takes only predefined,
-finite number of values (categorical data).
+Factor是一种用于字段的数据结构，它只接受预定义的、有限数量的值（分类数据）。它将限制输入数据的选取。
 
-It will limit the selection of input data.
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# create factor from scratch ... }
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{( }\FunctionTok{c}\NormalTok{( }\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"single"}\NormalTok{ ) );}
+
+\DocumentationTok{\#\# create factor as it is ... }
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"single"}\NormalTok{);}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(x);}
+
+\DocumentationTok{\#\# please note the change in the displayed values ... }
+\FunctionTok{str}\NormalTok{(x);}
+\CommentTok{\#Factor w/ 2 levels "married","single": 2 1 1 2}
+
+\CommentTok{\#限制输入数据的选择范围}
+\NormalTok{x[ }\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{ ] }\OtherTok{\textless{}{-}} \StringTok{"widowed"}\NormalTok{;}
+\CommentTok{\#Warning: 因子层次有错，产生了NA}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{play-around-with-levels}{%
 \subsubsection{\texorpdfstring{Play around with
 \texttt{levels()}}{Play around with levels()}}\label{play-around-with-levels}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#利用levels解决}
+\FunctionTok{levels}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{levels}\NormalTok{(x), }\StringTok{"widowed"}\NormalTok{);}
+\NormalTok{x[ }\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{ ] }\OtherTok{\textless{}{-}} \StringTok{"widowed"}\NormalTok{;}
+\FunctionTok{str}\NormalTok{(x);}
+
+\DocumentationTok{\#\# other ways of assigning factors ... }
+\NormalTok{y }\OtherTok{\textless{}{-}}  \FunctionTok{as.factor}\NormalTok{( }\FunctionTok{c}\NormalTok{( }\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"single"}\NormalTok{ ) );}
+\FunctionTok{levels}\NormalTok{( y );}
+\FunctionTok{levels}\NormalTok{(y) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"widowed"}\NormalTok{);}
+\FunctionTok{str}\NormalTok{(y);}
+\DocumentationTok{\#\# 这个代码现在就没有问题了}
+\NormalTok{y[ }\FunctionTok{length}\NormalTok{(y) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{ ] }\OtherTok{\textless{}{-}} \StringTok{"widowed"}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{注意} 用 \texttt{as.factor} 创建 factor 时，得到的 levels
+按字母表排列；
+
+但是，用 \texttt{levels(\ y\ )} 方式指定 levels 时，则按照指定的顺序；
+
+\hypertarget{levelsux7684ux987aux5e8fux51b3ux5b9aux4e86ux6392ux5e8fux7684ux987aux5e8f}{%
+\paragraph{\texorpdfstring{\texttt{levels}的顺序决定了排序的顺序}{levels的顺序决定了排序的顺序}}\label{levelsux7684ux987aux5e8fux51b3ux5b9aux4e86ux6392ux5e8fux7684ux987aux5e8f}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#}
+\NormalTok{y }\OtherTok{\textless{}{-}}  \FunctionTok{as.factor}\NormalTok{( }\FunctionTok{c}\NormalTok{( }\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"single"}\NormalTok{ ) );}
+\FunctionTok{levels}\NormalTok{(y);}
+\FunctionTok{sort}\NormalTok{(y);}
+\CommentTok{\#[1] "married" "single" }
+\CommentTok{\#[1] married married single  single Levels: married single}
+
+\DocumentationTok{\#\# }
+\NormalTok{y2 }\OtherTok{\textless{}{-}}\NormalTok{ y;}
+\FunctionTok{levels}\NormalTok{(y2) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"single"}\NormalTok{, }\StringTok{"married"}\NormalTok{, }\StringTok{"widowed"}\NormalTok{);}
+\FunctionTok{sort}\NormalTok{(y2);}
+\CommentTok{\#[1] single  single  married married Levels: single married widowed}
+\end{Highlighting}
+\end{Shaded}
+
+sort data in a meaningful way ...
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Month}
+\NormalTok{x1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Dec"}\NormalTok{, }\StringTok{"Apr"}\NormalTok{, }\StringTok{"Jan"}\NormalTok{, }\StringTok{"Mar"}\NormalTok{);}
+\FunctionTok{sort}\NormalTok{(x1);}
+
+\NormalTok{month\_levels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"Jan"}\NormalTok{, }\StringTok{"Feb"}\NormalTok{, }\StringTok{"Mar"}\NormalTok{, }\StringTok{"Apr"}\NormalTok{, }\StringTok{"May"}\NormalTok{, }\StringTok{"Jun"}\NormalTok{, }
+  \StringTok{"Jul"}\NormalTok{, }\StringTok{"Aug"}\NormalTok{, }\StringTok{"Sep"}\NormalTok{, }\StringTok{"Oct"}\NormalTok{, }\StringTok{"Nov"}\NormalTok{, }\StringTok{"Dec"}
+\NormalTok{)}
+
+\NormalTok{y1 }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(x1, }\AttributeTok{levels =}\NormalTok{ month\_levels)}
+\FunctionTok{sort}\NormalTok{(y1);}
+\CommentTok{\#[1] "Apr" "Dec" "Jan" "Mar"}
+\CommentTok{\#[1] Jan Mar Apr Dec}
+\CommentTok{\#12 Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct ... Dec}
+
+\DocumentationTok{\#\# Sometimes you’d prefer that the order of the levels match the order of the first appearance in the data.}
+\NormalTok{f1 }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(x1, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(x1));}
+\NormalTok{f1;}
+\CommentTok{\#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar}
+
+\FunctionTok{library}\NormalTok{(forcats); }\DocumentationTok{\#\# just to make sure the codes will run smoothly ... }
+\DocumentationTok{\#\# you can also use fct\_inorder in the forcats package ...}
+\NormalTok{f2 }\OtherTok{\textless{}{-}}\NormalTok{ x1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{factor}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{fct\_inorder}\NormalTok{()}
+\NormalTok{f2}
+\CommentTok{\#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar}
+\end{Highlighting}
+\end{Shaded}
 
 Here are instructions of modifying factor levels
 
@@ -1310,10 +1775,12 @@ Here are instructions of modifying factor levels
 Based on the textbook
 \end{quote}
 
-The levels are terse and inconsistent. Let's tweak them to be longer and
-use a parallel construction. Like most rename and recoding functions in
-the tidyverse, the new values go on the left and the old values go on
-the right:
+The levels
+既简洁又不一致。让我们调整使之更长，并使用一个平行的结构。Like most
+rename and recoding functions in the
+tidyverse,新的值在左边，旧的值在右边：
+
+\texttt{fct\_recode}Change factor levels by hand
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1345,8 +1812,7 @@ the right:
 \end{Highlighting}
 \end{Shaded}
 
-Use this technique with care: if you group together categories that are
-truly different you will end up with misleading results.
+使用这种技术时要小心：如果你把完全不同的类别组合在一起，你最终会得到误导性的结果。
 
 The order of the \texttt{levels} determines the sorting order.
 
@@ -1363,8 +1829,8 @@ way:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{gender }\OtherTok{=}
-	\FunctionTok{c}\NormalTok{(}\StringTok{"f"}\NormalTok{, }\StringTok{"m "}\NormalTok{, }\StringTok{"male "}\NormalTok{,}\StringTok{"male"}\NormalTok{, }\StringTok{"female"}\NormalTok{, }\StringTok{"FEMALE"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"f"}\NormalTok{, }\StringTok{"m"}\NormalTok{)}
+\DocumentationTok{\#\# 假设我有一组性别数据，其写法非常不规整；}
+\NormalTok{gender }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"f"}\NormalTok{, }\StringTok{"m "}\NormalTok{, }\StringTok{"male "}\NormalTok{,}\StringTok{"male"}\NormalTok{, }\StringTok{"female"}\NormalTok{, }\StringTok{"FEMALE"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"f"}\NormalTok{, }\StringTok{"m"}\NormalTok{);}
 
 \NormalTok{gender\_fct }\OtherTok{=}
   \FunctionTok{as.factor}\NormalTok{(gender)}
@@ -1375,12 +1841,13 @@ way:
 
 The output looks like this:
 
-\includegraphics[width=0.2\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114121080.png}
 
 Now I request to replace with Female, Male.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\# 要求：都改为 Female, Male}
 \NormalTok{gender\_fct }\OtherTok{=}
   \FunctionTok{fct\_collapse}\NormalTok{(}
 \NormalTok{    gender,}
@@ -1392,7 +1859,7 @@ Now I request to replace with Female, Male.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.2\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png}
+\includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202114937281.png}
 
 You can also use \texttt{fct\_relabel()} to do the same thing
 
@@ -1410,12 +1877,13 @@ You can also use \texttt{fct\_relabel()} to do the same thing
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{usage-of-factors-in-drawing-plots}{%
-\subsubsection{Usage of factors in drawing
-plots}\label{usage-of-factors-in-drawing-plots}}
+\hypertarget{factor-ux5728ux505aux56feux4e2dux7684ux5e94ux7528ux771fux6b63ux7cbeux9ad3uxff09}{%
+\subsubsection{\texorpdfstring{factor
+在做图中的应用（\textbf{真正精髓}）}{factor 在做图中的应用（真正精髓）}}\label{factor-ux5728ux505aux56feux4e2dux7684ux5e94ux7528ux771fux6b63ux7cbeux9ad3uxff09}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\# 一项 mock 调查结果数据}
 \FunctionTok{library}\NormalTok{(ggplot2)}
 
 \NormalTok{responses }\OtherTok{=}
@@ -1434,7 +1902,8 @@ plots}\label{usage-of-factors-in-drawing-plots}}
 
 \includegraphics[width=0.3\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/response_barplot.png}
 
-By default, \texttt{factor} is sorted alphabetically.
+默认情况下， factor 按字母表排序： Agree -\textgreater{} Disagree
+-\textgreater{} Strong Agree 。ggplot2 也会按factor的排序作图
 
 \texttt{ggplot2} also plots \texttt{factor} in that order, so you can
 adjust the \texttt{factor} to adjust the drawing order.
@@ -1448,7 +1917,8 @@ adjust the \texttt{factor} to adjust the drawing order.
   \FunctionTok{factor}\NormalTok{(}
 \NormalTok{    res}\SpecialCharTok{$}\NormalTok{res,}
     \AttributeTok{levels =}
-       \FunctionTok{c}\NormalTok{(}\StringTok{"Strongly Agree"}\NormalTok{, }\StringTok{"Agree"}\NormalTok{, }\StringTok{"Disagree"}\NormalTok{)}
+       \FunctionTok{c}\NormalTok{(}\StringTok{"Strongly Agree"}\NormalTok{, }\StringTok{"Agree"}\NormalTok{, }\StringTok{"Disagree"}\NormalTok{),}
+    \AttributeTok{ordered =}\NormalTok{ T}
 \NormalTok{  )}
 
 \NormalTok{response\_barplot2 }\OtherTok{=}
@@ -1457,7 +1927,7 @@ adjust the \texttt{factor} to adjust the drawing order.
     \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ res)}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Response"}\NormalTok{)}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Response"}\NormalTok{)}\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Count"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1473,6 +1943,7 @@ your \texttt{factor} is ordered properly.
     \FunctionTok{c}\NormalTok{(}\StringTok{"Agree"}\NormalTok{, }\StringTok{"Agree"}\NormalTok{, }\StringTok{"Strongly Agree"}\NormalTok{, }\StringTok{"Disagree"}\NormalTok{, }\StringTok{"Disagree"}\NormalTok{, }\StringTok{"Agree"}\NormalTok{),}
     \AttributeTok{ordered =} \ConstantTok{TRUE}
 \NormalTok{  )}
+\FunctionTok{is.ordered}\NormalTok{( responses )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1485,9 +1956,8 @@ values}{Using factor to vhange values}}\label{using-factor-to-vhange-values}}
 You can use \texttt{recode()} in \texttt{dplyr} package to change
 \texttt{value}
 
-\texttt{dplyr} is a grammar of data manipulation, providing a consistent
-set of verbs that help you solve the most common data manipulation
-challenges:
+\texttt{dplyr} 是一种数据操作的语法，提供了一组一致的动词 that help you
+solve the most common data manipulation challenges:
 
 \begin{itemize}
 \item
@@ -1516,6 +1986,8 @@ Based on the introduction on the
 
 Here's an example:
 
+使用 \texttt{dplyr} 包的 \texttt{recode()}函数改变 value
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{=}
@@ -1534,7 +2006,7 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.45\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png}
+\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135555790.png}
 
 \hypertarget{delete-useless-levels}{%
 \subsubsection{\texorpdfstring{Delete useless
@@ -1552,19 +2024,32 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png}
+\includegraphics[width=0.4\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/image-20231202135803901.png}
 
 If you draw a plot without deleting the useless \texttt{levels}, you
 will get this result:
 
 \includegraphics[width=0.8\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot01.png}
 
+\texttt{subset()} 无法去除不用的 factors ...
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mouse.chr\_10\_12 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{( mouse.genes,  Chromosome.scaffold.name }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{( }\StringTok{"10"}\NormalTok{, }\StringTok{"11"}\NormalTok{, }\StringTok{"12"}\NormalTok{ ) );}
+\DocumentationTok{\#\# plot length distribution {-}{-}}
+
+\FunctionTok{boxplot}\NormalTok{( Transcript.length..including.UTRs.and.CDS. }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Chromosome.scaffold.name, }
+         \AttributeTok{data =}\NormalTok{ mouse.chr\_10\_12, }\AttributeTok{las =} \DecValTok{2}\NormalTok{ );}
+\end{Highlighting}
+\end{Shaded}
+
 But when you delete the useless \texttt{level} using these commands:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mouse.chr\_10\_12}\SpecialCharTok{$}\NormalTok{Chromosome.scaffold.name }\OtherTok{=}
-  \FunctionTok{droplevels}\NormalTok{(mouse.chr\_10\_12}\SpecialCharTok{$}\NormalTok{Chromosome.scaffold.name)}
+\NormalTok{mouse.chr\_10\_12}\SpecialCharTok{$$}\NormalTok{Chromosome.scaffold.name }\OtherTok{=}
+  \FunctionTok{droplevels}\NormalTok{(mouse.chr\_10\_12}\SpecialCharTok{$$}\NormalTok{Chromosome.scaffold.name)}
+\FunctionTok{levels}\NormalTok{( mouse.chr\_10\_12}\SpecialCharTok{$$}\NormalTok{Chromosome.scaffold.name )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1574,7 +2059,7 @@ You will see that:
 
 Then, you'll get the plot like this:
 
-\includegraphics{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png}
+\includegraphics[width=0.8\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot02.png}
 
 \emph{Source code:}
 
@@ -1596,7 +2081,8 @@ Then, you'll get the plot like this:
 \end{Highlighting}
 \end{Shaded}
 
-You can also use \texttt{tibble} to solve these problems:
+You can also use \texttt{tibble} to solve these problems:完全不用担心
+factor 的问题 ...
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1632,7 +2118,7 @@ You can also use \texttt{tibble} to solve these problems:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.5\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png}
+\includegraphics[width=0.8\textwidth]{/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa Study Materials/Grade 2 I/Learning/R for Data Science/Review of R/markdown/image/mouse_gene_plot03.png}
 
 \hypertarget{advance-usage}{%
 \subsubsection{Advance usage}\label{advance-usage}}
@@ -1640,6 +2126,15 @@ You can also use \texttt{tibble} to solve these problems:
 \begin{itemize}
 \item
   Use \texttt{reorder()} function to reorder the level.
+\item
+  \texttt{reorder()} 函数在 R
+  语言中通常用于改变因子（factor）水平的顺序。这对于数据可视化非常有用，特别是当你使用
+  ggplot2 包绘图时。在 ggplot2 中，\texttt{reorder()}
+  可以帮助你重新安排条形图、箱形图等的顺序。
+
+  函数的基本用法是 \texttt{reorder(x,\ ...)}，其中 \texttt{x}
+  是你想要重新排序的因子，而 \texttt{...}
+  是额外的参数和方法，用于确定新的排序。最常见的用法是根据另一个变量的某种统计度量（如平均值、中位数等）来排序。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1650,9 +2145,6 @@ You can also use \texttt{tibble} to solve these problems:
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-\end{itemize}
-
-\begin{itemize}
 \item
   Use \texttt{forcats::fct\_reorder()} to reorder factors
 
@@ -1665,6 +2157,109 @@ You can also use \texttt{tibble} to solve these problems:
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+\end{itemize}
+
+\hypertarget{ux4e00ux4e9bux52d8ux8bef}{%
+\section{一些勘误}\label{ux4e00ux4e9bux52d8ux8bef}}
+
+\hypertarget{vector-ux548c-factor-ux6709ux4ec0ux4e48ux533aux522b}{%
+\subsection{vector 和 factor
+有什么区别？}\label{vector-ux548c-factor-ux6709ux4ec0ux4e48ux533aux522b}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{向量 (Vector)}：
+
+  \begin{itemize}
+  \item
+    \textbf{概念}：向量是 R
+    中最基本的数据类型之一，用于存储相同类型的数据元素（如数值、字符或逻辑值）的序列。
+  \item
+    \textbf{类型}：向量可以是数值型（numeric），字符型（character），逻辑型（logical）等。
+  \item
+    \textbf{用途}：向量用于存储和操作数据集中的实际值。例如，一个存储温度读数或城市名称的序列。
+  \end{itemize}
+\item
+  \textbf{因子 (Factor)}：
+
+  \begin{itemize}
+  \item
+    \textbf{概念}：因子是用于表示分类数据的数据类型。它类似于枚举类型，用于表示有限的、通常是预定义的值集合。
+  \item
+    \textbf{水平}：因子的值被称为水平（levels），这些水平代表了分类变量的可能值。
+  \item
+    \textbf{用途}：因子主要用于统计建模和图形表示中，用于处理分类数据。例如，在绘制条形图时，条形的类别就是由因子类型的变量确定的。
+  \end{itemize}
+\end{enumerate}
+
+区别：
+
+\begin{itemize}
+\item
+  \textbf{数据类型}：向量直接存储值，而因子存储的是分类水平。
+\item
+  \textbf{用途}：向量用于表示一系列的值，而因子用于表示分类或分组。
+\item
+  \textbf{统计分析}：在进行统计分析时，因子用于指定数据的分类属性。例如，在回归分析中，因子可以用于指定自变量的分类。
+\end{itemize}
+
+\hypertarget{dataframe-ux4e0e-tibble-ux7684ux533aux522b}{%
+\subsection{data.frame 与 tibble
+的区别}\label{dataframe-ux4e0e-tibble-ux7684ux533aux522b}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{data.frame}：
+
+  \begin{itemize}
+  \item
+    \textbf{历史}：\texttt{data.frame} 是 R 语言中最传统的数据集结构，自
+    R 诞生之初就存在。
+  \item
+    \textbf{特性}：它是一个表格型数据结构，每列可以包含不同类型的数据（数值型、字符型等），但每列数据类型必须一致。
+  \item
+    \textbf{行为}：在某些操作中，\texttt{data.frame}
+    可能会自动将字符串转换为因子（这取决于 \texttt{stringsAsFactors}
+    的默认设置）。
+  \item
+    \textbf{使用}：\texttt{data.frame} 在所有标准的 R
+    函数和包中广泛支持。
+  \end{itemize}
+\item
+  \textbf{tibble}：
+
+  \begin{itemize}
+  \item
+    \textbf{历史}：\texttt{tibble} 是相对较新的数据集结构，由
+    \texttt{tidyverse} 生态系统引入，旨在解决 \texttt{data.frame}
+    的一些局限性。
+  \item
+    \textbf{特性}：\texttt{tibble} 保持了 \texttt{data.frame}
+    的所有基本特性，但添加了一些用户友好的改进，如更好的默认打印方法（显示更多信息，但更易于阅读）。
+  \item
+    \textbf{行为}：\texttt{tibble}
+    不会自动将字符串转换为因子，保留了数据的原始类型。
+  \item
+    \textbf{兼容性}：虽然 \texttt{tibble} 设计用于 \texttt{tidyverse}
+    生态系统，但它也兼容大多数接受 \texttt{data.frame} 的 R 函数。
+  \end{itemize}
+\end{enumerate}
+
+关键区别：
+
+\begin{itemize}
+\item
+  \textbf{因子转换}：\texttt{tibble} 默认不会将字符串自动转换为因子，而
+  \texttt{data.frame} 可能会这样做。
+\item
+  \textbf{打印和查看数据}：\texttt{tibble}
+  提供了更友好的数据打印和查看方式，更适合于大型数据集。
+\item
+  \textbf{设计理念}：\texttt{tibble}
+  是为了更好地适应现代数据分析需求而设计的，尤其是在 \texttt{tidyverse}
+  生态系统中。
 \end{itemize}
 
 \end{document}
