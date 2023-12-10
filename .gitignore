@@ -5,14 +5,10 @@
 # GitHub Page Dependencies 
 # English Version
 markdown/Review of the course “R for Data Science”.md
-markdown/EN/Part 03(Talk 09~ 12).md
-markdown/EN/Part 02(Talk 05~ 08).md
-markdown/EN/Part 01(Talk 01~ 04).md
+markdown/EN/
 # Chinese Version
 markdown/ Review of the course “R for Data Science”_CN.md
-markdown/CN/Part 03(Talk 09~ 12).md
-markdown/CN/Part 02(Talk 05~ 08).md
-markdown/CN/Part 01(Talk 01~ 04).md
+markdown/CN/
 
 # LaTeX Dependencies
 # English Version
@@ -31,7 +27,7 @@ LaTeX/CN/REVIEW_01/texput.log
 PDF/EN/REVIEW_01/REVIEW_01_ignored.pdf
 LaTeX/EN/REVIEW_01/REVIEW_01_ignored.pdf
 # Chinese Version
-PDF/CN/REVIEW_01/REVIEW_01_ignored.pdf
+PDF/CN/REVIEW_01/REVIEW_01_ignored_CN.pdf
 LaTeX/CN/REVIEW_01/REVIEW_01_ignored.pdf
 
 # macOS System Files
