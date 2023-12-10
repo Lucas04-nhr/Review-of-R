@@ -30,6 +30,10 @@ LaTeX/EN/REVIEW_01/REVIEW_01_ignored.pdf
 PDF/CN/REVIEW_01_ignored_CN.pdf
 LaTeX/CN/REVIEW_01/REVIEW_01_ignored.pdf
 
+# Duplicate Image Files
+markdown/CN/image/*
+markdown/EN/image/*
+
 # macOS System Files
 .DS_Store
 docs/.DS_Store
