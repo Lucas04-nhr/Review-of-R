@@ -2,8 +2,6 @@
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
-<font size = 1>**Partically translated by [Rui Zhu @ HUST Life ST](https://github.com/1508324011)**</font>
-
 <font size = 1>**双语版**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
@@ -24,9 +22,11 @@ This section has ~~nothing~~ something to explain :)
 
 ## Install R
 
-Go go ~~<https://mirrors.tuna.tsinghua.edu.cn/CRAN/>~~~~(清华镜像)~~[华科镜像](https://mirrors.hust.edu.cn/CRAN)(https://mirrors.hust.edu.cn/CRAN)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
+Go go <https://mirrors.tuna.tsinghua.edu.cn/CRAN/>
+(清华镜像)，R支持主流的操作系统包括Linux，Windows和MacOS，请根据操作系统下载对应的安装文件。
 
-新版本的Mac OS还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装或者使用`xcode --select install`命令从控制台安装“XCode命令行工具”（体积更小更实用）。
+新版本的Mac OS
+X还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装。
 
 目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍嫌复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R forLinux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
 
