@@ -4,10 +4,10 @@
 
 # GitHub Page Dependencies 
 # English Version
-markdown/Review of the course “R for Data Science”.md
+markdown/ Review of the course “R for Data Science”.md
 markdown/EN/*
 # Chinese Version
-markdown/Review of the course “R for Data Science”_CN.md
+markdown/ Review of the course “R for Data Science”_CN.md
 markdown/CN/*
 
 # LaTeX Dependencies
