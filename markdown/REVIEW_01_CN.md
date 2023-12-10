@@ -28,7 +28,7 @@ Go go ~~<https://mirrors.tuna.tsinghua.edu.cn/CRAN/>~~~~(清华镜像)~~[华科�
 
 新版本的Mac OS还需要安装XQuartz(<http://xquartz.macosforge.org/landing/>)。某些还需要用到Xcode，可以从AppStore免费安装或者使用`xcode --select install`命令从控制台安装“XCode命令行工具”（体积更小更实用）。
 
-目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍显复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R for Linux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
+目前大多Linux发行版都带有R，因此可直接使用。从CRAN下载文件进行安装稍嫌复杂，要求用户对Linux系统有一定的了解，而且需要有管理员权限。建议初级用户在Linux高手指导下安装。点击"Download R forLinux"后，发行版为Redhat（红帽）或Suse的用户要先阅读网站上提供的readme或readme.html文件，然后其中的指示进行安装。这里就不再累述了。
 
 ## R studio
 
@@ -438,6 +438,8 @@ data2 =
 
 Create the "table header" first, then populate the `data.frame`
 
+先创建"表头"，再填充
+
 ```R
 df2 =
 	data.frame( 
@@ -466,6 +468,22 @@ df2 =
       z = 4.4 
     ) 
   )
+
+df2
+  x y   z
+1 a 1 2.2
+2 b 2 4.4
+
+m <- cbind(1, 1:7) ; ## 产生两列数据 7行数据 .. 
+( m <- cbind(m, 8:14) ); ## 增加一列 也有7行数据 ... 
+     [,1] [,2] [,3]
+[1,]    1    1    8
+[2,]    1    2    9
+[3,]    1    3   10
+[4,]    1    4   11
+[5,]    1    5   12
+[6,]    1    6   13
+[7,]    1    7   14
 ```
 
 **ATTENTION**
@@ -480,9 +498,11 @@ You can also use these functions to bind several data.frames.
 
 `tibble` is kind of similar to `data.frame`.
 
+**注**：Tibble class 是 data.frame 的升级版本；
+
 ### Make new `tibble`
 
-`tibble` related functionality is provided by the `tibble` or `tidiverse` packages.
+`tibble`相关功能由`tibble`或`tidiverse`包提供
 
 Almost all of the functions that you’ll use in this book produce tibbles, as tibbles are one of the unifying features of the tidyverse. Most other R packages use regular data frames, so you might want to coerce a data frame to a tibble. You can do that with `as_tibble()`:
 
@@ -500,7 +520,13 @@ as_tibble(iris)
 #> # ℹ 144 more rows
 ```
 
-Another way to create a tibble is with `tribble()`, short for **tr**ansposed tibble. `tribble()` is customised for data entry in code: column headings are defined by formulas (i.e. they start with `~`), and entries are separated by commas. This makes it possible to lay out small amounts of data in easy to read form.
+Another way to create a tibble is with `tribble()`, short for **tr**ansposed tibble. `tribble()` is customised for data entry in code: 列标题由公式定义（即以“~”开头），条目由逗号分隔。这使得以易于阅读的形式布置少量数据成为可能。
+
+也可以用 tibble 函数创建
+
+-   注意每列的数据类型
+-   长度不足时，比如**data2**列，会循环使用
+-   `sample()`函数的用法
 
 ```R
 tribble(
@@ -514,10 +540,80 @@ tribble(
 #>   <chr> <dbl> <dbl>
 #> 1 a         2   3.6
 #> 2 b         1   8.5
+
+## 用 tibble 函数创建，用法和 data.frame() 相似
+dat <- 
+  tibble( data = sample( 1:100, 10 ), 
+        group = sample( LETTERS[1:3], 10, replace = TRUE), 
+        data2 = 0.1 )
+# A tibble: 10 × 3
+    data group data2
+   <int> <chr> <dbl>
+ 1    86 A       0.1
+ 2    41 B       0.1
+ 3    72 B       0.1
+ 4    68 C       0.1
+ 5    10 A       0.1
+ 6    99 B       0.1
+ 7    66 B       0.1
+ 8    33 B       0.1
+ 9    81 A       0.1
+10    42 C       0.1
 ```
 
 - `add_row()`
 - `add_column()`
+
+```{r}
+## 新tibble, with defined columns ... 创建表头 
+tb <- tibble( x = character(), y = integer(), z = double() );
+dim(tb);
+
+## 增加行 ... 
+tb <- add_row( tb, x = "a", y = 2, z = 3.6  );
+tb <- add_row( tb, x = "b", y = 1, z = 8.5  );
+
+## 显示 
+tb;
+
+## 生成一个 tibble 
+df <- tibble(x = 1:3, y = 3:1);
+
+# 在第二行之前插入
+df <- add_row(df, x = 4, y = 0, .before = 2);
+
+## 插入多行 
+df <- add_row(df, x = 4:5, y = 0:-1);
+
+## 插入另一个tibble （与另一个tibble合并） 
+df2 <- tibble( x = as.double(200:202), y = as.double(1000:1002) );
+df3 <- add_row( df, df2 ); ## 可以运行 ... 
+
+tb3 <- tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+);
+
+tb3 <- add_column( tb3, a = 98 ); ## recycle ... 
+tb3 <- add_column( tb3, b = LETTERS[1:2], c = c("CHEN", "WANG") ); 
+```
+
+### tibble元素替换
+
+```{r eval=FALSE}
+## 取得行
+tb3[c(1,2), ];
+
+## 取得列，按顺序取列
+tb3[, c("z", "y")];
+
+## 替换列 
+tb3[["z"]] <- c(4.6, 5.5);
+
+## 替换行 
+tb3[ 1, ] <- tibble( x = "d", y = 20, z = 46, a = 10, b = "C", c = "LILI" );
+```
 
 ### Manipulate the tibble
 
@@ -537,7 +633,7 @@ as.data.frame(head(as_tibble(iris)))
 
 ## Differences between tibble and data.frame
 
-### Tibble evaluates columns sequentially
+### Tibble 按顺序计算列
 
 ```R
 rm(x,y) # Delete possible x, y
@@ -546,6 +642,8 @@ data.frame(x = 1:5, y = x ˆ 2); # But data.frame doesn't work.
 ```
 
 ### `data.frame` causes trouble when fetching `subset` operations
+
+取子集成vector
 
 ```R
 df1 =
@@ -562,21 +660,25 @@ class(df1[, 1]) # The result is a vector ...
 ## Tibble doesn't.
 df2 =
 	tibble(x = 1:3, y = 3:1)
-class(df2[, 1]) ## Tibble forever
+class(df2[, 1]) ## 永远都是 tibble 
 
 #> [1] "tbl_df" "tbl" "data.frame"
 ```
 
 ###  `tibble` allows controlled data type conversion
 
-> There’s no proper example here.
->
-> :_(
+```{r}
+class(df2[[1]]); ## 取一列，转换为 vector 
+class(df2$x); ## 用 [[]] 或 $ 都可以哦
+
+[1] "numeric"
+[1] "numeric"
+```
 
 ### Recycling
 
 ```R
-data.frame(a = 1:6, b = LETTERS[1:2]) # data.frame CAN!!!
+data.frame(a = 1:6, b = LETTERS[1:2]); ##  data.frame 可以！！！
 ```
 
 **OUTPUT**
@@ -592,7 +694,7 @@ data.frame(a = 1:6, b = LETTERS[1:2]) # data.frame CAN!!!
 ```
 
 ```R
-tibble(a = 1:6, b = LETTERS[1:2]); ## But tibble CAN'T!!!
+tibble(a = 1:6, b = LETTERS[1:2]); ## 但 tibble 不行！！！
 ```
 
 **OUTPUT**
@@ -606,7 +708,7 @@ tibble(a = 1:6, b = LETTERS[1:2]); ## But tibble CAN'T!!!
 
 <font color = red><font size = 5>**ATTENTION!**</font></font>
 
-<font color = red>**The recycling of `tibble` is limited to lengths of 1 or equal; `data.frame` is just divisible.**</font>
+`tibble`的 recycling 仅限于长度为1或等长；而 `data.frame` 则为整除即可。
 
 ### `data.frame` will do partial matching, while `tibble` will <font color = red><font size = 5>**NEVER**</font></font> do it.
 
@@ -621,8 +723,8 @@ df2$a; # Produce a warning and return NULL
 **OUTPUT**
 
 ```shell
-# Warning: Unknown or uninitialised column: `a`. 
-# NULL
+#[1] 1
+#Warning: Unknown or uninitialised column: `a`. NULL
 ```
 
 ## Advanced tips for using `data.frame` and `tibble`
@@ -634,11 +736,11 @@ df2$a; # Produce a warning and return NULL
 
 > Following is the introduction (Produced by ChatGPT)
 
-These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredibly useful when working with data frames or tibbles in R, aiding in smoother workflows and code readability. Here's a breakdown of their functionality:
+这些函数——``attach（）``、``detach（）``、``with（）``和``within（）``——在处理R中的数据帧或tibble时非常有用，有助于更流畅的工作流和代码可读性。下面是它们的功能分解：
 
 ### `attach()` and `detach()`
 
-- **Purpose**: These functions allow you to temporarily attach a data frame to the search path, making its columns directly accessible by their names.
+- **Purpose**: 这些函数允许您将data.frame临时附加到搜索路径上，使其列可以通过名称直接访问。
 - **Usage**:
   - `attach(df)` attaches the specified data frame `df`.
   - `detach(df)` detaches the specified data frame `df`.
@@ -654,12 +756,13 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
   
   detach(mtcars) # Detaching mtcars
   ```
-- **Note**: While convenient, using `attach()` can sometimes lead to confusion or unintended consequences, such as masking variables in your environment. It's often recommended to avoid using `attach()` due to potential side effects.
+- **Note**: 虽然使用``attach（）``很方便，但有时会导致混乱或意外的后果，例如屏蔽环境中的变量。由于潜在的副作用，通常建议避免使用``attach（）``。
 
 ### `with()`
 
-- **Purpose**: `with()` allows you to execute expressions in an environment where the data frame's columns can be referenced without using `$`.
+- **Purpose**: `with()` 允许您在不使用`$`的情况下引用数据框架的列的环境中执行表达式。
 - **Usage**:
+  
   - `with(data, expr)` evaluates `expr` in the context of the specified data frame `data`.
 - **Example**:
   ```R
@@ -670,12 +773,13 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
     summary(cyl)
     })
   ```
-- **Advantage**: It helps avoid repetitive use of the data frame name while working with its columns.
+- **Advantage**:它有助于避免在处理其列时重复使用数据框架名称。
 
 ### `within()`
 
-- **Purpose**: Similar to `with()`, `within()` allows modification of a data frame by evaluating expressions within it.
+- **Purpose**: Similar to `with()`, `within()` allows modification of a data frame by计算其中的表达式。
 - **Usage**:
+  
   - `within(data, expr)` modifies `data` according to `expr` and returns the modified data frame.
 - **Example**:
   ```R
@@ -687,7 +791,7 @@ These functions—`attach()`, `detach()`, `with()`, and `within()`—are incredi
     })
   head(modified_mtcars) # Checking the modified data frame
   ```
-- **Advantage**: `within()` is useful when you want to create or modify columns within the data frame without having to repeatedly refer to the data frame name.
+- **Advantage**: `within()` 非常有用，当你想创建或修改数据框架内的列时不必重复引用数据框架名称。
 
 Remember, while these functions can streamline your code, it's crucial to use them judiciously to avoid unexpected behavior or cluttering your global environment.
 
@@ -806,7 +910,7 @@ Use the following functions to write object(s) to external files:
 >
 > More related documents can be found in this [link](https://r4ds.had.co.nz/data-import.html?q=file#writing-to-a-file).
 
-- Comma delimited file: 
+- Comma delimited file: 逗号分隔文件
 
 	```R
 	write_csv(
@@ -818,7 +922,7 @@ Use the following functions to write object(s) to external files:
 	) 
 	```
 
-- File with arbitrary delimiter: 
+- File with arbitrary delimiter: 带有任意分隔符的文件
 
 	```R
 	write_delim(
@@ -912,6 +1016,8 @@ Each RStudio session is automatically associated with a R session
 > Not only RStudio, PyCharm or VSCode also support R session.
 >
 > However, I’m keen on coding with PyCharm but not RStudio, for its wonderful Plug-in Environment, which can let me use plug-ins such as Code GeeX by Zhipu AI (a company founded by some student in KEG team inTsinghua University) or GitHub Copilot by GitHub to let the coding process more quickly, for the instruction from GPTs.
+>
+> tips: Rstudio最新版也支持  Github Copliot, 可以在 options 内设置
 
 <img src="./image/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
 
@@ -947,14 +1053,16 @@ For instruction how to get FREE Student Lisence of GitHub Pro, GitHub Copilot an
 
 ### Working Space
 
-Current workspace, including all loaded data, packets and homebrew functions.
+当前工作空间，包括所有已装入的数据、包和自制函数
 
-Variables can be managed with the following code:
+可通过以下代码管理变量
 
 ```R
-ls() # Show all the variables in current workspace/session
-rm(x) # Remove a variable
-rm(list = ls()) # Remove ALL variables in current workspace/session
+ls();  ## 显示当前环境下所有变量
+rm( x ); ## 删除一个变量
+ls(); 
+
+##rm(list=ls()); ## 删除当前环境下所有变量！！！ 
 ```
 
 ### Variables in working space in RStudio
@@ -1024,17 +1132,100 @@ load("1.RData")
 
 ## Factors
 
-Factor is a data structure used for fields that takes only predefined, finite number of values (categorical data).
+Factor是一种用于字段的数据结构，它只接受预定义的、有限数量的值（分类数据）。它将限制输入数据的选取。
 
-It will limit the selection of input data.
+```{r}
+## create factor from scratch ... 
+x <- factor( c( "single", "married", "married", "single" ) );
+
+## create factor as it is ... 
+x <- c("single", "married", "married", "single");
+x <- as.factor(x);
+
+## please note the change in the displayed values ... 
+str(x);
+#Factor w/ 2 levels "married","single": 2 1 1 2
+
+#限制输入数据的选择范围
+x[ length(x) + 1 ] <- "widowed";
+#Warning: 因子层次有错，产生了NA
+```
 
 ### Play around with `levels()`
+
+```{r}
+##利用levels解决
+levels(x) <- c(levels(x), "widowed");
+x[ length(x) + 1 ] <- "widowed";
+str(x);
+
+## other ways of assigning factors ... 
+y <-  as.factor( c( "single", "married", "married", "single" ) );
+levels( y );
+levels(y) <- c("single", "married", "widowed");
+str(y);
+## 这个代码现在就没有问题了
+y[ length(y) + 1 ] <- "widowed";
+```
+
+**注意** 用 `as.factor` 创建 factor 时，得到的 levels 按字母表排列；
+
+但是，用 `levels( y )` 方式指定 levels 时，则按照指定的顺序；
+
+#### `levels`的顺序决定了排序的顺序
+
+```{r}
+##
+y <-  as.factor( c( "single", "married", "married", "single" ) );
+levels(y);
+sort(y);
+#[1] "married" "single" 
+#[1] married married single  single Levels: married single
+
+## 
+y2 <- y;
+levels(y2) <- c("single", "married", "widowed");
+sort(y2);
+#[1] single  single  married married Levels: single married widowed
+```
+
+sort data in a meaningful way ... 
+
+```{r}
+## Month
+x1 <- c("Dec", "Apr", "Jan", "Mar");
+sort(x1);
+
+month_levels <- c(
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+)
+
+y1 <- factor(x1, levels = month_levels)
+sort(y1);
+#[1] "Apr" "Dec" "Jan" "Mar"
+#[1] Jan Mar Apr Dec
+#12 Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct ... Dec
+
+## Sometimes you’d prefer that the order of the levels match the order of the first appearance in the data.
+f1 <- factor(x1, levels = unique(x1));
+f1;
+#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar
+
+library(forcats); ## just to make sure the codes will run smoothly ... 
+## you can also use fct_inorder in the forcats package ...
+f2 <- x1 %>% factor() %>% fct_inorder()
+f2
+#[1] Dec Apr Jan Mar Levels: Dec Apr Jan Mar
+```
 
 Here are instructions of modifying factor levels
 
 > Based on the textbook
 
-The levels are terse and inconsistent. Let’s tweak them to be longer and use a parallel construction. Like most rename and recoding functions in the tidyverse, the new values go on the left and the old values go on the right:
+The levels 既简洁又不一致。让我们调整使之更长，并使用一个平行的结构。Like most rename and recoding functions in the tidyverse,新的值在左边，旧的值在右边：
+
+``fct_recode``Change factor levels by hand
 
 ```R
 load(gss_cat)
@@ -1064,7 +1255,7 @@ count(partyid)
 #> # ℹ 4 more rows
 ```
 
-Use this technique with care: if you group together categories that are truly different you will end up with misleading results.
+使用这种技术时要小心：如果你把完全不同的类别组合在一起，你最终会得到误导性的结果。
 
 The order of the `levels` determines the sorting order.
 
@@ -1075,8 +1266,8 @@ The order of the `levels` determines the sorting order.
 Suppose I have a set of gender data that is written in a very irregular way:
 
 ```R
-gender =
-	c("f", "m ", "male ","male", "female", "FEMALE", "Male", "f", "m")
+## 假设我有一组性别数据，其写法非常不规整；
+gender <- c("f", "m ", "male ","male", "female", "FEMALE", "Male", "f", "m");
 
 gender_fct =
   as.factor(gender)
@@ -1091,6 +1282,7 @@ The output looks like this:
 Now I request to replace with Female, Male.
 
 ```R
+## 要求：都改为 Female, Male
 gender_fct =
   fct_collapse(
     gender,
@@ -1117,9 +1309,10 @@ fct_relabel(
 )
 ```
 
-### Usage of factors in drawing plots
+### factor 在做图中的应用（**真正精髓**）
 
 ```R
+## 一项 mock 调查结果数据
 library(ggplot2)
 
 responses =
@@ -1137,7 +1330,7 @@ response_barplot =
 
 <img src="./image/response_barplot.png" alt="response_barplot" style="zoom:24%;" />
 
-By default, `factor` is sorted alphabetically.
+默认情况下， factor 按字母表排序： Agree -> Disagree -> Strong Agree 。ggplot2 也会按factor的排序作图
 
  `ggplot2` also plots `factor` in that order, so you can adjust the `factor` to adjust the drawing order.
 
@@ -1149,7 +1342,8 @@ res$res =
   factor(
     res$res,
     levels =
-       c("Strongly Agree", "Agree", "Disagree")
+       c("Strongly Agree", "Agree", "Disagree"),
+    ordered = T
   )
 
 response_barplot2 =
@@ -1158,7 +1352,7 @@ response_barplot2 =
     aes(x = res)
   ) +
   geom_bar() +
-  xlab("Response")
+  xlab("Response")+ ylab("Count")
 ```
 
 <img src="./image/response_barplot2.png" alt="response_barplot2" style="zoom:24%;" />
@@ -1171,6 +1365,7 @@ responses =
     c("Agree", "Agree", "Strongly Agree", "Disagree", "Disagree", "Agree"),
     ordered = TRUE
   )
+is.ordered( responses )
 ```
 
 <img src="./image/image-20231202134409231.png" alt="image-20231202134409231" style="zoom:50%;" />
@@ -1179,7 +1374,7 @@ responses =
 
 You can use `recode()` in `dplyr` package to change `value`
 
-`dplyr` is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+`dplyr` 是一种数据操作的语法，提供了一组一致的动词 that help you solve the most common data manipulation challenges:
 
 + `mutate()` adds new variables that are functions of existing variables
 + `select()` picks variables based on their names.
@@ -1192,6 +1387,8 @@ These all combine naturally with `group_by()` which allows you to perform any op
 > Based on the introduction on the [official website](https://dplyr.tidyverse.org) of `dplyr`.
 
 Here’s an example:
+
+使用 ```dplyr``` 包的 ```recode()```函数改变 value 
 
 ```R
 x =
@@ -1229,11 +1426,22 @@ If you draw a plot without deleting the useless `levels`, you will get this resu
 
 <img src="./image/mouse_gene_plot01.png" alt="mouse_gene_plot01.png" style="zoom:50%;" />
 
+```subset()``` 无法去除不用的 factors ... 
+
+```{r fig.width=10, fig.height=4}
+mouse.chr_10_12 <- subset( mouse.genes,  Chromosome.scaffold.name %in% c( "10", "11", "12" ) );
+## plot length distribution --
+
+boxplot( Transcript.length..including.UTRs.and.CDS. ~ Chromosome.scaffold.name, 
+         data = mouse.chr_10_12, las = 2 );
+```
+
 But when you delete the useless `level` using these commands:
 
 ```R
 mouse.chr_10_12$Chromosome.scaffold.name =
   droplevels(mouse.chr_10_12$Chromosome.scaffold.name)
+levels( mouse.chr_10_12$Chromosome.scaffold.name )
 ```
 
 You will see that:
@@ -1262,7 +1470,7 @@ mouse_gene_plot02 =
   )
 ```
 
-You can also use `tibble` to solve these problems:
+You can also use `tibble` to solve these problems:完全不用担心 factor 的问题 ... 
 
 ```R
 mouse.tibble =
@@ -1302,13 +1510,17 @@ mouse_gene_plot03 =
 
 - Use `reorder()` function to reorder the level.
 
-	```R
-	x = reorder( 
-	  `Chromosome/scaffold name`,
-	  `Transcript length (including UTRs and CDS)`,
-	  median
-	)
-	```
+- `reorder()` 函数在 R 语言中通常用于改变因子（factor）水平的顺序。这对于数据可视化非常有用，特别是当你使用 ggplot2 包绘图时。在 ggplot2 中，`reorder()` 可以帮助你重新安排条形图、箱形图等的顺序。
+
+  函数的基本用法是 `reorder(x, ...)`，其中 `x` 是你想要重新排序的因子，而 `...` 是额外的参数和方法，用于确定新的排序。最常见的用法是根据另一个变量的某种统计度量（如平均值、中位数等）来排序。
+
+  ```R
+  x = reorder( 
+    `Chromosome/scaffold name`,
+    `Transcript length (including UTRs and CDS)`,
+    median
+  )
+  ```
 
 - Use `forcats::fct_reorder()` to reorder factors
 
