@@ -12,13 +12,12 @@
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
 >
-> The book updated to 2^nd^ ed. on July,2023, here’ s a [link](https://r4ds.hadley.nz) to the official website.
+> The book updated to 2nd ed. on July,2023, here’ s a [link](https://r4ds.hadley.nz) to the official website.
 
-<center>
-  **You can find Chinese-translated README file [here](./README_CN.md).**
-</center>
+**You can find Chinese-translated README file [here](./README_CN.md).**
 
-**Note: **The purpose of this material **not only **to deal with the "R for Data Science" course final exam, or in the subsequent learning process need to use the R language to deal with data and draw images of one of the effective reference materials, so generate a lot of versions of many formats of the file, to facilitate the user to different conditions on different devices to view more easily. Therefore, many versions and formats of files have been generated to make it easier for users to view them under *different conditions* and on *different devices*. If you think this project is helpful to your R language learning and usage, welcome to click on **"Star"** and **follow** me, also welcome anyone to submit bug reports through "issue" and participate in cooperation through **"Pull Request"**. 
+
+**Note:** The purpose of this material **not only** to deal with the "R for Data Science" course final exam, or in the subsequent learning process need to use the R language to deal with data and draw images of one of the effective reference materials, so generate a lot of versions of many formats of the file, to facilitate the user to different conditions on different devices to view more easily. Therefore, many versions and formats of files have been generated to make it easier for users to view them under *different conditions* and on *different devices*. If you think this project is helpful to your R language learning and usage, welcome to click on **"Star"** and **follow** me, also welcome anyone to submit bug reports through "issue" and participate in cooperation through **"Pull Request"**. 
 
 We would like to express our sincere gratitude to the users who participated in the co-construction or provided constructive suggestions (in the order of the time they made the suggestions or participated in the co-construction):
 
