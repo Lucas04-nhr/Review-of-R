@@ -2,6 +2,9 @@
 .idea
 /scripts/.idea
 
+# Script Files
+/scripts/*.R
+
 # GitHub Page Dependencies 
 # English Version
 markdown/ Review of the course “R for Data Science”.md
