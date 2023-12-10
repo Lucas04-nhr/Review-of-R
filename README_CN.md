@@ -8,9 +8,9 @@
   <img src="https://img.shields.io/github/deployments/lucas04-nhr/Review-of-R/github-pages?label=GitHub%20Pages" alt="GitHub Pages Status" href="https://github.com/lucas04-nhr/Review-of-R/deployments"/>
 </center>
 
-<center>
+
   **你可以在[这里](./README.md)找到README文件的原始英文版本。**
-</center>
+
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
