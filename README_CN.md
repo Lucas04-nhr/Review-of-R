@@ -8,23 +8,23 @@
   <img src="https://img.shields.io/github/deployments/lucas04-nhr/Review-of-R/github-pages?label=GitHub%20Pages" alt="GitHub Pages Status" href="https://github.com/lucas04-nhr/Review-of-R/deployments"/>
 </center>
 
-<font size = 1>**By Haoran Nie @ HUST Life ST**</font>
-
-> Reference: [R for Data Science](https://r4ds.had.co.nz)
->
-> The book updated to 2^nd^ ed. on July,2023, here’ s a [link](https://r4ds.hadley.nz) to the official website.
-
 <center>
-  **You can find Chinese-translated README file [here](./README_CN.md).**
+  **你可以在[这里](./README.md)找到README文件的原始英文版本。**
 </center>
 
-**Note: **The purpose of this material **not only **to deal with the "R for Data Science" course final exam, or in the subsequent learning process need to use the R language to deal with data and draw images of one of the effective reference materials, so generate a lot of versions of many formats of the file, to facilitate the user to different conditions on different devices to view more easily. Therefore, many versions and formats of files have been generated to make it easier for users to view them under *different conditions* and on *different devices*. If you think this project is helpful to your R language learning and usage, welcome to click on **"Star"** and **follow** me, also welcome anyone to submit bug reports through "issue" and participate in cooperation through **"Pull Request"**. 
+<font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
-We would like to express our sincere gratitude to the users who participated in the co-construction or provided constructive suggestions (in the order of the time they made the suggestions or participated in the co-construction):
+> 参考资料: [R for Data Science](https://r4ds.had.co.nz)
+>
+> 此书在2023年7月更新到了第2版，这是指向官方网站的[链接](https://r4ds.hadley.nz)。
+
+**注：**本资料的目的**不仅仅是**应对"R for Data Science"课程的期末考试，还是在后续学习过程中需要使用R语言处理数据和绘制图像的有效参考资料之一，因此，生成了许多版本和格式的文件，以方便用户在*不同的条件*和*不同的设备*上查看。如果您认为本项目对您的R语言学习和使用有所帮助，欢迎点击**"Star"** 并**关注**我，也欢迎任何人通过 "issue"提交错误报告，通过**"Pull Request"**参与合作。
+
+在此，我们向参与共建或提供建设性建议的用户表示衷心的感谢（按提出建议或参与共建的时间顺序排列）：
 
 - [Rui Zhu](https://github.com/1508324011)
 - [Tianhao Wang](https://github.com/lwstkhyl)
 
-You can also contact me via QQ or email(lucas04@126.com). 
+你同样可以通过QQ或者邮箱(lucas04@126.com)联系我。
 
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
