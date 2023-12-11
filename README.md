@@ -34,8 +34,7 @@ If you like my work, you can buy me a coffee if you like~
 
 **Payments greater than ￥10.00 will be listed in the Acknowledgement section of the README as an expression of gratitude**
 
-<center>
-  <img src="./image/WeChat.jpg" alt="WeChat" style="zoom:25%;" />
-  <img src="./image/Alipay.jpg" alt="Alipay" style="zoom:25%;" />
-</center>
+Payment method:
 
+- [WeChat](./image/WeChat.jpg)
+- [Alipay](./image/Alipay.jpg)
