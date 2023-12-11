@@ -16,6 +16,8 @@
 
 ---
 
+To reduce the size, all the codes listed will ***NOT*** include the output as picture.
+
 # R for bioinformatics, data wrangler, part 1
 
 > Talk 05
@@ -51,10 +53,6 @@ a =
 cor.test(a$Fertility, a$Education)
 ```
 
-<img src="./image/image-20231209213659145.png" alt="image-20231209213659145" style="zoom: 33%;" />
-
-<img src="./image/image-20231209213728898.png" alt="image-20231209213728898" style="zoom: 33%;" />
-
 The code above can be replaced by:
 
 ```R
@@ -62,8 +60,6 @@ swiss %>%
   subset(., Fertility > 20) %$%
   cor.test(Education, Fertility)
 ```
-
-<img src="./image/image-20231209214149857.png" alt="image-20231209214149857" style="zoom: 33%;" />
 
 You should remember that almost **all** the funtions support pipe.
 
@@ -127,8 +123,6 @@ chr.stats =
     arrange(-n)
 ```
 
-<center><img src="./image/image-20231209222857569.png" alt="image-20231209222857569" style="zoom:33%;" /><img src="./image/image-20231209222926915.png" alt="image-20231209222926915" style="zoom: 33%;" /></center>
-
 ---
 
 # R for bioinformatics, data wrangler, part 2
@@ -147,6 +141,117 @@ chr.stats =
 -   `pivot_wider()`  to take the place of `spread`
 
 ## Data Wrangler - `tidyr`
+
+You can get `tidyr` in the package set `tidyverse`, or simply install it the first time you want to use it via `install.packages("tidyr")`.
+
+### The usage of `tidyr`
+
+- Interconversion of wide and long data
+
+	```R
+	# Eg 1
+	library(tidyverse)
+	grades2 =
+		read_tsv(file = "data/grades2.txt")
+	
+	grades3 =
+		grades2 %>% 
+		pivot_longer( 
+	    - name,
+	    names_to = "course",
+	    values_to = "grade"
+	  )
+	```
+
+	```R
+	# Eg 2
+	grades3_wide = grades3_long %>% 
+	  pivot_wider(
+	    names_from = "course",
+	    values_from = "grade"
+	  )
+	```
+
+	
+
+### What’s the difference between wide and long data?
+
+Here are pros and cons of wide data:
+
+- Pros:
+	- Natural and easy to understand;
+- Cons：
+	-    Not easy to handle;
+	-    More problematic when sparse.
+
+### If you meet `NA` in the 1st example, you can do like this:
+
+```R
+grades3_1 =
+	grades3[!is.na(grades3$grade), ]
+grades3_2 =
+	grades3[complete.cases(grades3), ]
+
+# A better solution
+grades3_long = grades2 %>% 
+  pivot_longer( - name, 
+                names_to = "course", 
+                values_to = "grade",
+                values_drop_na = TRUE)
+
+# Pay attention to the variant named "values_drop_na"
+```
+
+### More functions in `tidyr`: (See @ https://r4ds.hadley.nz/data-tidy.html)
+
+- `tidyr::separate()`
+
+	**Usage:**
+
+	```R
+	separate(
+	  data,
+	  col,
+	  into,
+	  sep = "[^[:alnum:]]+",
+	  remove = TRUE,
+	  convert = FALSE,
+	  extra = "warn",
+	  fill = "warn",
+	  ...
+	)
+	
+	# Default parameters are listed.
+	```
+
+- `tidyr::unite()`
+
+	**Usage:**
+
+	```R
+	unite(
+	  data,
+	  col, 
+	  ..., 
+	  sep = "_", 
+	  remove = TRUE, 
+	  na.rm = FALSE
+	)
+	
+	# Default parameters are listed.
+	```
+
+	---
+
+# R for bioinformatics, Strings and regular expression
+
+> Talk 07
+>
+> View the original slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk07.pdf).
+>
+> View the original R markdown file of the slide through [this link](https://github.com/Lucas04-nhr/R-for-Data-Science/blob/main/talk07.Rmd).
+
+## TOC
 
 
 
