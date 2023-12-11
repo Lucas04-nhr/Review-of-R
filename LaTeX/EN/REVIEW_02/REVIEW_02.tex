@@ -426,7 +426,7 @@ this:}{If you meet NA in the 1st example, you can do like this:}}\label{if-you-m
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{**Usage:**}
+\NormalTok{Usage:}
 
 \NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}R}
 \NormalTok{separate(}
@@ -453,7 +453,7 @@ this:}{If you meet NA in the 1st example, you can do like this:}}\label{if-you-m
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{**Usage:**}
+\NormalTok{Usage:}
 
 \NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}R}
 \NormalTok{unite(}
@@ -1366,7 +1366,7 @@ compute the summary, then extract the R\textsuperscript{2}.
 \FunctionTok{library}\NormalTok{(purrr)}
 
 \NormalTok{mtcars }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{split}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{cyl) }\SpecialCharTok{|\textgreater{}}  \CommentTok{\# from base R}
+  \FunctionTok{split}\NormalTok{(mtcars}\SpecialCharTok{\$}\NormalTok{cyl) }\SpecialCharTok{|\textgreater{}}  \CommentTok{\# from base R}
   \FunctionTok{map}\NormalTok{(\textbackslash{}(df) }\FunctionTok{lm}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ wt, }\AttributeTok{data =}\NormalTok{ df)) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{map}\NormalTok{(summary) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{map\_dbl}\NormalTok{(}\StringTok{"r.squared"}\NormalTok{)}
@@ -1519,11 +1519,11 @@ Here are some specific functionalities and examples of \texttt{purrr}:
 
 \NormalTok{ squared}
  \CommentTok{\# Output: List of 5}
- \CommentTok{\# $ : int 1}
- \CommentTok{\# $ : int 4}
- \CommentTok{\# $ : int 9}
- \CommentTok{\# $ : int 16}
- \CommentTok{\# $ : int 25}
+ \CommentTok{\# \$ : int 1}
+ \CommentTok{\# \$ : int 4}
+ \CommentTok{\# \$ : int 9}
+ \CommentTok{\# \$ : int 16}
+ \CommentTok{\# \$ : int 25}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -1541,11 +1541,11 @@ Here are some specific functionalities and examples of \texttt{purrr}:
 
 \NormalTok{ product}
  \CommentTok{\# Output: List of 5}
- \CommentTok{\# $ : int 6}
- \CommentTok{\# $ : int 14}
- \CommentTok{\# $ : int 24}
- \CommentTok{\# $ : int 36}
- \CommentTok{\# $ : int 50}
+ \CommentTok{\# \$ : int 6}
+ \CommentTok{\# \$ : int 14}
+ \CommentTok{\# \$ : int 24}
+ \CommentTok{\# \$ : int 36}
+ \CommentTok{\# \$ : int 50}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -1703,7 +1703,7 @@ provide different ways to process sequences of values in R.
 \end{itemize}
 
 \hypertarget{step-by-step-guidance}{%
-\subsection{Step-by-step Guidance}\label{step-by-step-guidance}}
+\subsubsection{Step-by-step Guidance}\label{step-by-step-guidance}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1805,11 +1805,11 @@ especially with large datasets.
 \end{itemize}
 
 \hypertarget{in-the-slide-function-foreach}{%
-\subsection{\texorpdfstring{(in the slide) Function
+\subsubsection{\texorpdfstring{(in the slide) Function
 \texttt{foreach()}}{(in the slide) Function foreach()}}\label{in-the-slide-function-foreach}}
 
 \hypertarget{simple-usage}{%
-\subsubsection{Simple usage}\label{simple-usage}}
+\paragraph{\texorpdfstring{\textbf{Simple usage}}{Simple usage}}\label{simple-usage}}
 
 \hypertarget{description-3}{%
 \paragraph{Description}\label{description-3}}
