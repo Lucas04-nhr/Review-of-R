@@ -33,8 +33,8 @@ If you like my work, you can buy me a coffee if you like~
 
 **付款金额大于10元的将会列在README的Acknowledge一栏中以表示感谢**
 
-<center>
-  <img src="./image/WeChat.jpg" alt="WeChat" style="zoom:25%;" />
-  <img src="./image/Alipay.jpg" alt="Alipay" style="zoom:25%;" />
-</center>
 
+付款方式：
+
+- [微信](./image/WeChat.jpg)
+- [支付宝](./image/Alipay.jpg)
