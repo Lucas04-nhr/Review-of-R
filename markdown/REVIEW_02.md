@@ -917,7 +917,7 @@ Here's an explanation of each:
 - ``` foreach ``` package: provides ``` %do% ``` and ``` %dopar% ``` operators to submit tasks for sequential or parallel computation 
 - ``` iterators `` package: splits ``data.frame, tibble, matrix`` into rows/columns for submitting parallel tasks.
 
-## Step-by-step Guidance
+### Step-by-step Guidance
 
 1. **Prepare Data:**
    
@@ -991,7 +991,7 @@ Replace the `process_chunk()` function with your specific data processing task. 
 - Ensure that your specific data processing task is compatible with parallelization and that the benefits of parallel computing outweigh the overhead of parallelization. 
 - Also, consider potential dependencies or shared resources among iterations when parallelizing computations.
 
-## (in the slide) Function `foreach()`
+### (in the slide) Function `foreach()`
 
 ### Simple usage
 
