@@ -32,7 +32,7 @@ You can also contact me via QQ or email(lucas04@126.com).
 
 If you like my work, you can buy me a coffee if you like~
 
-**Payments greater than ￥10.00 will be listed in the Acknowledgement section of the README as an expression of gratitude**
+**Payments greater than ￥10.00 will be listed in the Acknowledgement section of the README as an expression of gratitude.**
 
 Payment method:
 

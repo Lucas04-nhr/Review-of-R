@@ -18,19 +18,43 @@ LaTeX/EN/REVIEW_01/expl3.tex
 LaTeX/EN/REVIEW_01/ltluatex.tex
 LaTeX/EN/REVIEW_01/.texpadtmp
 LaTeX/EN/REVIEW_01/texput.log
+LaTeX/EN/REVIEW_02/expl3.tex
+LaTeX/EN/REVIEW_02/ltluatex.tex
+LaTeX/EN/REVIEW_02/.texpadtmp
+LaTeX/EN/REVIEW_02/texput.log
+LaTeX/EN/REVIEW_03/expl3.tex
+LaTeX/EN/REVIEW_03/ltluatex.tex
+LaTeX/EN/REVIEW_03/.texpadtmp
+LaTeX/EN/REVIEW_03/texput.log
 # Chinese Version
 LaTeX/CN/REVIEW_01/expl3.tex
 LaTeX/CN/REVIEW_01/ltluatex.tex
 LaTeX/CN/REVIEW_01/.texpadtmp
 LaTeX/CN/REVIEW_01/texput.log
+LaTeX/CN/REVIEW_02/expl3.tex
+LaTeX/CN/REVIEW_02/ltluatex.tex
+LaTeX/CN/REVIEW_02/.texpadtmp
+LaTeX/CN/REVIEW_02/texput.log
+LaTeX/CN/REVIEW_03/expl3.tex
+LaTeX/CN/REVIEW_03/ltluatex.tex
+LaTeX/CN/REVIEW_03/.texpadtmp
+LaTeX/CN/REVIEW_03/texput.log
 
 # PDF Files with Full Permission 
 # English Version
 PDF/EN/REVIEW_01_ignored.pdf
 LaTeX/EN/REVIEW_01/REVIEW_01_ignored.pdf
+PDF/EN/REVIEW_02_ignored.pdf
+LaTeX/EN/REVIEW_02/REVIEW_02_ignored.pdf
+PDF/EN/REVIEW_03_ignored.pdf
+LaTeX/EN/REVIEW_03/REVIEW_03_ignored.pdf
 # Chinese Version
 PDF/CN/REVIEW_01_ignored_CN.pdf
 LaTeX/CN/REVIEW_01/REVIEW_01_ignored.pdf
+PDF/CN/REVIEW_02_ignored_CN.pdf
+LaTeX/CN/REVIEW_02/REVIEW_02_ignored.pdf
+PDF/CN/REVIEW_03_ignored_CN.pdf
+LaTeX/CN/REVIEW_03/REVIEW_03_ignored.pdf
 
 # Duplicate Image Files
 markdown/CN/image/*

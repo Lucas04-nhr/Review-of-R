@@ -31,7 +31,7 @@
 
 If you like my work, you can buy me a coffee if you like~
 
-**付款金额大于10元的将会列在README的Acknowledge一栏中以表示感谢**
+**付款金额大于10元的将会列在README的“感谢”一栏中表示衷心的谢忱。**
 
 
 付款方式：
