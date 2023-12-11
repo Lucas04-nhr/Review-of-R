@@ -26,3 +26,15 @@
 你同样可以通过QQ或者邮箱(lucas04@126.com)联系我。
 
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+
+---
+
+If you like my work, you can buy me a coffee if you like~
+
+**付款金额大于10元的将会列在README的Acknowledge一栏中以表示感谢**
+
+<center>
+  <img src="./image/WeChat.jpg" alt="WeChat" style="zoom:25%;" />
+  <img src="./image/Alipay.jpg" alt="Alipay" style="zoom:25%;" />
+</center>
+
