@@ -1,9 +1,5 @@
 # Review of the course “R for Data Science” Part 02(Talk 05~ 08)
 
-**<font size = 5>Click [here](./index.html) to return to the homepage.</font>**
-
-**<font size = 5>Click [here](./REVIEW_01.html) to return to part 01.</font>**
-
 ---
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
@@ -1548,7 +1544,3 @@ foreach( ... ) %:% {
 Nested `foreach` loops in R allow for flexible and efficient iterations over hierarchical or nested structures, enabling complex computations, data manipulations, or simulations involving multiple levels of nested objects or iterators.
 
 
-
----
-
-**<font size = 5>Click [here](./REVIEW_03.html) to go to part 03.</font>**
