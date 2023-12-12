@@ -1,4 +1,4 @@
-# ![]()Review of the course “R for Data Science” Part 02(Talk 05~ 08)
+# Review of the course “R for Data Science” Part 02(Talk 05~ 08)
 
 **<font size = 5>Click [here](./index.html) to return to the homepage.</font>**
 
