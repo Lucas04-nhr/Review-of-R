@@ -263,43 +263,63 @@ You should know that
 
    ``geom_<name_of_the_layer>``:
 
-- ``` geom_point ``` , ``` geom_line ``` : A point and line plot used to reveal the relationship between two sets of data;
+- ``` geom_point ``` , ``` geom_line ```: 点线图，用于揭示两组数据间的关系；
+* ``` geom_smooth ``` : 常与 ``` geom_point ``` 联合使用，揭示数据走势
+* ``` geom_bar ``` ： bar 图
+* ``` geom_boxplot ``` : 箱线图，用于比较N组数据，揭示区别
+* ``` geom_path ``` : 与``` geom_line ``` 相似，但也可以画其它复杂图形
+* ``` geom_histogram ```, `` geom_density ``` : 数据的分布，也可用于多组间的比较
 
-* ``` geom_smooth ``` : Often used in conjunction with ``` geom_point ``` to reveal the trend of data.
-
-* ``` geom_bar ``` : bar charts
-
-* ``` geom_boxplot ``` : A box plot, used to compare N sets of data, revealing differences.
-
-* ``` geom_path ``` : similar to ``` geom_line ``` but can also draw other complex graphs
-
-* ``` geom_histogram ```, `` geom_density `` : Distribution of data, can also be used to compare multiple groups.
-
-	……
+* ……
 
 3. `scale` - Display Control其它控制函数
 
-	`scale_<property_to _control>_<ways_to_control>`
+	 ```scale_<控制内容>_<控制手段>```，
+	
+	e.g. ```scale_color_manual()```： 以**手选方式** 控制 **颜色**
 
 - ```scale_color_...```
 
-	- `..._gradient()`: use gradient colors for different numbers of variables and their colors.
+	- `..._gradient()`: 为不同数量的变量及其颜色使用渐变色。
 		- `..._gradient2()`
 		- `..._gradientn()`
 
-	- `..._brewer`: use default color palettes.
+	- `..._brewer`: 使用默认调色板。
 
 - ```scale_fill_...```
-	- `colour` defines the colour with which a geom is **outlined** (the shape's "stroke")
-	* `fill`defines the colour with which a geom is **filled**
-	* Points generally only have a `colour` and **no fill**
-	* However, point shapes **21–25** that include **both** a colour and a fill.
+	
+	- **`scale_fill_manual()`**：允许用户手动指定每个类别或组的填充颜色。
+	
+	- **`scale_fill_discrete()`**：用于离散变量，自动为每个类别分配不同的颜色。
 
+	- **`scale_fill_continuous()`**：用于连续变量，根据连续数值分配颜色。
+	
+	- **`scale_fill_gradient()`**、
+	
+	  **`scale_fill_gradient2()`**、
+	
+	  **`scale_fill_gradientn()`**：用于创建渐变颜色填充，适用于表示连续数值范围。
+	
 - ```scale_shape_...```
+
+  - **`scale_shape_manual()`**：允许用户手动指定每个因子水平的形状。
+
+  - **`scale_shape_discrete()`**：用于离散变量，自动为每个因子水平分配不同的形状。
+  - **`scale_shape_continuous()`**：用于连续变量，根据连续值分配形状（不常用）。
 
 - ```scale_size_...```
 
-#### Palettes and corresponding functions in other packages
+### `fill`与`colour`有什么区别？？？
+
+- `colour` 定义几何图形**轮廓**的颜色（形状的“笔划”）
+
+* `fill`定义用于**填充**几何图形的颜色
+* point一般只有一个**颜色** **没有填充**
+* However, point shapes **21–25** that include **both** a colour and a fill.
+* `colour` 在 shape = 21时，为描边（stroke）色；
+* 可用 `stroke` 控制 线条粗细；
+
+#### 调色板和其他包中的相应函数
 
 ##### Included in `ggplot2`
 
@@ -319,7 +339,7 @@ You should know that
 
 * `ggsci` package
 
-* `ggsci`: You can use it in your SCI article.
+* ``` ggsci ```: 论文发表用的色板!!!
 
 	* contents
 
@@ -337,37 +357,52 @@ You should know that
 
 **Question:**
 
-Parameters like `size`, `colour` etc. can be inside or outside `aes()`, what is the difference?
+像`size`、`colour`等参数。可以在`aes()`里面或外面，有什么区别？
 
 **Answer:**
 
-In the internal case, the **size** is determined by the value of the specified column, or the **number** of colors and shapes is determined by the number of factors, and in the external case, the **specified value** prevails.
+在内部时，以指定列的值确定**大小**，或按 factor 的数量确定颜色、形状的**数量**。
 
-###  Coordinate System
+放在 `aes()` 外部意味着这些属性与特定的固定值相关联，而不是与数据的某个变量相关联。
 
-1. Linear coordinate system
+###  Coordinate System 坐标系
+
+1. 线性坐标系
 
   * `coord_cartesian()`, 
 
-	You can use parameters like `xlim()` & `ylim()` to **zoom in and out locally**.
+	默认的坐标系统，可使用 xlim, ylim 等参数，实现**缩放局部**
 
   * `coord_flip()`, 
 
-	This parameter exchanges the `x` and `y` axes.
+	翻转 x 轴和 y 轴的位置，使得原本在 x 轴上的变量显示在 y 轴上，反之亦然。
 
-  * `coord_fixed()`
+  * `coord_fixed(ratio = y/x)`
 
-	Draw plots in specific **aspect ratio**.
+	用特定的长宽比例 (aspect ratio) 作图
 
 2. Nonlinear coordinate system
 
-  * `coord_trans()`
+  * `coord_trans(x = "identity", y = "identity", ...)`
 
-	This parameter exchanges the `x` and `y` axes, **however**, it will plot the original figure, too.
+  `x` 和 `y`: 分别指定 x 轴和 y 轴的变换类型。默认为 `"identity"`，表示不进行变换。
 
-  * `coord_polar()`
+  `limx`,` limy`: 限制xy的显示范围
 
-	The default parameter is `coord_polar(x)`.
+  * `coord_polar(theta = "x", start = 0, direction = 1, clip = "on")`
+
+   创建极坐标图，默认为 `coord_polar("x")`
+
+  柱图变饼图
+
+  ```{r fig.height=2.6, fig.width=10}
+  base <- ggplot(mtcars, aes(factor(1), fill = factor(cyl))) +
+    geom_bar(width = 1) + theme(legend.position = "none") + 
+    scale_x_discrete(NULL, expand = c(0, 0)) +
+    scale_y_continuous(NULL, expand = c(0, 0))
+  
+  base + coord_polar(theta = "y") ## 变饼图
+  ```
 
   * `coord_map()`
 
@@ -377,33 +412,156 @@ In the internal case, the **size** is determined by the value of the specified c
 
 panel, strip, axis, tick, tick label, axis label…
 
+- ``` facet_grid(rows ~ cols) ```
+
+  创建一个由行和列构成的网格布局，使得不同的子图（面板）可以基于数据的一个或多个分类变量进行排列。
+
+  - `rows`: 行变量，用于在垂直方向上分割面板。
+  - `cols`: 列变量，用于在水平方向上分割面板。
+
 - `facet_wrap()`
 
-	Use to specify the number of rows, columns and orientation.
+  用于指定行数、列数和方向。
 
-	```R
-	facet_wrap(
-	  facets,
-	  nrow = NULL,
-	  ncol = NULL,
-	  scales = "fixed",
-	  shrink = TRUE,
-	  labeller = "label_value",
-	  as.table = TRUE,
-	  switch = NULL,
-	  drop = TRUE,
-	  dir = "h",
-	  strip.position = "top"
-	)
-	
-	# Default parameters are listed.
-	```
+  ```R
+  facet_wrap(
+    facets,
+    nrow = NULL,
+    ncol = NULL,
+    scales = "fixed",
+    shrink = TRUE,
+    labeller = "label_value",
+    as.table = TRUE,
+    switch = NULL,
+    drop = TRUE,
+    dir = "h",
+    strip.position = "top"
+  )
+  
+  # Default parameters are listed.
+  ```
+
+### layered grammer (图层语法) 的成分
+
+* 图层 ( geom_xxx )
+* scale ( scale_xxx )
+* 坐标系统
+* faceting ( facet_xxx )
+
+### 如何在一张图中画多个panel？
+
+#### key requirements for multi-panel plots
+
+* order / position
+* labeling
+* layout 
+
+#### combine multiple plots
+
+Useful packages:
+
+* `gridExtra`
+* `cowplot` 
+* `grid`
+* `lattice`
+
+### `cowplot::plot_grid` parameters
+
+```{r eval=FALSE}
+plot_grid(
+  plot1, plot2,
+  ...,
+  plotlist = NULL,
+  align = c("none", "h", "v", "hv"),
+  axis = c("none", "l", "r", "t", "b", "lr", "tb", "tblr"),
+  nrow = NULL,
+  ncol = NULL,
+  rel_widths = 1,
+  rel_heights = 1,
+  labels = NULL,
+  label_size = 14,
+  label_fontfamily = NULL,
+  label_fontface = "bold",
+  label_colour = NULL,
+  label_x = 0,
+  label_y = 1,
+  hjust = -0.5,
+  vjust = 1.5,
+  scale = 1,
+  greedy = TRUE,
+  byrow = TRUE,
+  cols = NULL,
+  rows = NULL
+)
+```
+
+- `plot1`, `plot2`, ...: 这些是你想组合在一起的图形对象。
+- `nrow` 和 `ncol`: 指定网格的行数和列数。
+- `labels`: 用于每个子图的标签。默认是 "AUTO"，自动为每个子图创建标签。
+- `label_size`: 设置标签的字体大小。
+- `...`: 其他参数，例如 `align` 和 `rel_widths`，用于微调图形的布局。
+
+### 用`draw_plot` 调整graph的相对大小
+
+```{r}
+plot <- 
+  ggdraw() +
+  draw_plot(plot.iris, x=0, y=.5, width=1, height=0.5) +
+  draw_plot(sp, 0, 0, 0.5, 0.5) +
+  draw_plot(bp, 0.5, 0, 0.5, 0.5) +
+  draw_plot_label(
+      c("A", "B", "C"), c(0, 0, 0.5), c(1, 0.5, 0.5), size = 15
+  );
+```
+
+`draw_plot(plot, x = 0, y = 0, width = 1, height = 1)` 详解：
+
+* plot: the plot to place (ggplot2 or a gtable)
+* x: The x location of the lower left corner of the plot.
+* y: The y location of the lower left corner of the plot.
+* width, height: the width and the height of the plot
+
+### use `gridExtra::grid.arrange` to arrange multiple graphs
+
+```R
+grid.arrange(
+    plot1, plot2,
+    ..., 
+    nrow = 1, 
+    ncol = 1, 
+    top = NULL,
+    bottom = NULL, 
+    ...)
+
+```
+
+
+
+- `plot1`, `plot2`, ... : 这些是你想组合在一起的 grid 图形对象。
+
+- `nrow` 和 `ncol`: 指定网格的行数和列数。
+
+- `top` 和 `bottom`: 可以用来添加顶部和底部标题。
+
+- `...`: 其他参数，可以用于微调图形的布局和样式。
+
+- use `layout_matrix` parameter in `grid.arrange`
+
+  - `layout_matrix` 参数接受一个矩阵，其中的每个元素代表页面上的一个单元格。
+  - 你可以通过在这个矩阵中指定数字来控制哪些图形的位置和占据空间。
+
+  ```{r eval=FALSE, fig.width=8, fig.height=6}
+  grid.arrange(bp, dp, vp, sc, 
+               ncol = 2,  ## two columns 
+               layout_matrix = cbind(c(1,1,1), c(2,3,4)) ## specify the layout
+               );
+  ```
 
 ### Different layouts
 
 Nothing to explain, for it’s too intricate.
 
-## Formulas
+### 在图中加入公式和统计信息
 
 > Similar to $\LaTeX$
 
@@ -450,7 +608,100 @@ ggplot(td, aes(x=hjust, y=vjust)) +
     scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2))
 ```
 
-**You should always remember, the first step you want to draw a plot is to calculate the data.**
+
+
+
+### In talk09 
+
+```{r eval=FALSE}
+## 计算 ... 
+m = lm(Fertility ~ Education, swiss);
+c = cor.test( swiss$Fertility, swiss$Education );
+
+## 生成公式
+eq <- substitute( atop( paste( italic(y), " = ",  a + b %.% italic(x), sep = ""),
+                        paste( italic(r)^2, " = ", r2, ", ", italic(p)==pvalue, sep = "" ) ),
+                      list(a = as.vector( format(coef(m)[1], digits = 2) ),
+                           b =  as.vector(  format(coef(m)[2], digits = 2) ),
+                           r2 =  as.vector( format(summary(m)$r.squared, digits = 2) ),
+                           pvalue =  as.vector( format( c$p.value , digits = 2) ) )
+    ); 
+
+## 用 as.expression 对公式进行转化  !!!! 
+eq <- as.character(as.expression(eq));
+
+## 作图，三个图层；特别是 geom_text 使用自己的 data 和 aes ... 
+ggplot(swiss, aes( x = Education,  y = Fertility ) ) +
+        geom_point( shape = 20 ) +
+        geom_smooth( se = T ) + ## smooth line ... 
+        geom_text( data = NULL,
+                   aes( x = 30, y = 80, label= eq, hjust = 0, vjust = 1), ## hjust, vjust ???
+                   size = 4, parse = TRUE, inherit.aes=FALSE); ## 注意： parse = TRUE ！！！
+```
+
+
+### equation 的其它写法（更复杂难懂）
+
+```{r eval=FALSE}
+## 计算 ... 
+m = lm(Fertility ~ Education, swiss);
+c = cor.test( swiss$Fertility, swiss$Education );
+
+## 生成公式
+eq <- substitute( atop( italic(y) == a + b %.% italic(x),
+                            italic(r)^2~"="~r2*","~italic(p)==pvalue ),
+                      list(a = as.vector( format(coef(m)[1], digits = 2) ),
+                           b =  as.vector(  format(coef(m)[2], digits = 2) ),
+                           r2 =  as.vector( format(summary(m)$r.squared, digits = 2) ),
+                           pvalue =  as.vector( format( c$p.value , digits = 2) ) )
+    ); 
+## 用 as.expression 对公式进行转化  !!!! 
+eq <- as.character(as.expression(eq));
+
+## 作图，三个图层；特别是 geom_text 使用自己的 data 和 aes ... 
+ggplot(swiss, aes( x = Education,  y = Fertility ) ) +
+        geom_point( shape = 20 ) +
+        geom_smooth( se = T ) + ## smooth line ... 
+        geom_text( data = NULL,
+                   aes( x = 30, y = 80, label= eq, hjust = 0, vjust = 1), ## hjust, vjust ???
+                   size = 4, parse = TRUE, inherit.aes=FALSE); ## 注意： parse = TRUE ！！！
+```
+
+| 分类     | R的表达式                    | 显示结果      |
+| -------- | ---------------------------- | ------------- |
+| 代数符号 | ```expression(x + y)```      | $x + y$       |
+|          | ```expression(x - y)```      | $x-y$         |
+|          | ```expression(x * y)```      | $xy$          |
+|          | ```expression(x / y)```      | $x/y$         |
+|          | ```expression(x %+-% y)```   | $x \pm y$     |
+|          | ```expression(x %/% y)```    | $x \div y$    |
+|          | ```expression(x %*% y)```    | $x \times y$  |
+|          | ```expression(x %.% y)```    | $x \cdot y$   |
+|          | ```expression(x[i])```       | $x_{i}$       |
+|          | ```expression(x^2)```        | $x^{2}$       |
+|          | ```expression(sqrt(x))```    | $\sqrt{x}$    |
+|          | ```expression(sqrt(x,y))```  | $\sqrt[y]{x}$ |
+|          | ```expression(list(x,yz))``` | $x,y,z$       |
+
+### 希腊字符
+
+```{r}
+library(ggplot2);
+greeks <- c("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta",
+            "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu",
+            "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma",
+            "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega");
+
+dat <- data.frame( x = rep( 1:6, 4 ), y = rep( 4:1, each = 6), greek = greeks );
+
+plot2 <- 
+  ggplot( dat, aes(x=x,y=y) ) + geom_point(size = 0) +
+    # 画希腊字符，注意下面两行代码的区别
+    geom_text( aes( x, y + 0.1, label = tolower( greek ) ), size = 10, parse = T ) +
+    geom_text( aes( x, y - 0.1, label = tolower( greek ) ), size = 5  );
+```
+
+## 
 
 ---
 
@@ -494,33 +745,35 @@ ggplot(td, aes(x=hjust, y=vjust)) +
 
 You can use `mean` and `sd` to describe normal distributions.
 
-- It's symmetrical.
--  Mean and median are the same.
--  Most common values are near the mean; less common values are farther from it.
-- Standard deviation marks the distance from the mean to the inflection point.
+- 是对称的。
+- 均值和中位数是一样的。
+- 最常见的值接近平均值;不太常见的价值观与之相去甚远。
+- 标准差表示平均值到拐点的距离
 
 ### Functions to generate random normal distrubions
 
 ```R
-qnorm()
-pnorm()
-dnorm()
+# 生成 10000 个随机数字，使其 mean = 0, sd = 1，且为 normal distribution ...
+x <- rnorm(10000, mean = 0, sd = 1);
+ggplot( data.frame( data = x ), aes( data ) ) + geom_density(  );
 ```
 
 ### Other regular distributions
 
-1. Uniform Distributions
+1. Uniform Distributions 均匀分布
 
-	```R
-	dunif(x, min = 0, max = 1, log = FALSE)
-	punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
-	qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
-	runif(n, min = 0, max = 1)
-	```
+  ```R
+  # 为向量q中的值生成CDF概率 
+  pnorm(q, mean = 0, sd = 1)    
+  
+  # 生成向量p中概率的分位数
+  qnorm(p, mean = 0, sd = 1)    
+  
+  # 生成向量x中值的概率密度函数
+  dnorm(x, mean = 0, sd = 1)
+  ```
 
-1. Non-parametric Distributions
-
-	Here’s an example:
+1. Non-parametric Distributions 非参数分布
 
 	```R
 	bi =
@@ -540,7 +793,35 @@ dnorm()
 	geom_density()
 	```
 
-### Quantitative descriptive data
+### uniform distribution 的各种函数
+
+注：以下函数中的 n 需要自行决定
+
+```{r eval=FALSE}
+# generate n random numbers between 0 and 25
+runif(n, min = 0, max = 25)       
+
+# generate n random numbers between 0 and 25 (with replacement)
+sample(0:25, n, replace = TRUE)   
+
+# generate n random numbers between 0 and 25 (without replacement)
+sample(0:25, n, replace = FALSE)  
+
+```
+
+### other distributions, cont.
+
+```{r fig.height=3, fig.width=6}
+n <- 10000;
+uni <- tibble( dat = runif(n), type = "uni" );
+norm <- tibble( dat = rnorm(n), type = "norm" );
+binom <- tibble( dat = rbinom(n, size = 100, prob = 0.5), type = "binom" );
+poisson <- tibble( dat = rpois(n, lambda = 4), type = "poisson" );
+exp <- tibble( dat = rexp(n, rate = 1) , type = "exp");
+gamma <- tibble( dat = rgamma(n, shape = 1) , type = "gamma");
+```
+
+### 量化描述数据
 
 - **mean**: aka average, is the sum of all of the numbers in the data set divided by the size of the data set;
 
@@ -551,27 +832,83 @@ dnorm()
 - **var**: measures how far a set of numbers are spread out;
 - **range**: range of values.
 
-### Quantitative descriptive function
+### 量化描述函数
 
-Besides the function with the same name of the data above, `quantile` and `summary` are two quantitative descriptive functions.
+```{r eval=FALSE}
+mean( norm$dat );
+median( norm$dat );
+  mode( norm$dat ); ## 确定给定对象的存储模式 "numeric", "character", "list" 
 
-**This chapter contains lots of functions and their usage, to know more, you can see them in the official R documentation, I only explane the things above here.**
+sd(norm$dat);
+var(norm$dat);
+range(norm$dat);
+```
+
+### `quantile` and `summary`
+
+```{r}
+quantile( norm$dat );
+
+## quantile 还接受其它参数 
+quantile( norm$dat, probs = seq(0, 1, length = 11));
+
+## summary ... 
+summary( norm$dat );
+## summary 也可应用于非数值
+summary( combined$type );
+## summary 可应用于整个表格; 相当于对每列进行 summary ... 
+summary( combined );
+```
+
+### `table`函数
+
+返回vector当中 unique 值和它们的出现次数
+
+### `count` in `dplyr` 
+
+### `ntile` 函数的参数
+
+... `*tile` 函数都是 equal size
+
+### `cut` 函数
+
+按指定的间隔 (breaks) 对数据进行分割。
+
+不仅可用于 equal distance，还可以用于任意间距
 
 ## Statistics
 
 ### Parametric tests
 
+parametric test 的要求
+
+1.  随机取样
+
+2.  值或 residuals 为正态分布；residules 是指观察值与预测值(mean)之差
+
+3.  有相同的variance 方差
+
+### how to detect outlier ??
+
+一个很模糊的定义：Outliers are extreme values that fall a long way outside of the other observations. For example, in a normal distribution, outliers may be values on the tails of the distribution.
+
+对于 normal distribution，通常 mean +- 2 or 3 \* sd
+
+IQR = s["3rd Qu."]-s["1st Qu."]
+
+outlier: s["1st Qu."] - 1.5 * IQR, s["3rd Qu."] + 1.5 * IQR
+
 #### `t-test`
 
-Detect whether the distribution is consistent with expectations; e.g., whether the number of steps per day for boys is significantly different from 10,000.
+检测分布是否与预期一致; e.g., whether the number of steps per day for boys is significantly different from 10,000.
 
-The test assesses whether the means of two samples are significantly different from each other, assuming that the samples are normally distributed and have approximately equal variances.
+检验评估两个样本的均值是否有显著差异，假设样本服从正态分布，方差近似相等。
 
 There are different types of t-tests in R, depending on the nature of the comparison:
 
 1. **One-Sample t-test:**
 
-	Used to determine if the mean of a single sample differs significantly from a known or hypothesized population mean.
+	用于确定单个样本的均值与已知或假设的总体均值是否存在显著差异。
 
 	Example:
 
@@ -586,7 +923,7 @@ There are different types of t-tests in R, depending on the nature of the compar
 
 1. **Independent Samples t-test (or Two-Sample t-test):**
 
-	Compares the means of two independent groups to determine if they are significantly different from each other.
+	比较两个独立组的均值，以确定它们是否存在显著差异.
 
 	Example:
 
@@ -602,7 +939,7 @@ There are different types of t-tests in R, depending on the nature of the compar
 
 1. **Paired t-test:**
 
-	Compares the means of two related groups (e.g., before and after measurements) to determine if they are significantly different.
+	比较两个相关组的均值（例如，测量前和测量后），以确定它们是否有显著差异。
 
 	Example:
 
@@ -616,19 +953,19 @@ There are different types of t-tests in R, depending on the nature of the compar
 
 	This code performs a paired t-test on `before` and `after` to test if there's a significant difference.
 
-The `t.test()` function in R is used to conduct these t-tests. It returns a test statistic (t-value), degrees of freedom, p-value, and confidence interval, providing insights into whether the difference observed is statistically significant.
+The `t.test()` function in R is used to conduct these t-tests.它返回检验统计量(t值)、自由度、p值和置信区间，从而深入了解观察到的差异是否具有统计显著性。
 
-It's important to ensure that the assumptions of normality and equal variances are met for reliable results when performing t-tests in R. If the assumptions are violated, alternative tests or data transformations might be more appropriate.
+在R中执行t检验时，确保满足正态性和等方差的假设对于获得可靠的结果是很重要的。如果违反了这些假设，那么替代检验或数据转换可能更合适。
 
 #### One-way ANNOVA
 
-In R, the one-way analysis of variance (ANOVA) is used to test for significant differences between the means of three or more independent (unrelated) groups. It assesses whether the means of these groups are significantly different from each other.
+In R, the one-way analysis of variance (ANOVA) iS用于检验三个或三个以上独立（不相关）组的均数之间的显著差异。它评估这些群体的平均水平是否彼此显著不同。
 
 The one-way ANOVA assumes that the data meet certain assumptions, including:
 
-- Normality: Each group should follow a normal distribution.
-- Homogeneity of variances: The variances within each group should be approximately equal.
-- Independence: The observations within each group should be independent of each other.
+- -正态性：每组应遵循正态分布。
+- -方差同质性：每组内的方差应大致相等。
+- -独立性：每组内的观测值应相互独立。
 
 Here's an example of performing a one-way ANOVA in R:
 
@@ -656,13 +993,13 @@ Explanation of the code:
 3. The `aov()` function is used to perform the one-way ANOVA, specifying the formula `Values ~ Group`, indicating that `Values` is the dependent variable and `Group` is the independent variable.
 4. `summary(result_anova)` provides the ANOVA table with the F-statistic, degrees of freedom, p-value, and other relevant statistics.
 
-The output from `summary(result_anova)` will include information such as the F-statistic, degrees of freedom, p-value, and within-group variability, allowing you to determine if there are significant differences between the means of the groups.
+The output from `summary(result_anova)` will includeF-统计量、自由度、p-值和组内变异性，允许您确定组间均值是否有显著差异。
 
-If the p-value is less than a chosen significance level (commonly 0.05), it suggests that there are significant differences among the means of the groups. Additionally, post-hoc tests like Tukey's HSD test or pairwise t-tests can be performed to identify which specific groups differ significantly from each other after obtaining a significant result in the ANOVA.
+若p值小于选定的显著性水平（通常为0.05），则表明组均值之间存在显著差异。Additionally, post-hoc tests like Tukey's HSD test or pairwise t-tests can be performed to identify which specific groups differ significantly from each other after obtaining a significant result in the ANOVA.
 
 #### Two-way ANNOVA
 
-A two-way analysis of variance (ANOVA) in R is used to examine the interaction effects between two categorical independent variables (factors) on a continuous dependent variable.
+A two-way analysis of variance (ANOVA) in R 用于检验两个分类自变量（因子）之间对连续因变量的交互作用效应。
 
 Here's an example:
 
@@ -691,13 +1028,17 @@ Explanation of the code:
 3. The `aov()` function performs the two-way ANOVA. The formula `Response ~ Treatment + Gender + Treatment:Gender` specifies the main effects of `Treatment` and `Gender`, as well as their interaction effect.
 4. `summary(result_anova)` provides the ANOVA table with F-statistics, degrees of freedom, p-values, and other statistics for each factor and their interaction.
 
-The output from `summary(result_anova)` will include information about the main effects of `Treatment` and `Gender`, as well as the interaction effect between them. It allows you to determine if there are significant effects of each factor independently and whether their interaction significantly influences the `Response` variable.
+The output from `summary(result_anova)` will include治疗和性别的主要影响的信息，以及它们之间的交互作用效果。它支持您确定每个因子是否独立存在显著效应，以及它们的交互作用是否显著影响"响应"变量。
 
-The interpretation of a two-way ANOVA involves analyzing the p-values associated with each factor and their interaction. Significant p-values indicate that the corresponding factor or interaction has a significant effect on the dependent variable. Additionally, post-hoc tests or further analyses can be conducted to explore specific comparisons between groups or factors after obtaining significant results in the ANOVA.
+The interpretation of a two-way ANOVA包括分析与每个因子及其交互作用相关联的p值。显著的p值表示相应的因子或交互作用对因变量有显著的影响。
+
+ Additionally, post-hoc tests or further analyses can be conducted to explore specific comparisons between groups or factors after obtaining significant results in the ANOVA.
 
 #### Linear Regression
 
-Linear regression is a statistical method used to model the relationship between a dependent variable and one or more independent variables by fitting a linear equation to observed data. In R, linear regression can be performed using the `lm()` function, which stands for "linear model."
+线性回归是一种统计方法，通过对观测数据拟合线性方程来模拟因变量和一个或多个自变量之间的关系。
+
+In R, linear regression can be performed using the `lm()` function, which stands for "linear model."
 
 Here's an example:
 
@@ -730,7 +1071,9 @@ Interpreting the output from `summary(model)`:
 - The p-values associated with the coefficients indicate the significance of each variable in predicting the dependent variable. Lower p-values suggest stronger evidence against the null hypothesis of no effect.
 - The R-squared value represents the proportion of variance in the dependent variable explained by the independent variable(s). Higher R-squared values indicate a better fit of the model to the data.
 
-Linear regression in R can also be extended to multiple linear regression by including multiple independent variables in the model (`y ~ x1 + x2 + ...`). Additionally, diagnostic plots and further analyses can be performed to assess model assumptions and goodness of fit.
+Linear regression in R can also通过在模型中包含多个自变量，将其扩展到多元线性回归 (`y ~ x1 + x2 + ...`). 
+
+Additionally, diagnostic plots and further analyses can be performed to assess model assumptions and goodness of fit.
 
 #### Model / Prediction / Coefficients
 
@@ -754,11 +1097,11 @@ summary(model)
 
 The output from `summary(model)` provides information including:
 
-- **Coefficients:** This section displays the estimated coefficients (`Estimate`) for each independent variable, including the intercept. These coefficients represent the estimated change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+- **Coefficients:** 本节显示每个自变量的估计系数（"估计"），包括截距。这些系数代表因变量的估计变化，对应的自变量的一个单位的变化，保持其他变量不变。
 
-- **Residuals:** The residuals represent the differences between the observed and predicted values of the dependent variable. These are used to assess the goodness of fit of the model.
+- **Residuals:** 残差代表因变量的观测值和预测值之间的差异。这些用于评估模型的拟合优度。
 
-- **R-squared:** Indicates the proportion of variance in the dependent variable explained by the independent variables. Higher values indicate a better fit of the model to the data.
+- **R-squared:**指示由自变量解释的因变量中的方差比例。较高的值指示模型对数据的拟合更好。
 
 After obtaining the coefficients from the model, predictions can be made using new or existing data:
 
@@ -773,13 +1116,13 @@ The coefficients obtained from the linear regression model (`model$coefficients`
 
 ### Non-parametric Comparison
 
-Non-parametric methods are statistical techniques used when the assumptions of normality, homogeneity of variances, or linearity required by parametric methods are violated or not met by the data. These methods do not rely on specific population distribution assumptions and are useful for analyzing data that might not follow a normal distribution.
+非参数方法是当参数方法所要求的正态性、方差齐性或线性假设被数据违反或不满足时所使用的统计技术。这些方法不依赖于特定的总体分布假设，对于分析可能不遵循正态分布的数据是有用的。
 
 Here are some commonly used non-parametric methods for comparison in R:
 
 1. **Mann-Whitney U Test (Wilcoxon Rank-Sum Test):**
    
-   Used to compare two independent groups when the assumptions of t-tests are not met.
+   用于在t检验的假设不满足时比较两个独立的组。
    
    Example:
    ```R
@@ -789,7 +1132,7 @@ Here are some commonly used non-parametric methods for comparison in R:
    
 2. **Kruskal-Wallis Test:**
    
-   An extension of the Mann-Whitney U test for comparing more than two independent groups.
+   Mann-Whitney U检验的扩展，用于比较两个以上的独立组。
    
    Example:
    ```R
@@ -799,9 +1142,10 @@ Here are some commonly used non-parametric methods for comparison in R:
    
 3. **Wilcoxon Signed-Rank Test:**
    
-   Used for comparing paired samples or related samples.
+   用于比较配对样本或相关样本。
    
    Example:
+   
    ```R
    # Assuming 'before' and 'after' are vectors of paired numeric data
    wilcox.test(before, after, paired = TRUE)
@@ -809,7 +1153,7 @@ Here are some commonly used non-parametric methods for comparison in R:
    
 4. **Mood's Median Test:**
    
-   Tests the equality of medians in two or more independent groups.
+   测试两个或多个独立组中的中位数是否相等。
    
    Example:
    ```R
@@ -820,7 +1164,7 @@ Here are some commonly used non-parametric methods for comparison in R:
    
 5. **Friedman Test:**
    
-   An extension of the Wilcoxon Signed-Rank test for comparing more than two paired or related groups.
+   Wilcoxon Signed-Rank检验的扩展，用于比较两个以上配对或相关组。
    
    Example:
    ```R
@@ -828,7 +1172,7 @@ Here are some commonly used non-parametric methods for comparison in R:
    friedman.test(group1, group2, group3)
    ```
 
-These non-parametric tests provide alternatives to traditional parametric tests and are robust against violations of certain assumptions. They are particularly useful when dealing with ordinal or skewed data or when the sample size is small, as they rely on fewer distributional assumptions than parametric tests.
+这些非参数检验提供了传统的参数检验的替代品，并对违反某些假设是强大的。它们在处理有序或倾斜数据或样本容量较小时特别有用，因为它们比参数检验依赖更少的分布假设。
 
 ---
 
@@ -854,7 +1198,7 @@ These non-parametric tests provide alternatives to traditional parametric tests 
 
 **What is linear regression?**
 
-Linear regression is a method of statistical analysis that utilizes regression analysis in mathematical statistics to determine interdependent quantitative relationships between two or more variables.
+线性回归是一种利用数理统计中的回归分析来确定两个或多个变量之间相互依赖的数量关系的统计分析方法。
 
 -   `Y` can be explained by a variable `X`: One-way Linear Regression
 
@@ -875,11 +1219,59 @@ summary(model)  # Display summary statistics of the model
 
 - **`summary()` Function:** Displays a summary of the linear regression model, including coefficients, standard errors, t-values, p-values, R-squared, and other statistics.
 
+### `glm` vs. `lm`
+
+    lm(formula, data, …)
+    glm(formula, family=gaussian, data, …)
+
+**glm**:
+
+1.  当`family=gaussian`时，二者是一样的。
+
+```{r warning=FALSE, message=FALSE}
+library(texreg);
+m.lm <- lm(am ~ disp + hp, data=mtcars);
+m.glm <- glm(am ~ disp + hp, data=mtcars);
+screenreg(l = list(m.lm, m.glm))
+```
+
+### `glm` 还可用于其它类型数据的分析
+
+1.  Logistic regression (family=binomial)
+
+预测的结果（Y）是binary的分类，比如`Yes`, `No`，且只能有两个值；
+
+```{r warning=FALSE, message=FALSE}
+dat <- iris %>% filter( Species %in% c("setosa", "virginica") );
+bm <- glm( Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, 
+           data = dat, family = binomial );
+
+data.frame( predicted = bm %>% predict( dat, type = "response" ),
+            original = dat$Species ) %>% sample_n(6) %>% arrange( original );
+```
+
+**注意：**
+
+`predict(., type = "response")` 指示 `predict()` 函数返回模型的响应值。
+
+对于逻辑回归模型，这意味着返回的是概率而不是对数几率。
+
+## `glm`的`Poisson regression (family=poisson)`
+
+**泊松回归**是一种特殊类型的回归，其中响应变量由**计数数据组成**.
+
+**Asumptions**:
+
+1.  响应变量由计数数据组成。
+2.  观察是独立的。
+3.  模型的均值和方差相等。
+4.  计数的分布遵循泊松分布。
+
 ### Other Useful Functions for Linear Regression Analysis:
 
 1. **`coefficients()` Function:**
    
-   Retrieves the coefficients of the linear regression model.
+   检索线性回归模型的系数。
    
    Example:
    ```R
@@ -889,7 +1281,7 @@ summary(model)  # Display summary statistics of the model
    
 2. **`predict()` Function:**
    
-   Generates predictions using the fitted model.
+   使用拟合模型生成预测。
    
    Example:
    ```R
@@ -900,7 +1292,7 @@ summary(model)  # Display summary statistics of the model
    
 3. **`residuals()` Function:**
    
-   Retrieves the residuals (differences between observed and predicted values).
+   检索残差（观测值和预测值之间的差异）。
    
    Example:
    ```R
@@ -910,7 +1302,7 @@ summary(model)  # Display summary statistics of the model
    
 4. **`fitted()` Function:**
    
-   Retrieves the fitted (predicted) values.
+   检索拟合（预测）值。
    
    Example:
    ```R
@@ -920,7 +1312,7 @@ summary(model)  # Display summary statistics of the model
    
 5. **`vcov()` Function:**
    
-   Computes the variance-covariance matrix of the coefficients.
+   计算系数的方差-协方差矩阵。
    
    Example:
    ```R
@@ -930,7 +1322,7 @@ summary(model)  # Display summary statistics of the model
    
 6. **`anova()` Function:**
    
-   Performs analysis of variance (ANOVA) for the fitted model.
+   对拟合模型执行方差分析（ANOVA）。
    
    Example:
    ```R
@@ -940,7 +1332,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`summary()` Function:**
    
-   Provides an overview of the fitted model, including parameter estimates, standard errors, convergence information, and goodness-of-fit statistics.
+   提供拟合模型的概述，包括参数估计值、标准误差、收敛信息和拟合优度统计量。
    
    Example:
    ```R
@@ -949,7 +1341,7 @@ summary(model)  # Display summary statistics of the model
    
 7. **`coef()` Function:**
    
-   Extracts the estimated coefficients from the fitted model.
+   从拟合模型中提取估计系数。
    
    Example:
    ```R
@@ -958,7 +1350,7 @@ summary(model)  # Display summary statistics of the model
    
 8. **`confint()` Function (for prediction intervals):**
    
-   Computes prediction intervals for the predicted values from the fitted model.
+   计算拟合模型中预测值的预测区间。
    
    Example:
    ```R
@@ -968,7 +1360,7 @@ summary(model)  # Display summary statistics of the model
    
 9. **`deviance()` Function:**
    
-   Calculates the deviance of the fitted model, which is a measure of lack of fit.
+   计算拟合模型的偏差，这是缺乏拟合的度量。
    
    Example:
    ```R
@@ -977,7 +1369,7 @@ summary(model)  # Display summary statistics of the model
    
 10. **`update()` Function:**
     
-    Allows for updating or refitting a model with different settings or data.
+    允许使用不同的设置或数据更新或改装模型。
     
     Example:
     ```R
@@ -987,7 +1379,7 @@ summary(model)  # Display summary statistics of the model
     
 11. **`AIC()` and `BIC()` Functions:**
     
-    Compute Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC) to assess model quality and compare models.
+    计算Akaike信息准则（阿灵顿资产投资）和贝叶斯信息准则（BIC）来评估模型质量和比较模型。
     
     Example:
     ```R
@@ -997,7 +1389,7 @@ summary(model)  # Display summary statistics of the model
     
 12. **`plot()` Function (for diagnostic plots):**
     
-    Generates diagnostic plots to assess the adequacy of the model (e.g., residuals vs. fitted values, Q-Q plots).
+    生成诊断图以评估模型的充分性（例如，残差与拟合值、Q-Q图）。
     
     Example:
     ```R
@@ -1008,9 +1400,12 @@ These functions help in obtaining and analyzing various aspects of the linear re
 
 ## Nolinear Regression
 
-Nonlinear regression is used when the relationship between variables cannot be adequately described by a linear model. In R, fitting nonlinear models involves estimating parameters to describe the nonlinear relationship between variables. Here's an example using the `nls()` function, along with some relevant functions for nonlinear regression analysis:
+当变量之间的关系不能用线性模型充分描述时，使用非线性回归。在R中，拟合非线性模型包括估计参数来描述变量之间的非线性关系。Here's an example using the `nls()` function, along with some relevant functions for nonlinear regression analysis:
 
 ### Fitting a Nonlinear Regression Model:
+
+1.  `nls( equation, data = data, start = ... )`
+2.  `y~a*x/(b+x)`
 
 ```R
 # Example of fitting a nonlinear regression model (assuming a quadratic function)
@@ -1060,7 +1455,7 @@ summary(model)  # Display summary statistics of the model
    
 4. **`nls.control()` Function:**
    
-   Provides control parameters for the `nls()` function, allowing adjustments to the nonlinear fitting process.
+   为`nls()`函数提供控制参数，允许对非线性拟合过程进行调整。
    
    Example:
    ```R
@@ -1092,7 +1487,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`augment()` Function (from the `broom` package):**
 
-	- Creates a tidy data frame with additional columns like fitted/predicted values, residuals, and other model information.
+	- 使用其他列（如拟合/预测值、残差和其他模型信息）创建整洁的数据框架。
 
 	Example:
 
@@ -1104,7 +1499,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`glance()` Function (from the `broom` package):**
 
-	- Extracts model-level statistics, providing a summary of the model in a tidy format.
+	- 提取模型级统计信息，以简洁的格式提供模型的摘要。
 
 	Example:
 
@@ -1115,7 +1510,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`tidy()` Function (from the `broom` package):**
 
-	- Extracts the model coefficients and related statistics into a tidy data frame.
+	- 将模型系数和相关统计数据提取到一个整洁的数据框架中。
 
 	Example:
 
@@ -1126,7 +1521,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`nlstools::nlstools()` Function:**
 
-	- Offers diagnostic tools and visualizations for nonlinear regression models, aiding in model evaluation.
+	- 为非线性回归模型提供诊断工具和可视化，帮助模型评估。
 
 	Example:
 
@@ -1138,7 +1533,7 @@ summary(model)  # Display summary statistics of the model
 
 6. **`nls2()` Function:**
 
-	- Provides an extended version of `nls()` with multiple start values to improve convergence.
+	- 提供具有多个起始值的'nls（）'的扩展版本，以改进收敛性。
 
 	Example:
 
@@ -1161,7 +1556,7 @@ Prepare your dataset with variables for the dependent (response) and independent
 
 2. **Fitting the Nonlinear Model:**
 
-Fit the nonlinear regression model using `nls()` or similar functions, specifying the appropriate formula and initial parameter values.
+使用`nls()`或类似函数拟合非线性回归模型，指定适当的公式和初始参数值。
 
 Example:
 
@@ -1174,7 +1569,7 @@ nls(y ~ a * I(x^2) + b * x + c,
 
 3. **Model Summary and Assessment:**
 
-Use `summary()` and other functions (`glance()`, `tidy()`, etc.) to obtain an overview of the model, including coefficients, goodness-of-fit measures, and diagnostics.
+Use `summary()` and other functions (`glance()`, `tidy()`, etc.) 以获得模型的概述，包括系数、拟合优度度量和诊断。
 
 Example:
 
@@ -1184,7 +1579,7 @@ summary(model)
 
 4. **Prediction with the Fitted Model:**
 
-Generate predictions using the fitted model for new or existing data.
+使用拟合模型为新数据或现有数据生成预测。
 
 Example:
 
@@ -1214,27 +1609,27 @@ By following these steps, you'll be able to build, evaluate, and utilize nonline
 
 ## **K-fold** & **X times** cross-validation
 
-Both K-fold cross-validation and X times cross-validation are techniques used to assess the performance and generalization capability of machine learning models, including regression models, by partitioning the data into subsets for training and validation. 
+K-fold交叉验证和X次交叉验证都是用于评估机器学习模型（包括回归模型）的性能和泛化能力的技术，方法是将数据划分为子集进行训练和验证。
 
 ### K-fold Cross-Validation:
-K-fold cross-validation involves splitting the dataset into K equally sized folds. The model is trained K times, each time using K-1 folds for training and the remaining fold for validation. This process ensures that each data point is used for both training and validation.
+k-fold交叉验证涉及将数据集拆分成K个大小相等的折叠。对模型进行K次训练，每次使用K-1折叠进行训练，其余折叠进行验证。这个过程确保每个数据点都用于训练和验证。
 
 #### Steps for K-fold Cross-Validation:
 
-1. **Partition Data:** Split the dataset into K equally sized folds.
-2. **Model Training:** Train the model K times, each time using K-1 folds as training data.
-3. **Validation:** Validate the model's performance on the remaining fold (not used in training) and calculate evaluation metrics.
-4. **Average Metrics:** Average the evaluation metrics across the K iterations to obtain an overall assessment of the model's performance.
+1. **Partition Data:** 将数据集分割成K个大小相等的折叠。
+2. **Model Training:** 对模型进行K次训练，每次使用K-1折叠作为训练数据。
+3. **Validation:**验证模型在其余部分（训练中未使用）上的性能，并计算评估指标。.
+4. **Average Metrics:** 对K个迭代中的评估指标求平均值，以获得对模型性能的总体评估。
 
 ### X times Cross-Validation:
-X times cross-validation, also known as repeated K-fold cross-validation, is similar to K-fold cross-validation, but the process is repeated X times. It repeatedly creates random partitions of the data into K folds, trains the model, and evaluates its performance. This method provides more robust estimates of model performance by averaging results over multiple runs.
+X次交叉验证，也被称为重复的K-fold交叉验证，类似于K-fold的交叉验证，但这个过程是重复X次。它重复创建随机分区的数据到K折叠，训练模型，并评估其性能。该方法通过对多次试验的结果求平均值来提供更稳健的模型性能估计。
 
 #### Steps for X times Cross-Validation:
 
-1. **Partition Data Repeatedly:** Randomly split the dataset into K folds, X times.
-2. **Model Training:** Train the model for each iteration, using K-1 folds for training.
-3. **Validation:** Validate the model's performance on the remaining fold and calculate evaluation metrics.
-4. **Average Metrics:** Average the evaluation metrics across the X iterations to obtain more stable and reliable estimates of model performance.
+1. **Partition Data Repeatedly:** 将数据集随机分成K个折叠，X次。
+2. **Model Training:** 为每个迭代训练模型，使用K-1折叠进行训练。
+3. **Validation:** 验证模型在剩余折叠上的性能并计算评估指标。
+4. **Average Metrics:** 对X次迭代中的评估指标求平均值，以获得更稳定、更可靠的模型性能估计值。
 
 ### Implementation in R:
 
@@ -1282,30 +1677,23 @@ model =
 
 Replace `formula` and `my_data` with the appropriate regression formula and your dataset. Adjust the parameters `K` and `X` according to your preferences for the number of folds and repetitions.
 
-These cross-validation techniques aid in estimating the model's performance and help in assessing how well the model generalizes to unseen data, thus providing insights into its robustness and reliability. Adjusting these techniques can improve the evaluation of regression models in terms of accuracy and stability.
+这些交叉验证技术有助于估计模型的性能，并帮助评估模型如何推广到看不见的数据，从而提供洞察其鲁棒性和可靠性。调整这些技术可以提高回归模型的准确性和稳定性的评价.
 
 ## External Validation
 
-External validation refers to the evaluation of a predictive model's performance using an independent dataset that was not used in the model development process. It serves as an essential step to assess how well a model generalizes to new, unseen data from a different source or time period, verifying its reliability and robustness in real-world applications.
+外部验证是指使用在模型开发过程中未使用的独立数据集来评估预测模型的性能。它是评估一个模型如何从不同的来源或时间段推广到新的、看不见的数据的关键步骤，以验证它在实际应用中的可靠性和健壮性。
 
 ### Steps for External Validation:
 
-1. **Obtain an Independent Dataset:** Acquire a separate dataset that is distinct from the one used for model training and validation. This dataset should ideally represent the same problem or domain but come from a different source, time frame, or population.
+1. **Obtain an Independent Dataset:** 获取与用于模型训练和验证的数据集不同的单独数据集。理想情况下，这个数据集应该代表相同的问题或领域，但来自不同的源、时间框架或人群。
 
-2. **Preprocess Data:** Preprocess the independent dataset similarly to the training dataset (e.g., handling missing values, encoding categorical variables, scaling features) to ensure compatibility.
+2. **Preprocess Data:** 对独立数据集进行类似于训练数据集的预处理（例如，处理缺失值、编码分类变量、缩放特征），以确保兼容性。
 
-3. **Apply Trained Model:** Use the model trained on the original dataset to make predictions on the independent dataset.
+3. **Apply Trained Model:** 使用在原始数据集上训练的模型对独立数据集进行预测。
 
-4. **Evaluate Model Performance:** Assess the model's performance on the independent dataset using relevant evaluation metrics (e.g., accuracy, RMSE, precision, recall) and compare these metrics to the performance achieved on the training/validation dataset.
+4. **Evaluate Model Performance:** 使用相关评估指标（例如准确度、RMSE、精度、召回率）评估模型在独立数据集上的性能，并将这些指标与在训练/验证数据集上实现的性能进行比较。
 
-5. **Analyze Results:** Analyze the performance metrics obtained from the independent dataset to determine if the model maintains its predictive capability and generalizability. A well-performing model on the independent dataset suggests good generalization and reliability.
-
-### Importance of External Validation:
-
-- **Generalization Assessment:** Validates whether the model's performance seen in training/validation data extends to new, unseen data.
-- **Bias and Overfitting Detection:** Identifies if the model is overfitted to the training data or exhibits biases that could limit its real-world applicability.
-- **Real-world Applicability:** Confirms the model's utility in practical scenarios and different environments.
-- **Trustworthiness and Reliability:** Provides stakeholders with confidence in the model's predictions and results.
+5. **Analyze Results:** 分析从独立数据集获得的性能指标，以确定模型是否保持其预测能力和泛化能力。性能良好的独立数据集上的模型表明，良好的泛化能力和可靠性。
 
 ### Implementation in R:
 
@@ -1351,26 +1739,168 @@ Replace the file paths, data loading, and evaluation steps with your specific da
 -   Random Forest
 -   Feature Selection
 
-## Machine Learning Algorithms Generalization
+### 机器学习可分为以下几类
 
-Machine learning can be categorized as follows:
+\FontSmall 
 
-1. Regression Algorithms
-1. Example-based algorithms
-1. Decision Tree Learning
-1. Bayesian methods
-1. Kernel-based algorithms
-1. Clustering algorithms
-1. Dimensionality reduction algorithms
-1. Association rule learning
-1. Integration algorithms
-1. Artificial Neural Networks
+1） **回归算法**
 
-For more information, you can read related articles.
+2） 基于实例的算法
 
-## Random Forest in Machine Learning using R
+3） **决策树学习**
 
-Certainly! Random Forest is a versatile and powerful machine learning algorithm used for both classification and regression tasks. It operates by building multiple decision trees during training and then merging their predictions to improve accuracy and robustness. Here's a guide on implementing Random Forest in R:
+4） 贝叶斯方法
+
+5） 基于核的算法
+
+6） **聚类算法**
+
+7） **降低维度算法**
+
+8） 关联规则学习
+
+9） 集成算法
+
+10） 人工神经网络
+
+### 1. 回归算法
+
+回归算法是试图采用对误差的衡量来探索变量之间的关系的一类算法。 常见的回归算法包括： 
+
+- 最小二乘法（Ordinary Least Square），
+
+- 逻辑回归（Logistic Regression） ， 
+
+- 逐步式回归（Stepwise Regression） ， 
+
+- 多元自适应回归样条（Multivariate Adaptive Regression Splines） 以及
+
+- 本地散点平滑估计（Locally Estimated Scatterplot Smoothing）。
+
+### 2. 基于实例的算法
+
+基于实例的算法常常用来对决策问题建立模型， 这样的模型常常先选取一批样本数据， 然后根据某些近似性把新数据与样本数据进行比较。 通过这种方式来寻找最佳的匹配。 
+
+因此， 基于实例的算法常常也被称为“赢家通吃” 学习或者“基于记忆的学习” 。 常见的算法包括：
+
+- k-Nearest Neighbor(KNN), 
+
+- 学习矢量量化（Learning Vector Quantization， LVQ），以及
+
+- 自组织映射算法（Self-Organizing Map， SOM） 。 
+
+深度学习的概念源于人工神经网络的研究。含多隐层的多层感知器就是一种深度学习结构。 深度学习通过组合低层特征形成更表示属性类别或特征， 以发现数据的分布式特征表示。
+
+### 3. 决策树学习
+
+决策树算法根据数据的属性采用树状结构建立决策模型， 决策树模型常常用来解决分类和回归问题。 常见的算法包括： 
+
+- 分类及回归树（Classification And Regression Tree， CART） ， 
+
+- ID3 (Iterative Dichotomiser 3)， 
+
+- C4.5， Chi-squared Automatic Interaction Detection(CHAID), 
+
+- Decision Stump, 随机森林（Random Forest） ， 
+
+- 多元自适应回归样条（MARS）以及
+
+- 梯度推进机（Gradient Boosting Machine， GBM） 。
+
+### 4. 贝叶斯方法
+
+贝叶斯方法算法是基于贝叶斯定理的一类算法， 主要用来解决分类和回归问题。 常见算法包括： 
+
+- 朴素贝叶斯算法， 
+
+- 平均单依赖估计（Averaged One-Dependence Estimators，AODE） ， 以及 
+
+- Bayesian Belief Network（BBN） 。
+
+### 5. 基于核的算法
+
+基于核的算法中最著名的莫过于支持向量机（SVM） 了。 基于核的算法把输入数据映射到一个高阶的向量空间， 在这些高阶向量空间里， 有些分类或者回归问题能够更容易的解决。 常见的基于核的算法包括： 
+
+- 支持向量机（Support Vector Machine， SVM） ， 
+
+- 径向基函数（Radial Basis Function， RBF)， 以及
+
+- 线性判别分析（Linear Discriminate Analysis，LDA)等。
+
+### 6. 聚类算法
+
+聚类， 就像回归一样， 有时候人们描述的是一类问题， 有时候描述的是一类算法。 聚类算法通常按照中心点或者分层的方式对输入数据进行归并。 所以的聚类算法都试图找到数据的内在结构， 以便按照最大的共同点将数据进行归类。 常见的聚类算法包括 
+
+- k-Means 算法以及
+
+- 期望最大化算法（Expectation Maximization， EM） 。
+
+### 7. 降低维度算法
+
+像聚类算法一样， 降低维度算法试图分析数据的内在结构， 不过降低维度算法是以非监督学习的方式试图利用较少的信息来归纳或者解释数据。 这类算法可以用于高维数据的可视化或者用来简化数据以便监督式学习使用。 常见的算法包括： 
+
+- 主成份分析（Principle Component Analysis， PCA） ， 
+
+- 偏最小二乘回归（Partial Least Square Regression， PLS） ，
+
+- Sammon 映射， 
+
+- 多维尺度（Multi-Dimensional Scaling, MDS） , 
+
+- 投影追踪（Projection Pursuit）等。
+
+### 8. 关联规则学习
+
+关联规则学习通过寻找最能够解释数据变量之间关系的规则， 来找出大多元数据集中有用 联规则。 常见算法包括 
+
+- Apriori 算法和
+
+- Ec t 算法等。
+
+### 9. 集成算法
+
+集成算法用一些相对较弱的学习模型独立地就同样的样本进行训练， 然后把结果整合起来进行整体预测。 集成算法的主要难点在于究竟集成哪些独立的较弱的学习模型以及如何把学习结果整合起来。 这是一类非常强大的算法， 同时也非常流行。 常见的算法包括：
+
+- Boosting， 
+
+- Bootstrapped Aggregation（Bagging）， 
+
+- AdaBoost， 
+
+- 堆叠泛化（Stacked Generalization，Blending） ， 
+
+- 梯度推进机（Gradient Boosting Machine, GBM） ， 
+
+- 随机森林（Random Forest） 
+
+### 10. 人工神经网络
+
+人工神经网络算法模拟生物神经网络， 是一类模式匹配算法。 通常用于解决分类和回归问题。 人工神经网络是机器学习的一个庞大的分支， 有几百种不同的算法。（其中**深度学习** 就是其中的一类算法） ， 重要的人工神经网络算法包括： 
+
+- 感知器神经网络（Perceptron Neural Network） , 
+
+- 反向传递（Back Propagation） ， 
+
+- Hopfield 网络， 
+
+- 自组织映射（Self-Organizing Map, SOM） 。 
+
+- 学习矢量量化（Learning Vector Quantization， LVQ）。
+
+### section 3: 随机森林
+
+### 随机森林 – Random forest
+
+本文大部分内容取自“easyai.tech” 网站的《随机森林 – Random forest》一文，有修改。
+
+随机森林是一种由**决策树**构成的集成算法，适用于**小样本**数据，在很多情况下都能有不错的表现。
+
+随机森林属于 **集成学习** 中的 Bagging（Bootstrap AGgregation 的简称） 方法。
+
+
+## 决策树 - decision tree
+
+决策树是一种很简单的算法，他的解释性强，也符合人类的直观思维。这是一种基于if-then-else规则的有监督学习算法，
 
 ### Steps to Implement Random Forest in R:
 
@@ -1385,7 +1915,7 @@ Start by loading the necessary library (`randomForest`) if not already installed
 
 #### 2. **Prepare Data:**
 
-Load your dataset into R and perform necessary preprocessing steps such as handling missing values, encoding categorical variables, and splitting the data into training and testing sets.
+将数据集加载到R中并执行必要的预处理步骤，如处理缺失值、对分类变量进行编码以及将数据拆分为训练集和测试集。
 
    ```R
    # Example: Assuming 'my_data' is your dataset
@@ -1395,7 +1925,7 @@ Load your dataset into R and perform necessary preprocessing steps such as handl
    ```
 
 #### 3. **Train the Random Forest Model:**
-Use the `randomForest()` function to train the model by specifying the formula and training data.
+Use the `randomForest()` function to 通过指定公式和训练数据来训练模型。
 
    ```R
    # Example: Training a Random Forest model for regression
@@ -1455,12 +1985,12 @@ Replace `my_data`, `test_data`, and the respective column names with your specif
 
 ## Feature Selection
 
-Feature selection is a crucial step in machine learning aimed at choosing the most relevant and informative features to improve model performance, reduce computational complexity, and mitigate overfitting. In R, various methods can help identify important features.
+特征选择是机器学习中的一个关键步骤，旨在选择最相关、最具信息量的特征，以提高模型性能、降低计算复杂度并减轻过拟合。在R中，各种方法可以帮助识别重要的特征。
 
 ### Feature Selection Techniques in R:
 
 #### 1. **Correlation Analysis:**
-Calculate correlation coefficients between features and the target variable or among features themselves to identify highly correlated features. Remove redundant or highly correlated features.
+计算特征与目标变量之间或特征本身之间的相关系数，以识别高度相关的特征。删除冗余或高度相关的功能。
 
    ```R
    # Example: Using cor() for correlation analysis
@@ -1468,7 +1998,7 @@ Calculate correlation coefficients between features and the target variable or a
    ```
 
 #### 2. **Filter Methods:**
-Use statistical measures (e.g., chi-squared test, mutual information) to rank and select features based on their individual relevance to the target variable.
+使用统计方法（例如，卡方检验，互信息），以排名和选择的基础上，他们的个人相关的目标变量的功能。
 
    ```R
    # Example: Using chi-squared test for feature selection
@@ -1477,7 +2007,7 @@ Use statistical measures (e.g., chi-squared test, mutual information) to rank an
    ```
 
 #### 3. **Wrapper Methods:**
-Evaluate subsets of features by training models iteratively and selecting the subset that results in the best model performance.
+通过迭代训练模型并选择可实现最佳模型性能的子集来评估特征子集。
 
    ```R
    # Example: Using recursive feature elimination (RFE)
@@ -1487,7 +2017,7 @@ Evaluate subsets of features by training models iteratively and selecting the su
    ```
 
 #### 4. **Embedded Methods:**
-Feature selection during model training where algorithms inherently perform feature selection (e.g., LASSO, Random Forest, Gradient Boosting).
+模型训练期间的特征选择，其中算法本身执行特征选择（例如，LASSO、随机森林、梯度提升）。
 
    ```R
    # Example: Using Random Forest for feature selection
@@ -1497,20 +2027,14 @@ Feature selection during model training where algorithms inherently perform feat
    ```
 
 #### 5. **Dimensionality Reduction Techniques:**
-Techniques like Principal Component Analysis (PCA) or t-Distributed Stochastic Neighbor Embedding (t-SNE) reduce feature space by creating new variables that capture most of the original information.
+主成分分析（PCA）或t-Distributed随机近邻嵌入（t-SNE）等技术通过创建捕获大部分原始信息的新变量来缩小特征空间。
 
    ```R
    # Example: PCA for feature reduction
    pca_result = prcomp(my_data, scale. = TRUE)
    ```
 
-### Implementation Considerations:
-
-- **Domain Knowledge:** Utilize domain expertise to guide feature selection, understanding the relevance of features in the context of the problem.
-- **Cross-Validation:** Perform feature selection within cross-validation loops to prevent overfitting and ensure generalizability.
-- **Evaluate Model Performance:** Assess the impact of feature selection on model performance using appropriate evaluation metrics.
-
-Choose feature selection methods based on the dataset's characteristics, problem complexity, and computational resources. A combination of multiple techniques often yields the best results, as different methods capture different aspects of feature importance. Experiment and iterate to find the most suitable features for your machine learning models.
+根据数据集的特征、问题复杂性和计算资源选择特征选择方法。多种技术的组合通常会产生最好的结果，因为不同的方法可以捕获特征重要性的不同方面。进行试验和迭代，为您的机器学习模型找到最适合的功能。
 
 ---
 
