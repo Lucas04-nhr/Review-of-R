@@ -701,8 +701,6 @@ plot2 <-
     geom_text( aes( x, y - 0.1, label = tolower( greek ) ), size = 5  );
 ```
 
-## 
-
 ---
 
 # R for bioinformatics, data summarisation and statistics
