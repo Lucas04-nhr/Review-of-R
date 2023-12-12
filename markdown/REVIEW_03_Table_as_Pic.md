@@ -76,24 +76,7 @@ plot(
 
 **Arguments**
 
-|        Parameters        |                           Details                            |
-| :----------------------: | :----------------------------------------------------------: |
-|         `x`, `y`         | the `x` and `y` arguments provide the x and y coordinates for the plot. Any reasonable way of defining the coordinates is acceptable. See the function `xy.coords` for details. If supplied separately, they must be of the same length. |
-|          `type`          | 1-character string giving the type of plot desired. The following values are possible, for details, see `plot`: `"p"` for points, `"l"` for lines, `"b"` for both points and lines, `"c"` for empty points joined by lines, `"o"` for overplotted points and lines, `"s"` and `"S"` for stair steps and `"h"` for histogram-like vertical lines. Finally, `"n"` does not produce any points or lines. |
-|          `xlim`          | the x limits (x1, x2) of the plot. Note that `x1 > x2` is allowed and leads to a ‘reversed axis’.The default value, `NULL`, indicates that the range of the [finite](vscode-webview://00i87qrgljff0t3jmc9gjufilst9usetvkh9gn773om0ic67o1j2/graphics/help/finite) values to be plotted should be used. |
-|          `ylim`          |                  the y limits of the plot.                   |
-|          `log`           | a character string which contains `"x"` if the x axis is to be logarithmic, `"y"` if the y axis is to be logarithmic and `"xy"` or `"yx"` if both axes are to be logarithmic. |
-|          `main`          |         a main title for the plot, see also `title`.         |
-|          `sub`           |                   a subtitle for the plot.                   |
-|          `xlab`          |  a label for the x axis, defaults to a description of `x`.   |
-|          `ylab`          |  a label for the y axis, defaults to a description of `y`.   |
-|          `ann`           | a logical value indicating whether the default annotation (title and x and y axis labels) should appear on the plot. |
-|          `axes`          | a logical value indicating whether both axes should be drawn on the plot. Use [graphical parameter](vscode-webview://00i87qrgljff0t3jmc9gjufilst9usetvkh9gn773om0ic67o1j2/graphics/help/graphical parameter) `"xaxt"` or `"yaxt"` to suppress just one of the axes. |
-|       `frame.plot`       | a logical indicating whether a box should be drawn around the plot. |
-|      `panel.first`       | an ‘expression’ to be evaluated after the plot axes are set up but before any plotting takes place. This can be useful for drawing background grids or scatterplot smooths. Note that this works by lazy evaluation: passing this argument from other `plot` methods may well not work since it may be evaluated too early. |
-|       `panel.last`       | an expression to be evaluated after plotting has taken place but before the axes, title and box are added. See the comments about `panel.first`. |
-|          `asp`           |          the `y/x` aspect ratio, see `plot.window`.          |
-| `xgap.axis`, `ygap.axis` | the `x/y` axis gap factors, passed as `gap.axis` to the two `axis()` calls (when `axes` is true, as per default). |
+![image-20231212194556462](./image/image-20231212194556462.png)
 
 You can also use `ggplot` to draw the plot above:
 
