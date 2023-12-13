@@ -23,15 +23,28 @@
 - [Rui Zhu](https://github.com/1508324011)
 - [Tianhao Wang](https://github.com/lwstkhyl)
 
-你同样可以通过QQ或者邮箱(lucas04@126.com)联系我。
+可以通过QQ或者邮箱(lucas04@126.com)联系我。
 
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
 
 ---
 
+# **致谢**
+
+最后，我想向通过二维码支持我的用户表示衷心的谢意 (按付款先后顺序排列，最近更新 `2023-12-13 14:50 GMT+8`): 
+
+> 为保护用户隐私，真实姓名仅展示第一个汉字，其余用 \* 隐去。
+
+- @柚子柚 (阿\****)
+- @勉 (李\**)
+
+此外，也感谢很多在背后支持着我的同学与朋友，感谢你们让我有将这个项目继续维护下去的动力！
+
+---
+
 If you like my work, you can buy me a coffee if you like~
 
-**付款金额大于10元的将会列在README的“感谢”一栏中表示衷心的谢忱。**
+**付款金额大于10元的将会列在README的“致谢”一栏中表示衷心的谢忱。**
 
 
 付款方式：
