@@ -110,7 +110,7 @@
 \date{}
 
 \begin{document}
-
+\pagenumbering{Roman}
 \hypertarget{review-of-the-course-r-for-data-science-part-01talk-01-04}{%
 \section{Review of the course ``R for Data Science'' Part 01(Talk
 01\textasciitilde{}
@@ -120,6 +120,10 @@
 
 This work is licensed under CC BY-NC-SA 4.0
 
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
 \hypertarget{multi-omics-data-analysis-and-visualisation-1}{%
 \section{Multi-omics data analysis and visualisation,
 \#1}\label{multi-omics-data-analysis-and-visualisation-1}}
@@ -298,13 +302,13 @@ Extra:
 \begin{Highlighting}[]
 \CommentTok{\# (There\textquotesingle{}s already some data in workspace)}
 
-\SpecialCharTok{$}\NormalTok{ m}
+\SpecialCharTok{\$}\NormalTok{ m}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the content of matrix }\StringTok{"m"}\NormalTok{)}
 
-\SpecialCharTok{$}\NormalTok{ m[}\DecValTok{1}\NormalTok{, ]}
+\SpecialCharTok{\$}\NormalTok{ m[}\DecValTok{1}\NormalTok{, ]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the first row of matrix }\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)}
 
-\SpecialCharTok{$}\NormalTok{ m[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ]}
+\SpecialCharTok{\$}\NormalTok{ m[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ (List the first two rows of matrix }\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -721,10 +725,10 @@ it.}{data.frame will do partial matching, while tibble will NEVER do it.}}\label
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{abc =} \DecValTok{1}\NormalTok{) }
-\NormalTok{df}\SpecialCharTok{$}\NormalTok{ab; }\CommentTok{\# Unwanted result ...}
+\NormalTok{df}\SpecialCharTok{\$}\NormalTok{ab; }\CommentTok{\# Unwanted result ...}
 
 \NormalTok{df2 }\OtherTok{=} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{abc =} \DecValTok{1}\NormalTok{)}
-\NormalTok{df2}\SpecialCharTok{$}\NormalTok{a; }\CommentTok{\# Produce a warning and return NULL}
+\NormalTok{df2}\SpecialCharTok{\$}\NormalTok{a; }\CommentTok{\# Produce a warning and return NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1444,9 +1448,9 @@ adjust the \texttt{factor} to adjust the drawing order.
 \NormalTok{res }\OtherTok{=}
   \FunctionTok{data.frame}\NormalTok{(responses)}
 \CommentTok{\# Sort by level of agreement from strong {-}\textgreater{} weak}
-\NormalTok{res}\SpecialCharTok{$}\NormalTok{res }\OtherTok{=}
+\NormalTok{res}\SpecialCharTok{\$}\NormalTok{res }\OtherTok{=}
   \FunctionTok{factor}\NormalTok{(}
-\NormalTok{    res}\SpecialCharTok{$}\NormalTok{res,}
+\NormalTok{    res}\SpecialCharTok{\$}\NormalTok{res,}
     \AttributeTok{levels =}
        \FunctionTok{c}\NormalTok{(}\StringTok{"Strongly Agree"}\NormalTok{, }\StringTok{"Agree"}\NormalTok{, }\StringTok{"Disagree"}\NormalTok{)}
 \NormalTok{  )}
@@ -1563,8 +1567,8 @@ But when you delete the useless \texttt{level} using these commands:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mouse.chr\_10\_12}\SpecialCharTok{$}\NormalTok{Chromosome.scaffold.name }\OtherTok{=}
-  \FunctionTok{droplevels}\NormalTok{(mouse.chr\_10\_12}\SpecialCharTok{$}\NormalTok{Chromosome.scaffold.name)}
+\NormalTok{mouse.chr\_10\_12}\SpecialCharTok{\$}\NormalTok{Chromosome.scaffold.name }\OtherTok{=}
+  \FunctionTok{droplevels}\NormalTok{(mouse.chr\_10\_12}\SpecialCharTok{\$}\NormalTok{Chromosome.scaffold.name)}
 \end{Highlighting}
 \end{Shaded}
 
