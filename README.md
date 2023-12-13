@@ -30,6 +30,19 @@ You can also contact me via QQ or email(lucas04@126.com).
 
 ---
 
+# **Acknowledgement**
+
+Last but not least, I’d like to express my sincere gratitude to the users who support me via the QR code (Listed in order of payment, last updated `2023-12-13 14:50 GMT+8`): 
+
+> Real names are shown with the first character only, in order to protect the privacy of the other person.
+
+- @柚子柚 (阿\****)
+- @勉 (李\**)
+
+In addition, I would like to thank all the classmates and friends who have supported me behind the board, thank you for giving me the motivation to continue to maintain this project!
+
+---
+
 If you like my work, you can buy me a coffee if you like~
 
 **Payments greater than ￥10.00 will be listed in the Acknowledgement section of the README as an expression of gratitude.**
