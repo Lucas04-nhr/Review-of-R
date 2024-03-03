@@ -532,11 +532,11 @@ c("chen wei hua", "chen wei", "chen") %>% str_subset("wei\\b")
 
 4. Classes and groups
 
-	![regexprs_classes_groups](./image/regexprs_classes_groups.png)
+	![regexprs_classes_groups](https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/regexprs_classes_groups.png)
 
 5. Special characters
 
-	![regexprs_special_characters](./image/regexprs_special_characters.png)
+	![regexprs_special_characters](https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/regexprs_special_characters.png)
 
 ---
 

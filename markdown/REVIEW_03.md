@@ -52,7 +52,7 @@ with(
 )
 ```
 
-<img src="./image/image-20231212160107785.png" alt="image-20231212160107785" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231212160107785.png" alt="image-20231212160107785" style="zoom:33%;" />
 
 **Function usage:**
 

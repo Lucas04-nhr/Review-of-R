@@ -169,7 +169,7 @@ Extra:
 
 ## The hierarchy of R’s vector types
 
-<img src="./image/data-structures-overview.png" alt="The hierarchy of R’s vector types" style="zoom:24%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/data-structures-overview.png" alt="The hierarchy of R’s vector types" style="zoom:24%;" />
 
 You can use function `typeof()` to know the type of a vector.
 
@@ -209,7 +209,7 @@ kbl(head(mpg),
 
 Here’s the result:
 
-![Introduction of df](./image/Introduction%20of%20df.png)
+![Introduction of df](https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/Introduction%2520of%2520df.png)
 
 ### **Usage of `head()` and `tail()`**
 
@@ -238,7 +238,7 @@ dim()  # Show the dimension
 
 This command shows the structure of the tibble `mpg`:
 
-<img src="./image/Structure%20of%20mpg.png" alt="Structure of mpg" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/Structure%2520of%2520mpg.png" alt="Structure of mpg" style="zoom:67%;" />
 
 ### Make a new `data.frame`
 
@@ -724,7 +724,7 @@ Use the following functions to write object(s) to external files:
 
 Each R session is a separate **work space** containing its own data, variables, and operation history.
 
-<img src="./image/r_sessions.png" alt="r_sessions" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/r_sessions.png" alt="r_sessions" />
 
 Each RStudio session is automatically associated with a R session
 
@@ -732,11 +732,11 @@ Each RStudio session is automatically associated with a R session
 >
 > However, I’m keen on coding with PyCharm but not RStudio, for its wonderful Plug-in Environment, which can let me use plug-ins such as Code GeeX by Zhipu AI (a company founded by some student in KEG team inTsinghua University) or GitHub Copilot by GitHub to let the coding process more quickly, for the instruction from GPTs.
 
-<img src="./image/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
 
 If you want to coding with R using PyCharm or other JetBrains IDE (i.e. IntelliJ, CLion, etc.), remember to install the *R Language Plug-in*
 
-<img src="./image/image-20231202111619635.png" alt="r-language plug-in in PyCharm" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202111619635.png" alt="r-language plug-in in PyCharm" style="zoom:50%;" />
 
 For instruction how to get FREE Student Lisence of GitHub Pro, GitHub Copilot and JetBrains Products and their benefits, see their official website:
 
@@ -754,15 +754,15 @@ For instruction how to get FREE Student Lisence of GitHub Pro, GitHub Copilot an
 
 - Click the Project button in the upper right corner and select New Project in the pop-up menu …
 
-	<img src="./image/rstudio_create_new_project.png" alt="rstudio_create_new_project" style="zoom:48%;" />
+	<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_create_new_project.png" alt="rstudio_create_new_project" style="zoom:48%;" />
 
 - Select: New directory -> New Project in the popup window
 
-	<img src="./image/rstudio_create_project_2.png" alt="rstudio_create_project_2" style="zoom:48%;" />
+	<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_create_project_2.png" alt="rstudio_create_project_2" style="zoom:48%;" />
 
 - Enter a new directory name, choose its mother directory ...
 
-	<img src="./image/rstudio_create_new_project_3.png" alt="rstudio_create_new_project_3" style="zoom:50%;" />
+	<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_create_new_project_3.png" alt="rstudio_create_new_project_3" style="zoom:50%;" />
 
 ### Working Space
 
@@ -780,7 +780,7 @@ rm(list = ls()) # Remove ALL variables in current workspace/session
 
 The "Environment" window in the upper right corner of RStudio shows all the variables of the current workspace.
 
-<img src="./image/rstudio_enviroment_window.png" alt="rstudio_enviroment_window" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_enviroment_window.png" alt="rstudio_enviroment_window" style="zoom:50%;" />
 
 ### Save and restore work space
 
@@ -818,15 +818,15 @@ load("1.RData")
 
 - To close a project
 
-	<img src="./image/Rstudio_close_a_project.png" alt="Rstudio_close_a_project" />
+	<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/Rstudio_close_a_project.png" alt="Rstudio_close_a_project" />
 
 - In RStudio and similar IDEs, there are some preferences to choose
 
-	<img src="./image/rstudio_project_options.png" alt="rstudio_project_options" style="zoom:80%;" />
+	<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_project_options.png" alt="rstudio_project_options" style="zoom:80%;" />
 
 > The UI in PyCharm
 
-<img src="./image/pycharm_project_options.png" alt="pycharm_project_options" style="zoom: 33%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/pycharm_project_options.png" alt="pycharm_project_options" style="zoom: 33%;" />
 
 **Notes:**
 
@@ -836,7 +836,7 @@ load("1.RData")
 
 ### Open a project
 
-<img src="./image/rstudio_open_a_project.png" alt="rstudio_open_a_project" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/rstudio_open_a_project.png" alt="rstudio_open_a_project" style="zoom:80%;" />
 
 > When in PyCharm, simply drag the working directory to its main window, remember to trust the project.
 >
@@ -905,7 +905,7 @@ fct_count(gender_fct)
 
 The output looks like this:
 
-<img src="./image/image-20231202114121080.png" alt="image-20231202114121080" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202114121080.png" alt="image-20231202114121080" style="zoom:50%;" />
 
 Now I request to replace with Female, Male.
 
@@ -920,7 +920,7 @@ gender_fct =
 fct_count(gender_fct)
 ```
 
-<img src="./image/image-20231202114937281.png" alt="image-20231202114937281" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202114937281.png" alt="image-20231202114937281" style="zoom:50%;" />
 
 You can also use `fct_relabel()` to do the same thing
 
@@ -954,7 +954,7 @@ response_barplot =
   geom_bar()
 ```
 
-<img src="./image/response_barplot.png" alt="response_barplot" style="zoom:24%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/response_barplot.png" alt="response_barplot" style="zoom:24%;" />
 
 By default, `factor` is sorted alphabetically.
 
@@ -992,7 +992,7 @@ responses =
   )
 ```
 
-<img src="./image/image-20231202134409231.png" alt="image-20231202134409231" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202134409231.png" alt="image-20231202134409231" style="zoom:50%;" />
 
 ### Using `factor` to vhange values
 
@@ -1028,7 +1028,7 @@ x =
   )
 ```
 
-<img src="./image/image-20231202135555790.png" alt="image-20231202135555790" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202135555790.png" alt="image-20231202135555790" style="zoom:50%;" />
 
 ### Delete useless `levels`
 
@@ -1042,11 +1042,11 @@ mouse.genes =
   )
 ```
 
-<img src="./image/image-20231202135803901.png" alt="image-20231202135803901" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202135803901.png" alt="image-20231202135803901" style="zoom:50%;" />
 
 If you draw a plot without deleting the useless `levels`, you will get this result:
 
-<img src="./image/mouse_gene_plot01.png" alt="mouse_gene_plot01.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/mouse_gene_plot01.png" alt="mouse_gene_plot01.png" style="zoom:50%;" />
 
 But when you delete the useless `level` using these commands:
 
@@ -1057,11 +1057,11 @@ mouse.chr_10_12$Chromosome.scaffold.name =
 
 You will see that:
 
-<img src="./image/image-20231202141212937.png" alt="image-20231202141212937" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/image-20231202141212937.png" alt="image-20231202141212937" style="zoom:50%;" />
 
 Then, you’ll get the plot like this:
 
-<img src="./image/mouse_gene_plot02.png" alt="mouse_gene_plot02" style="zoom:24%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/mouse_gene_plot02.png" alt="mouse_gene_plot02" style="zoom:24%;" />
 
 *Source code:*
 
@@ -1115,7 +1115,7 @@ mouse_gene_plot03 =
     theme_bw()
 ```
 
-<img src="./image/mouse_gene_plot03.png" alt="mouse_gene_plot03" style="zoom:24%;" />
+<img src="https://cdn.jsdelivr.net/gh/Lucas04-nhr/Pictures@main/uPic/mouse_gene_plot03.png" alt="mouse_gene_plot03" style="zoom:24%;" />
 
 ### Advance usage
 
